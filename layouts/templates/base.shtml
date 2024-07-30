@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head id="head">
+    <meta charset="UTF-8">
+    <meta name="description" content="zigtools: We make free and open-source tools for the @ziglang community.">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title id="title">
+      <super>
+      - zigtools
+    </title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/highlight.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Teko:wght@600&display=swap" rel="stylesheet">
+    <super>
+  </head>
+  <body>
+    <nav id="menu" class="centered" style="display: flex;gap: 0.3rem">
+      <a href="/">Home</a>
+      •
+      <a href="/zls/install/index.html">Install ZLS</a>
+      •
+      <a href="/lsp-kit/">LSP-kit</a>
+      •
+      <a href="https://github.com/zigtools" target="_blank">GitHub</a>
+    </nav>
+    <div id="content">
+      <super>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+---
+{
+    .title = "ZLS 0.11.0",
+    .date = @date("2023-08-13T16:23:12Z"),
+    .author = "Sample Author",
+    .draft = false,
+    .layout = "zls-release.shtml",
+    .tags = [],
+} 
+---
+
+[GitHub Release](https://github.com/zigtools/zls/releases/tag/0.11.0)
+•
+[Installation Guide](https://github.com/zigtools/zls/wiki/Installation)
+•
+[ZLS Discord](https://discord.gg/Jp4DHkqkYs)
+
+# Feature improvements
+
+- hover improvements [#1269](https://github.com/zigtools/zls/pull/1269) [#1281](https://github.com/zigtools/zls/pull/1281) [#1282](https://github.com/zigtools/zls/pull/1282) [#1294](https://github.com/zigtools/zls/pull/1294) [#1303](https://github.com/zigtools/zls/pull/1303) [#1308](https://github.com/zigtools/zls/pull/1308) [#1320](https://github.com/zigtools/zls/pull/1320)
+- struct init field completion [#1075](https://github.com/zigtools/zls/pull/1075) [#1090](https://github.com/zigtools/zls/pull/1090) [#1115](https://github.com/zigtools/zls/pull/1115) [#1116](https://github.com/zigtools/zls/pull/1116) [#1275](https://github.com/zigtools/zls/pull/1275) [#1298](https://github.com/zigtools/zls/pull/1298) [#1307](https://github.com/zigtools/zls/pull/1307)
+- completion on error and enums [#887](https://github.com/zigtools/zls/pull/887) [#1233](https://github.com/zigtools/zls/pull/1233) [#1270](https://github.com/zigtools/zls/pull/1270) [#1302](https://github.com/zigtools/zls/pull/1302)
+- provide more semantic token information [#1057](https://github.com/zigtools/zls/pull/1057) [#1103](https://github.com/zigtools/zls/pull/1103)
+- implement cInclude completions & goto definition and hover [#970](https://github.com/zigtools/zls/pull/970) [#972](https://github.com/zigtools/zls/pull/972)
+- keyword completion and updated snippets [#763](https://github.com/zigtools/zls/pull/763) [#767](https://github.com/zigtools/zls/pull/767) [#769](https://github.com/zigtools/zls/pull/769) [#1095](https://github.com/zigtools/zls/pull/1095)
+
+# New capabilities
+
+- `textDocument/selectionRange` [#784](https://github.com/zigtools/zls/pull/784)
+- `textDocument/semanticTokens/range` [#1038](https://github.com/zigtools/zls/pull/1038)
+
+# Analysis
+
+- experimental comptime interpreter [#724](https://github.com/zigtools/zls/pull/724)
+- branching type resolution [#1031](https://github.com/zigtools/zls/pull/1031)
+- add anytype resolution based on call references [#1067](https://github.com/zigtools/zls/pull/1067)
+- resolve type of simple labeled block [#1262](https://github.com/zigtools/zls/pull/1262)
+- expand var decl alias resolution [#1273](https://github.com/zigtools/zls/pull/1273)
+- resolve `std.ArrayList(T).Slice` [#1373](https://github.com/zigtools/zls/pull/1373)
+- resolve type of loop expressions [#1310](https://github.com/zigtools/zls/pull/1310)
+- resolve types of `slice.len`, `slice.ptr`, and tuple fields [#1315](https://github.com/zigtools/zls/pull/1315)
+
+# Performance
+
+- optimize analysis backend [#1062](https://github.com/zigtools/zls/pull/1062)
+- use [@silversquirl](https://github.com/silversquirl)'s binned allocator [#1134](https://github.com/zigtools/zls/pull/1134)
+- multithreaded job processing [#1311](https://github.com/zigtools/zls/pull/1311)
+- optimize inlay hints. [#926](https://github.com/zigtools/zls/pull/926) [#948](https://github.com/zigtools/zls/pull/948) [#954](https://github.com/zigtools/zls/pull/954)
+- optimize document symbols [#1050](https://github.com/zigtools/zls/pull/1050)
+
+# Config
+
+- make argument placeholders optional [#1317](https://github.com/zigtools/zls/pull/1317)
+- make semantic token configuration an enum [#1064](https://github.com/zigtools/zls/pull/1064)
+- enable all capabilities by default [#877](https://github.com/zigtools/zls/pull/877)
+
+# Behind the scenes
+
+- switch to [diff-match-patch](https://github.com/ziglibs/diffz) [#982](https://github.com/zigtools/zls/pull/982)
+- add a replay feature to zls [#857](https://github.com/zigtools/zls/pull/857)
+- code formatting does not depend on zig executable. [#755](https://github.com/zigtools/zls/pull/755)
+- update zig submodules to new builtin dependency system [#1017](https://github.com/zigtools/zls/pull/1017)
+- disable and then reenable cimport resolution [#1091](https://github.com/zigtools/zls/pull/1091) [#1136](https://github.com/zigtools/zls/pull/1136)
+- use `zig-lsp-codegen` [#850](https://github.com/zigtools/zls/pull/850)
+- transition from tres to `std.json` [#1321](https://github.com/zigtools/zls/pull/1321)
+
+## Sponsors
+
+We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
+
+[![OpenCollective Backers](https://opencollective.com/zigtools/backers.svg?width=890&limit=1000)](https://opencollective.com/zigtools#category-CONTRIBUTE)
+
+**Full Changelog**: [0.10.0...0.11.0](https://github.com/zigtools/zls/compare/0.10.0...0.11.0)
+
+# Release Artifacts
+
+| OS      | Arch    | Filename                                                                                                      |
+| ------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| Windows | x86_64  | [zls-x86_64-windows.zip](https://github.com/zigtools/zls/releases/download/0.11.0/zls-x86_64-windows.zip)     |
+| Windows | x86     | [zls-x86-windows.zip](https://github.com/zigtools/zls/releases/download/0.11.0/zls-x86-windows.zip)           |
+| macOS   | aarch64 | [zls-aarch64-macos.tar.gz](https://github.com/zigtools/zls/releases/download/0.11.0/zls-aarch64-macos.tar.gz) |
+| macOS   | x86_64  | [zls-x86_64-macos.tar.gz](https://github.com/zigtools/zls/releases/download/0.11.0/zls-x86_64-macos.tar.gz)   |
+| Linux   | x86_64  | [zls-x86_64-linux.tar.gz](https://github.com/zigtools/zls/releases/download/0.11.0/zls-x86_64-linux.tar.gz)   |
+| Linux   | x86     | [zls-x86-linux.tar.gz](https://github.com/zigtools/zls/releases/download/0.11.0/zls-x86-linux.tar.gz)         |
+| Linux   | aarch64 | [zls-aarch64-linux.tar.gz](https://github.com/zigtools/zls/releases/download/0.11.0/zls-aarch64-linux.tar.gz) |
+| Wasm    | WASI    | [zls-wasm32-wasi.tar.gz](https://github.com/zigtools/zls/releases/download/0.11.0/zls-wasm32-wasi.tar.gz)     |

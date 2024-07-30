@@ -1,0 +1,9 @@
+<extend template="base.shtml">
+<title id="title" var="$page.title"></title>
+<head id="head"></head>
+<div id="content">
+  <style>
+  </style>
+  <h1 class="title" var="$page.title"></h1>
+  <div id="page" var="$page.content"></div>
+</div>

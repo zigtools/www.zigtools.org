@@ -1,0 +1,46 @@
+---
+{
+    .title = "ZLS 0.13.0",
+    .date = @date("2024-06-09T00:27:27Z"),
+    .author = "Sample Author",
+    .draft = false,
+    .layout = "zls-release.shtml",
+    .tags = [],
+} 
+---
+
+[GitHub Release](https://github.com/zigtools/zls/releases/tag/0.13.0)
+•
+[Installation Guide](https://github.com/zigtools/zls/wiki/Installation)
+•
+[ZLS Discord](https://discord.gg/Jp4DHkqkYs)
+
+This release is meant to provide compatibility with Zig 0.13.0
+
+## New Contributors
+
+- [@ert78gb](https://github.com/ert78gb) made their first contribution in [#1887](https://github.com/zigtools/zls/pull/1887)
+- [@Sekky61](https://github.com/Sekky61) made their first contribution in [#1896](https://github.com/zigtools/zls/pull/1896)
+- [@WillLillis](https://github.com/WillLillis) made their first contribution in [#1903](https://github.com/zigtools/zls/pull/1903)
+
+**Full Changelog**: [0.12.0...0.13.0](https://github.com/zigtools/zls/compare/0.12.0...0.13.0)
+
+# Release Artifacts
+
+<style>
+table {
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+| OS      | Arch    | Filename                                                                                                      |
+| ------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| Windows | x86_64  | [zls-x86_64-windows.zip](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-windows.zip)     |
+| Windows | x86     | [zls-x86-windows.zip](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86-windows.zip)           |
+| macOS   | aarch64 | [zls-aarch64-macos.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-aarch64-macos.tar.xz) |
+| macOS   | x86_64  | [zls-x86_64-macos.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-macos.tar.xz)   |
+| Linux   | x86_64  | [zls-x86_64-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-linux.tar.xz)   |
+| Linux   | x86     | [zls-x86-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86-linux.tar.xz)         |
+| Linux   | aarch64 | [zls-aarch64-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-aarch64-linux.tar.xz) |
+| Wasm    | WASI    | [zls-wasm32-wasi.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-wasm32-wasi.tar.xz)     |

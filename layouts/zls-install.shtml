@@ -1,0 +1,145 @@
+<extend template="base.shtml">
+<title id="title" var="$page.title"></title>
+<head id="head"></head>
+<div id="content">
+  <style>
+    #page h2, #page h3 {
+        text-align: left;
+    }
+
+    #page h2 {
+        font-size: 1.7rem;
+        border-bottom: 1px dashed #aaa;
+    }
+
+    #page h3 {
+        font-size: 1.5rem;
+    }
+
+    #page h4 {
+        font-size: 1rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        font-style: italic;
+    }
+
+    .banner-note {
+      border-left: 0.25em solid;
+      padding-left: 1em;
+      border-color: var(banner-note-color);
+    }
+    
+    .banner-warning {
+      border-left: 0.25em solid;
+      padding-left: 1em;
+      border-color: var(banner-warning-color);
+    }
+
+    .banner-important {
+      border-left: 0.25em solid;
+      padding-left: 1em;
+      border-color: var(banner-important-color);
+    }
+
+    details > :not(summary) {
+      margin-left: 0.2em;
+    }
+
+    summary {
+      position: relative;
+    }
+    summary::marker {
+      content: none;
+    }
+    summary::before,
+    summary::after {
+      content: '';
+      width: .75em;
+      height: 0;
+      border-bottom: 2px solid;
+      position: absolute;
+      top: calc(50% - 1px);
+      right: 0;
+      transform: translateY(-50%);
+    }
+    summary::after {
+      transform: rotate(90deg);
+      transform-origin: 50% 50%;
+    }
+    [open] > summary::after {
+      transform: rotate(0deg);
+    }
+  </style>
+  <h1 class="title" var="$page.title"></h1>
+  <div style="display: flex; justify-content: center;">
+    <div style="width: fit-content; border: 0.3em solid; border-radius: 9999px; border-color: rgb(0, 120, 212); padding: 0px 1.25rem; text-align: center;">
+      <p style="margin: 6px 0px">
+        <strong>VS Code</strong>
+        users only need the
+        <a href="https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig">official Zig Language extension</a>.
+      </p>
+      <p style="margin: 4px 0px" class="tagline">No need to manually install Zig or ZLS.</p>
+    </div>
+  </div>
+  <form style="display:flex; flex-direction: column; margin-left: 2rem; margin-right: 2rem; gap: 0.5rem;">
+    <input
+    style="
+      text-align: center; 
+      appearance: none;
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      border-color: transparent;
+      background-color: transparent;
+      border-width: 0px;
+      border-bottom-width: 2px;
+      border-color: rgb(255 255 255);
+      padding-bottom: 0.2rem;
+      color: white;
+      margin-top: 2rem;
+      font-size: 2rem;
+      line-height: 2rem;
+    "
+    type="text"
+    id="zig-version"
+    name="zig_version"
+    placeholder="What is your Zig Version?"
+    pattern="(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d\*)"
+    required
+  >
+    <div style="display: flex">
+      <button
+        id="button-from-source"
+        type="submit"
+        name="compatibility"
+        value="full"
+        disabled
+        style="1	flex: 1 1 0%; flex-grow: 1; padding: 1rem; color: white; background-color: transparent;"
+        class="flex-1 grow p-2 min-w-40 appearance-none rounded-l-lg border-2 border-r-1 border-[#f7a41d] hover:bg-slate-100 text-white disabled:cursor-not-allowed disabled:opacity-20"
+      >
+        Build From Source
+      </button>
+      <button
+        id="button-binary"
+        type="submit"
+        name="compatibility"
+        value="only-runtime"
+        disabled
+        style="1	flex: 1 1 0%; flex-grow: 1; padding: 1rem; color: white; background-color: transparent;"
+        class="flex-1 grow p-2 min-w-40 appearance-none rounded-r-lg border-2 border-l-1 border-[#f7a41d] bg-transparent hover:bg-slate-100 text-white disabled:cursor-not-allowed disabled:opacity-20"
+      >
+        Prebuilt Binary
+      </button>
+    </div>
+  </form>
+  <script>
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, name) => searchParams.get(name),
+      set: (searchParams, name, value) => searchParams.set(name, value),
+    });
+    document.getElementById("zig-version").value = params["zig_version"];
+  </script>
+  <div id="page" var="$page.content"></div>
+  <div style="padding-bottom: 100vh"></div>
+</div>

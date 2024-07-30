@@ -1,0 +1,268 @@
+---
+{
+    .title = "ZLS 0.12.0",
+    .date = @date("2024-04-26T14:30:22Z"),
+    .author = "Sample Author",
+    .draft = false,
+    .layout = "zls-release.shtml",
+    .tags = [],
+} 
+---
+
+[GitHub Release](https://github.com/zigtools/zls/releases/tag/0.12.0)
+•
+[Installation Guide](https://github.com/zigtools/zls/wiki/Installation)
+•
+[ZLS Discord](https://discord.gg/Jp4DHkqkYs)
+
+# Feature improvements
+
+## New Type Hints ([#1444](https://github.com/zigtools/zls/pull/1444)) ([#1512](https://github.com/zigtools/zls/pull/1512)) ([#1778](https://github.com/zigtools/zls/pull/1778))
+
+<!-- thank you @Koranir and @nullptrdev -->
+
+New inlay hints have been added for variable declarations, captured values and struct literal fields.
+
+<!--
+const std = @import("std");
+
+pub fn main() !void {
+    const Pair = struct { lhs: u32, rhs: u32 };
+    const paerchen = [2]Pair{
+        .{ .lhs = 7, .rhs = 42 },
+        .{ .lhs = 66, .rhs = 3 },
+    };
+    for (paerchen, 0..) |pair, i| {
+        std.debug.print("{d}: {}\n", .{ i, pair.lhs < pair.rhs });
+    }
+}
+-->
+
+![new type hints](./new-type-hints.png)
+
+These new inlay hints can be seperately configured with the following new config options:
+
+- `inlay_hints_show_parameter_name`
+- `inlay_hints_show_variable_type_hints`
+- `inlay_hints_show_struct_literal_field_type`
+
+## Build on Save ([#1361](https://github.com/zigtools/zls/pull/1361))
+
+The new `enable_build_on_save` config option enables ZLS compile your project with `zig build` and report back diagnostics.
+
+![new build on save](./new-build-on-save.png)
+
+You can control which build step should be executed with the `build_on_save_step` config option which defaults to the "install" step.
+
+> Note: The [vscode-zig](https://github.com/ziglang/vscode-zig) extension provides a similar feature.
+
+## Completions
+
+### highlight symbols that call `@compileError` as deprecated ([#1764](https://github.com/zigtools/zls/pull/1764))
+
+Any symbol that calls `@compileError` will marked as deprecated in completions, hover and semantic highlighting. Different editors/clients may represent this information differently (or not at all).
+
+![completions on compile error](./completions-on-compile-error.png)
+
+> Note: The error message does not need to start with "Deprecated;".
+
+#### Semantic highlighting of deprecated symbols in VS Code
+
+Most Color Themes in VS Code do not visualize deprecated tokens. The following setting can be used in VS Code to highlight deprecated tokens with a ~~strikethrough~~.
+
+```json
+"editor.semanticTokenColorCustomizations": {
+  "rules": {
+    "*.deprecated": {
+      "strikethrough": true
+    },
+  }
+},
+```
+
+### Detail field to pointer deref and optional unwrap operations ([#1745](https://github.com/zigtools/zls/pull/1745))
+
+Completions of the `.*` and `.?` operations will now show the result type.
+
+![completions on an optional](./completions-on-an-optional.png)
+![completions on a single item pointer](./completions-on-a-single-item-pointer.png)
+
+### Filesystem completion in build files ([#1668](https://github.com/zigtools/zls/pull/1668))
+
+While editing a `build.zig` file, you will now receive filesystem completions inside string literals when typing a valid file path.
+
+![filesystem completions in build.zig](./filesystem-completions.png)
+
+### Module completions for `std` and `builtin` ([#1656](https://github.com/zigtools/zls/pull/1656))
+
+Completions inside an `@import` will include the `std` and `builtin` module with their file path. (#1656)
+
+![std module completion](./std-module-completion.png)
+
+### completions with 'replace' instead of 'insert' ([#1458](https://github.com/zigtools/zls/pull/1458))
+
+| Editor/Client    | Config Option                      | Default Value |
+| ---------------- | ---------------------------------- | ------------- |
+| VS Code          | `editor.suggest.insertMode`        | `"insert"`    |
+| Sublime Text LSP | `completion_insert_mode`           | `"insert"`    |
+| Helix            | `completion_replace`               | `false`       |
+| Emacs lsp-mode   | `lsp-completion-default-behaviour` | `:replace`    |
+
+A config option in Vim/Neovim depends on the LSP or completion plugin being used.
+
+<!-- https://invent.kde.org/utilities/kate/-/blob/master/addons/lspclient/lspclientcompletion.cpp -->
+
+Kate Editor has a config option for this feature `Configure` -> `Editing` -> `Auto Completion` -> `Auto word completion` -> `Remove tail on complete` but it does not use ZLS.
+
+### completions for function aliases with self parameters ([#1656](https://github.com/zigtools/zls/pull/1656))
+
+<!-- thank you @nolanderc -->
+
+Declarations to function alias that take a self parameter are now included when providing completions on member access.
+
+The following example would previously not give any completions.
+
+<!--
+const Foo = struct {
+    const alias = func;
+};
+
+fn func(self: Foo, number: u32) void {}
+
+test {
+    var foo: Foo = undefined;
+    foo.
+}
+-->
+
+![completions on function alias](./completions-on-function-alias.png)
+
+## Snippets
+
+Snippets for float and int types have been removed. ([#1681](https://github.com/zigtools/zls/pull/1681))
+
+There are new snippets that add top level declaration for `std`, `@import` and `std_options` ([#1498](https://github.com/zigtools/zls/pull/1498)) ([#1830](https://github.com/zigtools/zls/pull/1830))
+
+## Configuration
+
+### validate configuration options ([#1366](https://github.com/zigtools/zls/pull/1366))
+
+The config system has been revamped to validate config options like executable or directory paths and provide better diagnostics.
+
+![error messages on bad config](./error-messages-on-bad-config.png)
+
+When your editor does not support displaying a message window, you will still find them in [ZLS's log output](https://github.com/zigtools/zls/wiki/Guide:-How-to-view-ZLS-log-output).
+
+### ZLS+Zig compatibility check ([#1808](https://github.com/zigtools/zls/pull/1808))
+
+ZLS has the following compatibility requirements:
+
+- A tagged release of Zig or ZLS must be used with the same tagged release of Zig or ZLS
+- A master/nightly build of ZLS requires master/nightly build of Zig
+
+As of right now, a master/nightly build of ZLS does try to be _mostly_ usable with the latest tagged release of Zig but this is done as a best effort and is subject to change. ([#1020](https://github.com/zigtools/zls/pull/1020))
+
+When your ZLS and Zig version are incompatible, ZLS will show you a warning:
+
+![ZLS 0.12.0 being used with Zig 0.12.0-dev](./zls-0-12-0-being-used-with-zig-0-12-0-dev.png)
+![ZLS 0.12.0 being used with Zig 0.11.0](./zls-0-12-0-being-used-with-zig-0-11-0.png)
+
+When your editor does not support displaying a message window, you will still find them in [ZLS's log output](https://github.com/zigtools/zls/wiki/Guide:-How-to-view-ZLS-log-output).
+
+### autofix disabled by default
+
+<!-- @Techatrix **sad autofix noises** -->
+
+The autofix feature is now disabled by default. ([#1657](https://github.com/zigtools/zls/pull/1657))
+
+#### removed `enable_ast_check_diagnostics`
+
+Getting quickly informed about compile errors while coding is a vital feature that has little reason to be disabled.
+
+#### removed `enable_import_embedfile_argument_completions`
+
+This feature has been unstable in the past which is no longer the case.
+
+#### removed `include_at_in_builtins`
+
+This options served as a workaround for an issue with builtin completions in Sublime Text 3 which has been resolved.
+
+#### removed `max_detail_length`
+
+This options served as a workaround for an issue with long completion detail entries bricking the preview window in Sublime Text ([#261](https://github.com/zigtools/zls/pull/261)) which can automatically be set by querying which editor/client is being used.
+
+## Performance
+
+<!-- thank you @SuperAuguste -->
+
+The [DocumentScope](https://github.com/zigtools/zls/blob/master/src/DocumentScope.zig) is an internal datastructure of ZLS that keeps track of variables, declarations and their scopes. Most analysis relies on it to perform symbol lookups, iterate symbols or quickly traverse scopes. Every time a document is modified, the DocumentScope is rebuilt for the entire document so it has been rewritten with Data-oriented design principles in mind to reduce its performance footprint. ([#1517](https://github.com/zigtools/zls/pull/1517))
+
+Here is a benchmark where the DocumentScope is constructed and deinitialized 100 times on Zig's [Sema.zig](https://github.com/ziglang/zig/blob/master/src/Sema.zig):
+
+```
+Benchmark 1 (33 runs): ./document_scope_old
+  measurement          mean ± σ            min … max    outliers   delta
+  wall_time          3.67s  ± 23.5ms    3.64s  … 3.74s    2 ( 6%)  0%
+  peak_rss           11.1MB ± 64.1KB    10.9MB … 11.2MB   0 ( 0%)  0%
+  cpu_cycles         12.8G  ± 99.1M     12.6G  … 13.0G    1 ( 3%)  0%
+  instructions       24.3G  ±  689      24.3G  … 24.3G    2 ( 6%)  0%
+  cache_references   45.7M  ±  848K     44.5M  … 47.9M    1 ( 3%)  0%
+  cache_misses       6.36M  ±  284K     5.89M  … 6.92M    0 ( 0%)  0%
+  branch_misses       111M  ± 1.20M      110M  …  114M    0 ( 0%)  0%
+Benchmark 3 (66 runs): ./document_scope_new
+  measurement          mean ± σ            min … max    outliers   delta
+  wall_time          1.82s  ± 13.4ms    1.79s  … 1.88s    3 ( 5%)  ⚡- 50.4% ±  0.2%
+  peak_rss           8.19MB ± 57.8KB    8.08MB … 8.32MB   6 ( 9%)  ⚡- 26.0% ±  0.2%
+  cpu_cycles         7.04G  ± 51.3M     6.92G  … 7.25G    3 ( 5%)  ⚡- 44.9% ±  0.2%
+  instructions       9.86G  ± 2.01K     9.86G  … 9.86G    0 ( 0%)  ⚡- 59.5% ±  0.0%
+  cache_references   45.4M  ±  327K     44.7M  … 46.3M    2 ( 3%)    -  0.7% ±  0.5%
+  cache_misses       1.22M  ±  462K      651K  … 2.53M    8 (12%)  ⚡- 80.9% ±  2.7%
+  branch_misses      79.4M  ± 1.27M     75.9M  … 81.0M    3 ( 5%)  ⚡- 28.7% ±  0.5%
+```
+
+## experiencing issues with ZLS?
+
+When encountering issues, do not hesitate to report your issues on the [Github issue tracker](https://github.com/zigtools/zls/issues) or [ZLS Discord Server](https://discord.gg/Jp4DHkqkYs). <!-- so we can get closer to true ZLS-Premium experience -->
+
+## New Contributors
+
+- [@notcancername](https://github.com/notcancername) made their first contribution in [#1407](https://github.com/zigtools/zls/pull/1407)
+- [@askazakov](https://github.com/askazakov) made their first contribution in [#1429](https://github.com/zigtools/zls/pull/1429)
+- [@Koranir](https://github.com/Koranir) made their first contribution in [#1444](https://github.com/zigtools/zls/pull/1444)
+- [@almmiko](https://github.com/almmiko) made their first contribution in [#1458](https://github.com/zigtools/zls/pull/1458)
+- [@figsoda](https://github.com/figsoda) made their first contribution in [#1395](https://github.com/zigtools/zls/pull/1395)
+- [@westernwontons](https://github.com/westernwontons) made their first contribution in [#1510](https://github.com/zigtools/zls/pull/1510)
+- [@danielsan901998](https://github.com/danielsan901998) made their first contribution in [#1532](https://github.com/zigtools/zls/pull/1532)
+- [@dnjulek](https://github.com/dnjulek) made their first contribution in [#1544](https://github.com/zigtools/zls/pull/1544)
+- [@andreakarasho](https://github.com/andreakarasho) made their first contribution in [#1546](https://github.com/zigtools/zls/pull/1546)
+- [@alexatcanva](https://github.com/alexatcanva) made their first contribution in [#1597](https://github.com/zigtools/zls/pull/1597)
+- [@xdBronch](https://github.com/xdBronch) made their first contribution in [#1615](https://github.com/zigtools/zls/pull/1615)
+- [@jimying](https://github.com/jimying) made their first contribution in [#1604](https://github.com/zigtools/zls/pull/1604)
+- [@Beyley](https://github.com/Beyley) made their first contribution in [#1653](https://github.com/zigtools/zls/pull/1653)
+- [@nolanderc](https://github.com/nolanderc) made their first contribution in [#1656](https://github.com/zigtools/zls/pull/1656)
+- [@diocletiann](https://github.com/diocletiann) made their first contribution in [#1696](https://github.com/zigtools/zls/pull/1696)
+- [@gabydd](https://github.com/gabydd) made their first contribution in [#1803](https://github.com/zigtools/zls/pull/1803)
+- [@mochalins](https://github.com/mochalins) made their first contribution in [#1825](https://github.com/zigtools/zls/pull/1825)
+- [@ianprime0509](https://github.com/ianprime0509) made their first contribution in [#1839](https://github.com/zigtools/zls/pull/1839)
+- [@ThisAccountHasBeenSuspended](https://github.com/ThisAccountHasBeenSuspended) made their first contribution in [#1852](https://github.com/zigtools/zls/pull/1852)
+
+## Sponsors
+
+We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
+
+[![OpenCollective Backers](https://opencollective.com/zigtools/backers.svg?width=890&limit=1000)](https://opencollective.com/zigtools#category-CONTRIBUTE)
+
+**Full Changelog**: [0.11.0...0.12.0](https://github.com/zigtools/zls/compare/0.11.0...0.12.0)
+
+# Release Artifacts
+
+| OS      | Arch    | Filename                                                                                                      |
+| ------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| Windows | x86_64  | [zls-x86_64-windows.zip](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-windows.zip)     |
+| Windows | x86     | [zls-x86-windows.zip](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86-windows.zip)           |
+| macOS   | aarch64 | [zls-aarch64-macos.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-aarch64-macos.tar.xz) |
+| macOS   | x86_64  | [zls-x86_64-macos.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-macos.tar.xz)   |
+| Linux   | x86_64  | [zls-x86_64-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-linux.tar.xz)   |
+| Linux   | x86     | [zls-x86-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86-linux.tar.xz)         |
+| Linux   | aarch64 | [zls-aarch64-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-aarch64-linux.tar.xz) |
+| Wasm    | WASI    | [zls-wasm32-wasi.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-wasm32-wasi.tar.xz)     |
