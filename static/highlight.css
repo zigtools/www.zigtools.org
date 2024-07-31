@@ -120,3 +120,32 @@ code.ziggy .numeric.constant {
 code.ziggy .function {
   color: var(--blue);
 }
+
+code.json .string {
+  color: var(--light-yellow);
+}
+
+code.json .key {
+  color: var(--dark-yellow) !important;
+}
+
+code.json .builtin {
+  color: var(--magenta);
+}
+
+
+code.lua .keyword {
+  color: var(--dark-red);
+}
+
+code.lua .field {
+  color: var(--magenta);
+}
+
+code.lua .function {
+  color: var(--blue);
+}
+
+code.lua .string {
+  color: var(--cyan);
+}
