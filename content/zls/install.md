@@ -130,7 +130,7 @@ Using ZLS in Visual Studio Code is as simple as installing the [official Zig Lan
 <details>
   <summary>
 
-## CLion / other JetBrains IDE
+## CLion / other JetBrains IDEs
 
   </summary>
 
@@ -264,7 +264,7 @@ lspconfig.zls.setup {
 
 </summary>
 
-```lua
+```
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig' " https://github.com/neovim/nvim-lspconfig
 Plug 'ziglang/zig.vim' " https://github.com/ziglang/zig.vim
@@ -550,7 +550,7 @@ info  ( main ): A path to the local configuration folder will be printed instead
 <details>
   <summary>
 
-## Per-build Configuration (Advanced)
+## Per-build Configuration (advanced)
 
   </summary>
 
