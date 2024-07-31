@@ -304,18 +304,19 @@ EOF
   
   </summary>
 
-#### With Extension
-
-Run `:CocInstall coc-zls` to install [coc-zls](https://github.com/xiyaowong/coc-zls). This extension supports the same functionality as the VS Code extension.
-
-#### Manually
+Add ZLS in your `coc-settings.json` (open it using `:CocConfig`) like this:
 
 ```json
 {
+  // Show inlay hints in the editor. Inlay hints are short annotations within the code,
+  // which show variable types or parameter names.
+  "inlayHint.enable": true,
+  "semanticTokens.enable": true,
+
   "languageserver": {
-    "zls": {
-      "command": "/path/to/zls_executable",
-      "filetypes": ["zig"]
+    "zls" : {
+      "command": "zls",
+      "filetypes": [ "zig", "zon" ]
     }
   }
 }
