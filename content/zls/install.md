@@ -22,14 +22,15 @@
 
   </summary>
 
-Using ZLS in Visual Studio Code is as simple as installing the [official Zig Language extension](https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig) ([open in VSCode](vscode:extension/ziglang.vscode-zig)).
+Using ZLS in VS Code is as simple as installing the [official Zig Language extension](https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig).
+([open in VSCode](vscode:extension/ziglang.vscode-zig), [open in VSCodium](vscodium:extension/ziglang.vscode-zig))
 
 </details> <!-- Visual Studio Code -->
 
 <details>
   <summary>
 
-## Sublime Text
+<h2 id="sublime-text">Sublime Text</h2> <!-- linked from "In-Editor Configuration" -->
 
   </summary>
   
@@ -148,7 +149,7 @@ If everything is set up correctly, an LSP status indicator should appear in the 
 <details>
   <summary>
 
-## Helix
+<h2 id="helix">Helix</h2> <!-- linked from "In-Editor Configuration" -->
 
   </summary>
 
@@ -208,7 +209,7 @@ Do **not** use ZLS from mason with Zig master.
 <details>
   <summary>
 
-### nvim-lspconfig
+<h3 id="nvim-lspconfig">nvim-lspconfig</h3> <!-- linked from "In-Editor Configuration" -->
 
   </summary>
 
@@ -229,9 +230,20 @@ local vim = vim
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
-Plug('neovim/nvim-lspconfig') -- https://github.com/neovim/nvim-lspconfig
-Plug('ziglang/zig.vim') -- https://github.com/ziglang/zig.vim
+  Plug('neovim/nvim-lspconfig') -- https://github.com/neovim/nvim-lspconfig
+  Plug('ziglang/zig.vim')       -- https://github.com/ziglang/zig.vim
 vim.call('plug#end')
+
+-- don't show parse errors in a separate window
+vim.g.zig_fmt_parse_errors = 0
+-- disable format-on-save from `ziglang/zig.vim`
+vim.g.zig_fmt_autosave = 0
+-- enable  format-on-save from nvim-lspconfig + ZLS
+--
+-- ZLS uses `zig fmt` as the formatter.
+-- The Zig FAQ answers some questions about `zig fmt`:
+-- https://github.com/ziglang/zig/wiki/FAQ
+vim.cmd [[autocmd BufWritePre *.zig lua vim.lsp.buf.format()]]
 
 local lspconfig = require('lspconfig')
 lspconfig.zls.setup {
@@ -266,11 +278,23 @@ lspconfig.zls.setup {
 
 ```
 call plug#begin('~/.config/nvim/plugged')
-Plug 'neovim/nvim-lspconfig' " https://github.com/neovim/nvim-lspconfig
-Plug 'ziglang/zig.vim' " https://github.com/ziglang/zig.vim
+  Plug 'neovim/nvim-lspconfig' " https://github.com/neovim/nvim-lspconfig
+  Plug 'ziglang/zig.vim'       " https://github.com/ziglang/zig.vim
 call plug#end()
 
+-- disable format-on-save from `ziglang/zig.vim`
+let g:zig_fmt_autosave = 0
+-- don't show parse errors in a separate window
+let g:zig_fmt_parse_errors = 0
+
 :lua << EOF
+  -- enable format-on-save from nvim-lspconfig + ZLS
+  --
+  -- ZLS uses `zig fmt` as the formatter.
+  -- The Zig FAQ answers some questions about `zig fmt`:
+  -- https://github.com/ziglang/zig/wiki/FAQ
+  vim.cmd [[autocmd BufWritePre *.zig lua vim.lsp.buf.format()]]
+
   local lspconfig = require('lspconfig')
   lspconfig.zls.setup {
     -- Server-specific settings. See `:help lspconfig-setup`
@@ -314,7 +338,7 @@ Add ZLS in your `coc-settings.json` (open it using `:CocConfig`) like this:
   "semanticTokens.enable": true,
 
   "languageserver": {
-    "zls" : {
+    "zls": {
       "command": "zls",
       "filetypes": [ "zig", "zon" ]
     }
@@ -450,17 +474,17 @@ If you wish to manually specify the path to the ZLS executable, open `Settings -
 
   </summary>
 
-In-Editor Config (or Workspace Config) will integrate with the config system of you editor to also configure ZLS.
+In-Editor Config (or Workspace Config) will integrate with the config system of you editor to configure ZLS on a per-editor basis. 
+
+Some editors (like VS Code) also allow workspace-specific configuration. If you want to share the same configuration across multiple editors, please refer to the _zls.json_ alternative.
 
 This feature is available for the following editors:
 
 - [VS Code](https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig)
-- [Sublime Text 4](https://github.com/zigtools/zls/wiki/Installation#sublime-text)
-- [Helix](https://github.com/zigtools/zls/wiki/Installation#helix)
-- [Neovim with nvim-lspconfig](https://github.com/zigtools/zls/wiki/Installation#nvim-lspconfig)
+- [Sublime Text](#sublime-text)
+- [Helix](#helix)
+- [Neovim with nvim-lspconfig](#nvim-lspconfig)
 
-This allows you to configure ZLS on a per-editor basis. Some editors (like VS Code) also allow workspace-specific configuration.
-If you want to share the same configuration across multiple editors, please refer to the _zls.json_ alternative.
 
 </details> <!-- In-Editor Configuration -->
 
@@ -562,7 +586,7 @@ The following options can be set on a per-project basis by placing `zls.build.js
 | `relative_builtin_path` | `?[]const u8`    | `null`        | If present, this path is used to resolve `@import("builtin")`                                                                                             |
 | `build_options`         | `?[]BuildOption` | `null`        | If present, this contains a list of user options to pass to the build. This is useful when options are used to conditionally add packages in `build.zig`. |
 
-##### `BuildOption`
+### `BuildOption`
 
 `BuildOption` is defined as follows:
 

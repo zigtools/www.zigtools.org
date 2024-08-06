@@ -3,47 +3,47 @@
 <head id="head"></head>
 <div id="content">
   <style>
-    #page h2, #page h3 {
-        text-align: left;
+    #page h2,
+    #page h3 {
+      text-align: left;
     }
 
     #page h2 {
-        font-size: 1.7rem;
-        border-bottom: 1px dashed #aaa;
-    }
-
-    #page h3 {
-        font-size: 1.5rem;
-    }
-
-    #page h4 {
-        font-size: 1rem;
+      border-bottom: 1px dashed #aaa;
     }
 
     .tagline {
-        font-size: 1rem;
-        font-style: italic;
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    .install-button {
+      flex: 1 1 0%;
+      flex-grow: 1;
+      padding: 0.5rem;
+      color: white;
+      background-color: transparent;
     }
 
     .banner-note {
-      border-left: 0.25em solid;
+      border-left: 0.3em solid;
       padding-left: 1em;
-      border-color: var(banner-note-color);
+      border-color: var(--banner-note-color);
     }
-    
+
     .banner-warning {
-      border-left: 0.25em solid;
+      border-left: 0.3em solid;
       padding-left: 1em;
-      border-color: var(banner-warning-color);
+      border-color: var(--banner-warning-color);
     }
 
     .banner-important {
-      border-left: 0.25em solid;
+      border-left: 0.3em solid;
       padding-left: 1em;
-      border-color: var(banner-important-color);
+      border-color: var(--banner-important-color);
     }
 
-    details > :not(summary) {
+    details> :not(summary) {
       margin-left: 0.2em;
     }
 
@@ -68,13 +68,34 @@
       transform: rotate(90deg);
       transform-origin: 50% 50%;
     }
-    [open] > summary::after {
+    [open]>summary::after {
       transform: rotate(0deg);
     }
   </style>
+  <script type="text/javascript">
+    const updateDetails = () => {
+      if(window.location.hash) {
+        let node = document.getElementById(window.location.hash.substring(1));
+        while (node) {
+          node = node.closest("details");
+          if(!node) break;
+          node.open = true;
+          node = node.parentElement;
+        }
+      }
+    }
+
+    window.onload = updateDetails;
+    window.onhashchange = () => {
+      updateDetails();
+      if (window.location.hash) {
+        document.getElementById(window.location.hash.substring(1)).scrollIntoView();
+      }
+    };
+  </script>
   <h1 class="title" var="$page.title"></h1>
   <div style="display: flex; justify-content: center;">
-    <div style="width: fit-content; border: 0.3em solid; border-radius: 9999px; border-color: rgb(0, 120, 212); padding: 0px 1.25rem; text-align: center;">
+    <div style="width: fit-content; border: 0.3em solid; border-radius: 9999px; border-color: rgb(0, 120, 212); padding: 0px 1.4rem; text-align: center;">
       <p style="margin: 6px 0px">
         <strong>VS Code</strong>
         users only need the
@@ -83,6 +104,7 @@
       <p style="margin: 4px 0px" class="tagline">No need to manually install Zig or ZLS.</p>
     </div>
   </div>
+  <h1>Install ZLS</h1>
   <form style="display:flex; flex-direction: column; margin-left: 2rem; margin-right: 2rem; gap: 0.5rem;">
     <input
     style="
@@ -111,34 +133,130 @@
     <div style="display: flex">
       <button
         id="button-from-source"
+        class="install-button"
         type="submit"
         name="compatibility"
         value="full"
-        disabled
-        style="1	flex: 1 1 0%; flex-grow: 1; padding: 1rem; color: white; background-color: transparent;"
-        class="flex-1 grow p-2 min-w-40 appearance-none rounded-l-lg border-2 border-r-1 border-[#f7a41d] hover:bg-slate-100 text-white disabled:cursor-not-allowed disabled:opacity-20"
       >
         Build From Source
       </button>
       <button
         id="button-binary"
+        class="install-button"
         type="submit"
         name="compatibility"
         value="only-runtime"
-        disabled
-        style="1	flex: 1 1 0%; flex-grow: 1; padding: 1rem; color: white; background-color: transparent;"
-        class="flex-1 grow p-2 min-w-40 appearance-none rounded-r-lg border-2 border-l-1 border-[#f7a41d] bg-transparent hover:bg-slate-100 text-white disabled:cursor-not-allowed disabled:opacity-20"
       >
         Prebuilt Binary
       </button>
     </div>
   </form>
-  <script>
+  <div id="form-result">
+    <table id="form-table"></table>
+    <p>Files are signed with
+      <a href="https://jedisct1.github.io/minisign/">minisign</a>
+      using this public key:</p>
+    <pre><code>RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex</code></pre>
+  </div>
+  <script type="text/javascript">
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, name) => searchParams.get(name),
       set: (searchParams, name, value) => searchParams.set(name, value),
     });
     document.getElementById("zig-version").value = params["zig_version"];
+
+    function formatBytes(bytes, decimals = 2) {
+      if (!+bytes) return '0 Bytes'
+
+      const k = 1024
+      const dm = decimals < 0 ? 0 : decimals
+      const sizes = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
+
+      const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+      return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+    }
+
+    async function update() {
+      let url = new URL(
+        "https://releases.zigtools.org/v1/zls/select-version",
+      );
+      url.searchParams.set("zig_version", params["zig_version"]);
+      url.searchParams.set("compatibility", params["compatibility"]);
+      const response = await fetch(url);
+      const json = await response.json();
+
+      const fname = document.getElementById("zig-version");
+      if ("error" in json) {
+        fname.setCustomValidity(json.error);
+        return;
+      } else {
+        fname.setCustomValidity("");
+      }
+
+      if (!("version" in json) || !("date" in json)) {
+        alert("418 I'm a teapot");
+        return;
+      }
+
+      const heading = document.createElement("tr");
+      for (const item of ["Target", "Filename", "Signature", "Size"]) {
+        const td = document.createElement("td");
+          td.innerHTML = item;
+        heading.appendChild(td);
+      }
+
+      const thead = document.createElement("thead");
+      thead.appendChild(heading);
+
+      const tbody = document.createElement("tbody");
+
+      for (const [key, value] of Object.entries(json)) {
+        if (key === "version") continue;
+        if (key === "date") continue;
+
+        const target = document.createElement("td");
+        target.innerHTML = key;
+
+        const index = value.tarball.lastIndexOf("/") + 1;
+        const tarballLink = document.createElement("a");
+        tarballLink.setAttribute("href", value.tarball);
+        tarballLink.innerHTML = value.tarball.substring(index);
+
+        const link = document.createElement("td");
+        link.innerHTML = tarballLink.outerHTML;
+
+        const signatureLink = document.createElement("a");
+        signatureLink.setAttribute("target", "_blank");
+        signatureLink.setAttribute("href", value.tarball + ".minisig");
+        signatureLink.innerHTML = "minisig";
+
+        const signature = document.createElement("td");
+        signature.innerHTML = signatureLink.outerHTML;
+
+        const size = document.createElement("td");
+        size.setAttribute("title", "Base 1024");
+        size.innerHTML = formatBytes(parseInt(value.size));
+
+        const tr = document.createElement("tr");
+        tr.appendChild(target);
+        tr.appendChild(link);
+        tr.appendChild(signature);
+        tr.appendChild(size);
+
+        tbody.appendChild(tr);
+      }
+
+      const table = document.createElement("table");
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      document.getElementById("form-table").innerHTML = table.outerHTML;
+    };
+
+    if (params["zig_version"] && params["compatibility"]) {
+      update();
+    }
   </script>
   <div id="page" var="$page.content"></div>
   <div style="padding-bottom: 100vh"></div>

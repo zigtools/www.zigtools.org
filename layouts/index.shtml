@@ -1,12 +1,10 @@
 <extend template="base.shtml">
 <title id="title" var="$page.title"></title>
 <head id="head">
-  <style>
-  </style>
 </head>
 <div id="content">
-  <h1 class="centered title">Zigtools</h1>
-  <h2 class="centered subtitle">We make free and open-source tools for the
+  <h1>Zigtools</h1>
+  <h2>We make free and open-source tools for the
     <a href="https://github.com/ziglang/zig" target="_blank" class="link">@ziglang</a>
     community.</h2>
   <div id="page" var="$page.content"></div>
