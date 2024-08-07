@@ -9,11 +9,11 @@
       <super>
       - zigtools
     </title>
-    <link rel="stylesheet" type="text/css" href="$site.asset('style.css').link()">
+    <style var="$site.asset('style.css').bytes()"></style>
     <super>
   </head>
   <body>
-    <nav>
+    <nav id="main-nav">
       <a href="/">Home</a>
       •
       <a href="/zls/install/index.html">Install ZLS</a>
@@ -22,8 +22,17 @@
       •
       <a href="https://github.com/zigtools" target="_blank">GitHub</a>
     </nav>
-    <div id="content">
+    <header id="header">
       <super>
-    </div>
+    </header>
+    <main id="content">
+      <super>
+    </main>
+    <footer>
+      <p>This
+        <a href="https://github.com/zigtools/www.zigtools.org">Website</a>
+        was made with
+        <a href="https://github.com/kristoff-it/zine">Zine</a></p>
+    </footer>
   </body>
 </html>

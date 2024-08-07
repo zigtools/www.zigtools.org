@@ -1,22 +1,61 @@
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  align-items: center;
+  text-align: center;
+}
+
+#main-nav {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  width: 100%;
+  height: 3rem;
+  border-bottom: thick solid var(--zigtools-orange);
+  gap: 0.4rem;
+}
+
 h1,
 h2,
 h3 {
   font-family: sans-serif;
   font-weight: 600;
-  color: #eee;
   align-self: center;
   text-align: center;
 }
 
-a,
-b,
-strong,
-code {
-  color: #eee;
+h2, h3 {
+  border-bottom: 1px dashed #aaa;
 }
 
-code {
-  text-wrap: wrap;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  font-family: sans-serif;
+}
+
+#content, #header > :not(nav) {
+  flex: 1;
+  align-self: center;
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  max-width: 700px;
+}
+
+footer {
+  margin-top: 20px;
+  align-self: center;
+  text-align: center;
+}
+
+footer > p {
+  margin: 0.4rem;
 }
 
 a {
@@ -27,52 +66,22 @@ a:not(:hover) {
   text-decoration: none;
 }
 
-body {
-  font-family: sans-serif;
-  background-color: #121212;
-  color: #ccc;
-  display: flex;
-  flex-direction: column;
-  scrollbar-gutter: stable;
-  overflow-y: scroll;
-  padding: 0px;
-  margin: 0px;
-}
-
-nav {
-  display: flex;
-  align-self: center;
-  text-align: center;
-  margin-top: 1rem;
-  gap: 0.25rem;
-}
-
-#content {
-  align-self: center;
-  box-sizing: border-box;
-  padding: 0 1.5rem;
-  max-width: min(700px, 100vw);
+pre {
+  display: block;
+  border: 0;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-style: dashed;
+  padding: 0.4rem 0.25rem;
+  text-wrap: wrap;
 }
 
 p:has(+ pre) {
   margin-bottom: 0;
 }
 
-pre {
-  border-top: 0.1rem solid #666;
-  border-bottom: 0.1rem solid #666;
-  padding: 0.25rem 0;
-  background-color: #191919;
-}
-
 p code {
   font-weight: bold;
-}
-
-hr {
-  border-bottom: 1px dashed;
-  border-style: none none dashed;
-  color: #eee;
 }
 
 table {
@@ -97,12 +106,40 @@ figure img {
   max-width: 100%;
 }
 
-#form-result pre {
-  font-size: larger;
+a {
+  color: #121212;
 }
 
-#form-result table {
-  padding: 0.5rem 0;
+pre {
+  background-color: #f8f8f8;
+  border-color: #090909;
+}
+
+@media (prefers-color-scheme: dark) {
+  #main-nav {
+    background-color: #242424;
+    color: #ccc;
+  }
+
+  body {
+    background-color: #121212;
+    color: #ccc;
+  }
+
+  h1,
+  h2,
+  h3,
+  a,
+  b,
+  strong,
+  code {
+    color: #eee;
+  }
+
+  pre {
+    background-color: #191919;
+    border-color: #aaa;
+  }
 }
 
 /* Highlighting */
@@ -112,6 +149,14 @@ figure img {
   --banner-warning-color: rgb(158, 106, 3);
   --banner-important-color: rgb(137, 87, 229);
 
+  --zigtools-orange: #f7a41d;
+
+  --fg: #c8d3f5;
+  --fg-dark: #828bb8;
+  --fg-gutter: #3b4261;
+  --comment: #636da6;
+
+  /* https://github.com/folke/tokyonight.nvim */
   --blue: #82aaff;
   --blue0: #3e68d7;
   --blue1: #65bcff;
@@ -119,13 +164,9 @@ figure img {
   --blue5: #89ddff;
   --blue6: #b4f9f8;
   --blue7: #394b70;
-  --comment: #636da6;
   --cyan: #86e1fc;
   --dark3: #545c7e;
   --dark5: #737aa2;
-  --fg: #c8d3f5;
-  --fg-dark: #828bb8;
-  --fg-gutter: #3b4261;
   --green: #c3e88d;
   --green1: #4fd6be;
   --green2: #41a6b5;

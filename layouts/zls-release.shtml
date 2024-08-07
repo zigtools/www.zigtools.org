@@ -1,20 +1,31 @@
 <extend template="base.shtml">
 <title id="title" var="$page.title"></title>
-<head id="head"></head>
-<div id="content">
+<head id="head">
   <style>
     #page h2, #page h3 {
         text-align: left;
     }
-
-    #page h2 {
-        border-bottom: 1px dashed #aaa;
-    }
-
-    figure img {
-        border: 1px solid #333;
+    
+    @media (prefers-color-scheme: dark) {
+      figure > img {
+          border: 1px solid #333;
+      }
     }
   </style>
+</head>
+<header id="header">
+  <!-- TODO add a direct link to the GitHub Release -->
+  <nav>
+    <p>
+      <a href="https://github.com/zigtools/zls/releases">GitHub Releases</a>
+      •
+      <a href="https://github.com/zigtools/zls/wiki/Installation">Installation Guide</a>
+      •
+      <a href="https://discord.gg/Jp4DHkqkYs">ZLS Discord</a>
+    </p>
+  </nav>
   <h1 class="title" var="$page.title"></h1>
+</header>
+<main id="content">
   <div id="page" var="$page.content"></div>
-</div>
+</main>

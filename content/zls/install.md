@@ -215,13 +215,13 @@ Do **not** use ZLS from mason with Zig master.
 
 The following two configs **only** contain the necessary ZLS specific configuration. Please refer to [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) on how to setup everything else like [keybindings](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#suggested-configuration) or [autocompletion](https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion).
 
-Install vim-plug plugin manager from [here](https://github.com/junegunn/vim-plug).
+Install the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager.
 
 <details>
 
 <summary>
 
-#### `init.lua` with [vim-plug](https://github.com/junegunn/vim-plug)
+#### `init.lua` with vim-plug
 
 </summary>
 
@@ -272,7 +272,7 @@ lspconfig.zls.setup {
 
 <summary>
 
-#### `init.vim` with [vim-plug](https://github.com/junegunn/vim-plug)
+#### `init.vim` with vim-plug
 
 </summary>
 

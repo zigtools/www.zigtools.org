@@ -1,28 +1,23 @@
 <extend template="base.shtml">
 <title id="title" var="$page.title"></title>
-<head id="head"></head>
-<div id="content">
+<head id="head">
   <style>
     #page h2,
     #page h3 {
       text-align: left;
     }
 
-    #page h2 {
-      border-bottom: 1px dashed #aaa;
+    #form-result pre {
+      font-size: larger;
+    }
+
+    #form-result table {
+      padding: 0.5rem 0;
     }
 
     .tagline {
       font-size: 1rem;
       font-style: italic;
-    }
-
-    .install-button {
-      flex: 1 1 0%;
-      flex-grow: 1;
-      padding: 0.5rem;
-      color: white;
-      background-color: transparent;
     }
 
     .banner-note {
@@ -44,7 +39,7 @@
     }
 
     details> :not(summary) {
-      margin-left: 0.2em;
+      margin-left: 0.25rem;
     }
 
     summary {
@@ -71,8 +66,51 @@
     [open]>summary::after {
       transform: rotate(0deg);
     }
+
+    form {
+      display:flex;
+      flex-direction: column;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      gap: 0.5rem;
+    }
+
+    form input {
+      text-align: center;
+      outline: none;
+      background-color: transparent;
+      border-width: 0;
+      border-bottom-width: 2px;
+      padding: 0.25rem;
+      margin-top: 1rem;
+      font-size: xx-large;
+
+      color: #000;
+      border-color: var(--zigtools-orange);
+    }
+
+    form button {
+      flex: 1 1 0%;
+      padding: 0.5rem;
+      border: 1px solid;
+      border-color: #666;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      form input {
+        padding-bottom: 0.25rem;
+        color: white;
+      }
+      form button {
+        color: white;
+        background-color: transparent;
+      }
+      form button:hover {
+        background-color: rgb(255, 255, 255, 10%);
+      }
+    }
   </style>
-  <script type="text/javascript">
+  <script>
     const updateDetails = () => {
       if(window.location.hash) {
         let node = document.getElementById(window.location.hash.substring(1));
@@ -93,7 +131,11 @@
       }
     };
   </script>
+</head>
+<header id="header">
   <h1 class="title" var="$page.title"></h1>
+</header>
+<main id="content">
   <div style="display: flex; justify-content: center;">
     <div style="width: fit-content; border: 0.3em solid; border-radius: 9999px; border-color: rgb(0, 120, 212); padding: 0px 1.4rem; text-align: center;">
       <p style="margin: 6px 0px">
@@ -105,24 +147,8 @@
     </div>
   </div>
   <h1>Install ZLS</h1>
-  <form style="display:flex; flex-direction: column; margin-left: 2rem; margin-right: 2rem; gap: 0.5rem;">
+  <form>
     <input
-    style="
-      text-align: center; 
-      appearance: none;
-      outline: 2px solid transparent;
-      outline-offset: 2px;
-      border-color: transparent;
-      background-color: transparent;
-      border-width: 0px;
-      border-bottom-width: 2px;
-      border-color: rgb(255 255 255);
-      padding-bottom: 0.2rem;
-      color: white;
-      margin-top: 2rem;
-      font-size: 2rem;
-      line-height: 2rem;
-    "
     type="text"
     id="zig-version"
     name="zig_version"
@@ -130,23 +156,11 @@
     pattern="(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d\*)"
     required
   >
-    <div style="display: flex">
-      <button
-        id="button-from-source"
-        class="install-button"
-        type="submit"
-        name="compatibility"
-        value="full"
-      >
+    <div style="display: flex; gap: 0.5rem">
+      <button id="button-from-source" class="install-button" type="submit" name="compatibility" value="full">
         Build From Source
       </button>
-      <button
-        id="button-binary"
-        class="install-button"
-        type="submit"
-        name="compatibility"
-        value="only-runtime"
-      >
+      <button id="button-binary" class="install-button" type="submit" name="compatibility" value="only-runtime">
         Prebuilt Binary
       </button>
     </div>
@@ -158,7 +172,7 @@
       using this public key:</p>
     <pre><code>RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex</code></pre>
   </div>
-  <script type="text/javascript">
+  <script>
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, name) => searchParams.get(name),
       set: (searchParams, name, value) => searchParams.set(name, value),
@@ -260,4 +274,4 @@
   </script>
   <div id="page" var="$page.content"></div>
   <div style="padding-bottom: 100vh"></div>
-</div>
+</main>
