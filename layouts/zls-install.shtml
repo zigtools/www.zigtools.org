@@ -2,69 +2,73 @@
 <title id="title" var="$page.title"></title>
 <head id="head">
   <style>
-    #page h2,
-    #page h3 {
-      text-align: left;
+    .tagline {
+      font-size: 1rem;
+      font-style: italic;
+      margin: 4px 0px;
+    }
+
+    .vscode-banner {
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      border: 0.3em solid;
+      border-radius: 9999px;
+      border-color: rgb(0, 120, 212);
+      padding: 0px 2rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    #form-result {
+      padding-top: 2rem;
     }
 
     #form-result pre {
       font-size: larger;
     }
 
-    #form-result table {
+    #form-table {
       padding: 0.5rem 0;
-    }
-
-    .tagline {
-      font-size: 1rem;
-      font-style: italic;
     }
 
     .banner-note {
       border-left: 0.3em solid;
-      padding-left: 1em;
+      padding: 0.1em 0 0.1em 1em;
       border-color: var(--banner-note-color);
     }
 
     .banner-warning {
       border-left: 0.3em solid;
-      padding-left: 1em;
+      padding: 0.1em 0 0.1em 1em;
       border-color: var(--banner-warning-color);
     }
 
     .banner-important {
       border-left: 0.3em solid;
-      padding-left: 1em;
+      padding: 0.1em 0 0.1em 1em;
       border-color: var(--banner-important-color);
     }
-
+    
     details> :not(summary) {
-      margin-left: 0.25rem;
+      margin-left: 1.5rem;
     }
 
     summary {
-      position: relative;
+      display: flex;
     }
-    summary::marker {
-      content: none;
+    summary > * {
+      flex-grow: 1;
     }
-    summary::before,
-    summary::after {
-      content: '';
-      width: .75em;
-      height: 0;
-      border-bottom: 2px solid;
-      position: absolute;
-      top: calc(50% - 1px);
-      right: 0;
-      transform: translateY(-50%);
+    summary::before {
+      content: "\2212";
+      font-size: 16px;
+      margin-right: 0.5rem;
+      align-self: center;
     }
-    summary::after {
-      transform: rotate(90deg);
-      transform-origin: 50% 50%;
-    }
-    [open]>summary::after {
-      transform: rotate(0deg);
+    details[open] > summary::before {
+      content: "+" !important;
     }
 
     form {
@@ -136,17 +140,14 @@
   <h1 class="title" var="$page.title"></h1>
 </header>
 <main id="content">
-  <div style="display: flex; justify-content: center;">
-    <div style="width: fit-content; border: 0.3em solid; border-radius: 9999px; border-color: rgb(0, 120, 212); padding: 0px 1.4rem; text-align: center;">
-      <p style="margin: 6px 0px">
-        <strong>VS Code</strong>
-        users only need the
-        <a href="https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig">official Zig Language extension</a>.
-      </p>
-      <p style="margin: 4px 0px" class="tagline">No need to manually install Zig or ZLS.</p>
-    </div>
+  <div class="vscode-banner">
+    <p>
+      <strong>VS Code</strong>
+      users only need the
+      <a href="https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig">official Zig Language extension</a>.
+    </p>
+    <p class="tagline">No need to manually install Zig or ZLS.</p>
   </div>
-  <h1>Install ZLS</h1>
   <form>
     <input
     type="text"
@@ -165,12 +166,14 @@
       </button>
     </div>
   </form>
-  <div id="form-result">
+  <div id="form-result" style="display: none;">
+    <blockquote>
+      <p>Files are signed with
+        <a href="https://jedisct1.github.io/minisign/">minisign</a>
+        using this public key:</p>
+      <pre><code>RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex</code></pre>
+    </blockquote>
     <table id="form-table"></table>
-    <p>Files are signed with
-      <a href="https://jedisct1.github.io/minisign/">minisign</a>
-      using this public key:</p>
-    <pre><code>RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex</code></pre>
   </div>
   <script>
     const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -203,6 +206,7 @@
       const fname = document.getElementById("zig-version");
       if ("error" in json) {
         fname.setCustomValidity(json.error);
+        document.getElementById("form-result").style.display = "none";
         return;
       } else {
         fname.setCustomValidity("");
@@ -210,6 +214,7 @@
 
       if (!("version" in json) || !("date" in json)) {
         alert("418 I'm a teapot");
+        document.getElementById("form-result").style.display = "none";
         return;
       }
 
@@ -266,6 +271,7 @@
       table.appendChild(tbody);
 
       document.getElementById("form-table").innerHTML = table.outerHTML;
+      document.getElementById("form-result").style.display = ""; 
     };
 
     if (params["zig_version"] && params["compatibility"]) {

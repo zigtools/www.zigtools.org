@@ -2,10 +2,6 @@
 <title id="title" var="$page.title"></title>
 <head id="head">
   <style>
-    #page h2, #page h3 {
-        text-align: left;
-    }
-    
     @media (prefers-color-scheme: dark) {
       figure > img {
           border: 1px solid #333;

@@ -20,23 +20,58 @@ nav {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-family: sans-serif;
-  font-weight: 600;
+  font-weight: bold;
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   align-self: center;
   text-align: center;
 }
 
-h2 {
-  border-bottom: 1px dashed #aaa;
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2,
+h3 {
+  border-bottom: 1px dashed #666;
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 0px;
-  margin: 0px;
+  margin: 0;
+  padding: 0;
   font-family: sans-serif;
 }
 
@@ -79,6 +114,11 @@ p:has(+ pre) {
   margin-bottom: 0;
 }
 
+p {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
 p code {
   font-weight: bold;
 }
@@ -105,8 +145,12 @@ figure img {
   max-width: 100%;
 }
 
+body {
+  color: #222;
+}
+
 a {
-  color: #121212;
+  color: #111;
 }
 
 pre {

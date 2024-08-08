@@ -15,7 +15,8 @@
 
 > Many editor extensions can find Zig and ZLS automatically by adding them to your `PATH`.
 
-<details>
+<!-- `name` attribute on `<details>`:  https://caniuse.com/mdn-html_elements_details_name -->
+<details name="editor-extensions">
   <summary>
 
 ## Visual Studio Code
@@ -27,7 +28,7 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 
 </details> <!-- Visual Studio Code -->
 
-<details>
+<details name="editor-extensions">
   <summary>
 
 <h2 id="sublime-text">Sublime Text</h2> <!-- linked from "In-Editor Configuration" -->
@@ -39,7 +40,11 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 3. place the following snippet in the `Zig.sublime-settings` (Preferences -> Package Settings -> Zig -> Settings)
 
 <details>
-<summary>show <b>Zig.sublime-settings</b></summary>
+<summary>
+
+  show **Zig.sublime-settings**
+
+</summary>
 
 ```json
 // Zig.sublime-settings
@@ -56,7 +61,11 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 ### Sublime Text 4
 
 <details>
-<summary>show <b>LSP.sublime-settings</b></summary>
+<summary>
+
+  show **LSP.sublime-settings**
+
+</summary>
 
 ```json
 // LSP.sublime-settings
@@ -107,7 +116,11 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 ### Sublime Text 3
 
 <details>
-<summary>show <b>LSP.sublime-settings</b></summary>
+<summary>
+
+  show **LSP.sublime-settings**
+
+</summary>
 
 ```json
 // LSP.sublime-settings
@@ -128,7 +141,7 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 
 </details> <!-- Sublime Text -->
 
-<details>
+<details name="editor-extensions">
   <summary>
 
 ## CLion / other JetBrains IDEs
@@ -146,7 +159,7 @@ If everything is set up correctly, an LSP status indicator should appear in the 
 
 </details> <!-- CLion / other JetBrains IDE -->
 
-<details>
+<details name="editor-extensions">
   <summary>
 
 <h2 id="helix">Helix</h2> <!-- linked from "In-Editor Configuration" -->
@@ -159,7 +172,11 @@ To apply in-editor configuration or manually specify paths to `zls` or `zig`, op
 
 <details>
 
-<summary>show <b>languages.toml</b></summary>
+<summary>
+
+  show **languages.toml**
+
+</summary>
 
 ```toml
 [language-server.zls]
@@ -192,21 +209,21 @@ For more information on the health check results refer to [Health check](https:/
 
 </details> <!-- Helix -->
 
-<details>
+<details name="editor-extensions">
   <summary>
 
 ## Neovim / Vim8
 
   </summary>
 
-<div class="banner-warning">
+<blockquote class="banner-warning">
 
 The [mason](https://github.com/williamboman/mason.nvim) package manager can only install the latest tagged release of ZLS which should **not** be used with Zig master.
 Do **not** use ZLS from mason with Zig master.
 
-</div>
+</blockquote>
 
-<details>
+<details name="vim-extensions">
   <summary>
 
 <h3 id="nvim-lspconfig">nvim-lspconfig</h3> <!-- linked from "In-Editor Configuration" -->
@@ -321,7 +338,7 @@ EOF
 
 </details> <!-- nvim-lspconfig -->
 
-<details>
+<details name="vim-extensions">
   <summary>
   
 ### CoC
@@ -348,7 +365,7 @@ Add ZLS in your `coc-settings.json` (open it using `:CocConfig`) like this:
 
 </details> <!-- CoC -->
 
-<details>
+<details name="vim-extensions">
   <summary>
 
 ### YouCompleteMe
@@ -373,7 +390,7 @@ let g:ycm_language_server =
 
 </details> <!-- YouCompleteMe -->
 
-<details>
+<details name="vim-extensions">
   <summary>
 
 ### LanguageClient-neovim
@@ -393,7 +410,7 @@ let g:LanguageClient_serverCommands = {
 
 </details>
 
-<details>
+<details name="editor-extensions">
   <summary>
 
 ## Emacs
@@ -407,7 +424,7 @@ Use `M-x eglot` in a zig-mode buffer to start the server.
 
 </details>
 
-<details>
+<details name="editor-extensions">
   <summary>
 
 ## Doom Emacs
@@ -420,7 +437,7 @@ Use `M-x eglot` in a zig-mode buffer to start the server.
 
 </details> <!-- Doom Emacs -->
 
-<details>
+<details name="editor-extensions">
   <summary>
 
 ## Spacemacs
@@ -436,7 +453,7 @@ Use `M-x eglot` in a zig-mode buffer to start the server.
 
 </details> <!-- Spacemacs -->
 
-<details>
+<details name="editor-extensions">
   <summary>
 
 ## Kate
@@ -467,7 +484,7 @@ If you wish to manually specify the path to the ZLS executable, open `Settings -
 
 > ZLS works well without any configuration, all config options have reasonable defaults. Feel free to read through the available config options but unless there is something you want to change, there is no need to configure ZLS.
 
-<details>
+<details name="configuration">
   <summary>
 
 ## In-Editor Configuration (recommended)
@@ -488,7 +505,7 @@ This feature is available for the following editors:
 
 </details> <!-- In-Editor Configuration -->
 
-<details>
+<details name="configuration">
   <summary>
 
 ## zls.json
@@ -572,7 +589,7 @@ info  ( main ): A path to the local configuration folder will be printed instead
 
 </details> <!-- zls.json -->
 
-<details>
+<details name="configuration">
   <summary>
 
 ## Per-build Configuration (advanced)

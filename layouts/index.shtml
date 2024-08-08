@@ -2,14 +2,19 @@
 <title id="title" var="$page.title"></title>
 <head id="head">
   <style>
-    h2 {
+    #header h1 {
+      font-size: 3rem;
+    }
+    #header h2 {
         border: none;
+        align-self: center;
+        text-align: center;
     }
   </style>
 </head>
 <header id="header">
   <h1>Zigtools</h1>
-  <h2>We make free and open-source tools for the
+  <h2>We make free and open-source tools <br> for the
     <a href="https://github.com/ziglang/zig">@ziglang</a>
     community.</h2>
 </header>
