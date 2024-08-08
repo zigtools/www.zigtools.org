@@ -86,7 +86,7 @@
       font-size: xx-large;
 
       color: #000;
-      border-color: var(--zigtools-orange);
+      border-color: var(--zig-orange);
     }
 
     form button {

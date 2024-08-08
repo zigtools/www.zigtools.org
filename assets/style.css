@@ -14,7 +14,7 @@ nav {
   font-size: larger;
   width: 100%;
   height: 3rem;
-  border-bottom: thick solid var(--zigtools-orange);
+  border-bottom: thick solid var(--zig-orange);
   gap: 0.4rem;
 }
 
@@ -27,7 +27,7 @@ h3 {
   text-align: center;
 }
 
-h2, h3 {
+h2 {
   border-bottom: 1px dashed #aaa;
 }
 
@@ -40,12 +40,13 @@ body {
   font-family: sans-serif;
 }
 
-#content, #header > :not(nav) {
+#content,
+#header > :not(nav) {
   flex: 1;
   align-self: center;
   box-sizing: border-box;
   padding: 0 1.5rem;
-  max-width: 700px;
+  max-width: min(700px, 100vw);
 }
 
 footer {
@@ -67,13 +68,11 @@ a:not(:hover) {
 }
 
 pre {
-  display: block;
-  border: 0;
+  border: 0 dashed;
   border-top-width: 1px;
   border-bottom-width: 1px;
-  border-style: dashed;
   padding: 0.4rem 0.25rem;
-  text-wrap: wrap;
+  overflow: auto;
 }
 
 p:has(+ pre) {
@@ -111,8 +110,8 @@ a {
 }
 
 pre {
-  background-color: #f8f8f8;
-  border-color: #090909;
+  background-color: var(--bg);
+  border-color: var(--border);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -131,53 +130,53 @@ pre {
   h3,
   a,
   b,
-  strong,
-  code {
+  strong {
     color: #eee;
-  }
-
-  pre {
-    background-color: #191919;
-    border-color: #aaa;
   }
 }
 
-/* Highlighting */
+/* Code Highlighting */
 
 :root {
   --banner-note-color: rgb(35, 134, 54);
   --banner-warning-color: rgb(158, 106, 3);
   --banner-important-color: rgb(137, 87, 229);
 
-  --zigtools-orange: #f7a41d;
+  --zig-orange: #f7a41d;
+}
 
-  --fg: #c8d3f5;
-  --fg-dark: #828bb8;
-  --fg-gutter: #3b4261;
-  --comment: #636da6;
+:root {
+  --bg: #f6f6f6;
+  --fg: #000;
+  --border: #444;
+  /** 
+    * The luminance values have carefully choosen to fufill the WCAG Minimum
+    * Contrast Criterion (AA)
+    */
+  --comment: hsl(270, 10%, 40%);
+  --orange: hsl(35, 80%, 34%);
+  --green: hsl(100, 50%, 33%);
+  --cyan: hsl(180, 50%, 32%);
+  --blue: hsl(215, 40%, 48%);
+  --deep-blue: hsl(215, 70%, 48%);
+  --purple: hsl(260, 50%, 50%);
+  --magenta: hsl(300, 55%, 45%);
+}
 
-  /* https://github.com/folke/tokyonight.nvim */
-  --blue: #82aaff;
-  --blue0: #3e68d7;
-  --blue1: #65bcff;
-  --blue2: #0db9d7;
-  --blue5: #89ddff;
-  --blue6: #b4f9f8;
-  --blue7: #394b70;
-  --cyan: #86e1fc;
-  --dark3: #545c7e;
-  --dark5: #737aa2;
-  --green: #c3e88d;
-  --green1: #4fd6be;
-  --green2: #41a6b5;
-  --magenta: #c099ff;
-  --magenta2: #ff007c;
-  --orange: #ff966c;
-  --purple: #fca7ea;
-  --red: #ff757f;
-  --red1: #c53b53;
-  --teal: #4fd6be;
-  --yellow: #ffc777;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #191919;
+    --fg: #eee;
+    --border: #aaa;
+    --comment: hsl(270, 10%, 55%);
+    --orange: hsl(35, 70%, 50%);
+    --cyan: hsl(180, 50%, 50%);
+    --green: hsl(100, 40%, 55%);
+    --blue: hsl(215, 40%, 55%);
+    --deep-blue: hsl(215, 70%, 60%);
+    --purple: hsl(260, 60%, 65%);
+    --magenta: hsl(300, 50%, 65%);
+  }
 }
 
 .comment {
@@ -185,10 +184,15 @@ pre {
 }
 
 .keyword,
+.conditional, /* switch */
 .attribute,
 .qualifier,
 .function.builtin {
-  color: var(--purple);
+  color: var(--magenta);
+}
+
+.zig .operator /* try, catch, orelse, etc. */ {
+  color: var(--magenta);
 }
 
 .string {
@@ -196,36 +200,33 @@ pre {
 }
 
 .field {
-  color: var(--green1);
-}
-
-.operator,
-.delimiter {
-  color: var(--blue5) !important;
-}
-
-.delimiter,
-.bracket {
-  color: var(--fg-dark);
+  color: var(--cyan);
 }
 
 .constructor,
 .property,
 .string.special.key {
-  color: var(--magenta);
-}
-
-
-.function {
-  color: var(--blue);
+  color: var(--purple);
 }
 
 .variable,
 .type.builtin {
-  color: var(--blue1);
+  color: var(--blue);
 }
 
+.function,
+.call {
+  color: var(--deep-blue);
+}
+
+.number,
 .variable.builtin,
 .constant.builtin {
   color: var(--orange);
+}
+
+@media (prefers-color-scheme: dark) {
+  .variable {
+    color: var(--fg);
+  }
 }
