@@ -22,15 +22,17 @@
     }
 
     #form-result {
-      padding-top: 2rem;
+      padding-top: 1rem;
     }
 
     #form-result pre {
       font-size: larger;
     }
 
-    #form-table {
-      padding: 0.5rem 0;
+    #table-result {
+      display: block;
+      overflow: auto;
+      white-space: nowrap;
     }
 
     .banner-note {
@@ -219,10 +221,10 @@
       }
 
       const heading = document.createElement("tr");
-      for (const item of ["Target", "Filename", "Signature", "Size"]) {
-        const td = document.createElement("td");
-          td.innerHTML = item;
-        heading.appendChild(td);
+      for (const item of ["OS", "Arch", "Filename", "Signature", "Size"]) {
+        const th = document.createElement("th");
+        th.innerHTML = item;
+        heading.appendChild(th);
       }
 
       const thead = document.createElement("thead");
@@ -234,8 +236,13 @@
         if (key === "version") continue;
         if (key === "date") continue;
 
-        const target = document.createElement("td");
-        target.innerHTML = key;
+        const target = key.split('-');
+
+        const arch = document.createElement("td");
+        arch.innerHTML = target[0];
+
+        const os = document.createElement("td");
+        os.innerHTML = target[1].charAt(0).toUpperCase() + target[1].slice(1);
 
         const index = value.tarball.lastIndexOf("/") + 1;
         const tarballLink = document.createElement("a");
@@ -258,7 +265,8 @@
         size.innerHTML = formatBytes(parseInt(value.size));
 
         const tr = document.createElement("tr");
-        tr.appendChild(target);
+        tr.appendChild(os);
+        tr.appendChild(arch);
         tr.appendChild(link);
         tr.appendChild(signature);
         tr.appendChild(size);

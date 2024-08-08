@@ -57,8 +57,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
 }
 
 h2,
@@ -81,7 +81,7 @@ body {
   align-self: center;
   box-sizing: border-box;
   padding: 0 1.5rem;
-  max-width: min(700px, 100vw);
+  max-width: min(750px, 100vw);
 }
 
 footer {
@@ -128,12 +128,12 @@ table {
   height: 100%;
 }
 
-table th {
+th {
   border-bottom: 1px solid #aaa;
 }
 
 td {
-  padding: 0.3rem;
+  padding: 0.35rem 0.25rem;
 }
 
 figure {
@@ -155,6 +155,10 @@ li + li {
 
 li a {
   padding: 0.4rem 0.4rem 0.4rem 0;
+}
+
+tr:nth-child(2n) > td {
+  background-color: var(--bg);
 }
 
 a {
@@ -198,7 +202,7 @@ pre {
 }
 
 :root {
-  --bg: #f6f6f6;
+  --bg: #f5f5f5;
   --fg: #000;
   --border: #444;
   /** 
