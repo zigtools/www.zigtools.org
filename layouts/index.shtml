@@ -14,8 +14,10 @@
 </head>
 <header id="header">
   <h1>Zigtools</h1>
-  <h2>We make free and open-source tools <br> for the
-    <a href="https://github.com/ziglang/zig">@ziglang</a>
+  <h2>We make free and open-source tools
+    <br>
+    for the
+    <i><a href="https://github.com/ziglang/zig">@ziglang</a></i>
     community.</h2>
 </header>
 <main id="content">

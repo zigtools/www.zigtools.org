@@ -149,6 +149,14 @@ body {
   color: #222;
 }
 
+li + li {
+  margin-top: 0.6rem;
+}
+
+li a {
+  padding: 0.4rem 0.4rem 0.4rem 0;
+}
+
 a {
   color: #111;
 }
