@@ -6,6 +6,9 @@
     .draft = false,
     .layout = "zls-install.shtml",
     .tags = [],
+    .custom = {
+      "minisign": "RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex"
+    }
 } 
 ---
 

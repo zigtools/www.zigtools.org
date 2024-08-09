@@ -42,22 +42,33 @@
 
     .vscode-banner {
       display: flex;
-      flex-direction: column;
       width: fit-content;
+      text-align: center;
+      gap: 1rem;
+      background-color: var(--pre-background-color);
       border: 0.3rem solid;
       border-radius: 9999px;
       border-color: rgb(0, 120, 212);
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       margin-left: auto;
       margin-right: auto;
-      text-align: center;
+    }
+
+    .vscode-banner > * {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+    }
+
+    .vscode-banner img {
+      height: 50px;
+      aspect-ratio: 25 / 29;
     }
 
     #prebuilt-binary-result {
       display: block;
       overflow: auto;
       white-space: nowrap;
-      padding-top: 1rem;
     }
 
     #prebuilt-binary-result pre {
@@ -94,7 +105,7 @@
     form {
       display:flex;
       flex-direction: column;
-      margin: 0 4rem;
+      margin: 1rem 4rem;
       gap: 0.5rem;
     }
 
@@ -133,39 +144,23 @@
       }
     }
   </style>
-  <script>
-    const updateDetails = () => {
-      if(window.location.hash) {
-        let node = document.getElementById(window.location.hash.substring(1));
-        while (node) {
-          node = node.closest("details");
-          if(!node) break;
-          node.open = true;
-          node = node.parentElement;
-        }
-      }
-    }
-
-    window.onload = updateDetails;
-    window.onhashchange = () => {
-      updateDetails();
-      if (window.location.hash) {
-        document.getElementById(window.location.hash.substring(1)).scrollIntoView();
-      }
-    };
-  </script>
 </head>
 <header id="header">
   <h1 class="title" var="$page.title"></h1>
 </header>
 <main id="content">
   <div class="vscode-banner">
-    <p>
-      <strong>VS Code</strong>
-      users only need the
-      <a href="https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig">official Zig Language extension</a>.
-    </p>
-    <p class="tagline">No need to manually install Zig or ZLS.</p>
+    <div>
+      <img src="$site.asset('vscode.svg').link()" alt="Visual Studio Code Icon">
+    </div>
+    <div>
+      <p>
+        <strong>VS Code</strong>
+        users only need the
+        <a href="https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig">official Zig Language extension</a>.
+      </p>
+      <p class="tagline">No need to manually install Zig or ZLS.</p>
+    </div>
   </div>
   <form>
     <input
@@ -173,9 +168,9 @@
     id="zig-version"
     name="zig_version"
     placeholder="What is your Zig Version?"
-    pattern="(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d\*)"
     required
   >
+    <!-- pattern="(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d\*)" -->
     <div style="display: flex; gap: 0.5rem">
       <button id="button-from-source" class="install-button" type="submit" name="compatibility" value="full">
         Build From Source
@@ -185,123 +180,24 @@
       </button>
     </div>
   </form>
+  <div id="build-from-source-result" style="display: none;">
+    <h2>Build From Source</h2>
+    <p>To built ZLS from source, run the following commands:</p>
+    <pre><code id="build-from-source-code"></code></pre>
+    <p>If you wish to add Zig or ZLS to your
+      <code>$PATH</code>, please refer to the
+      <a href="https://ziglang.org/learn/getting-started/#direct-download">Zig Getting Started Guide</a>.</p>
+  </div>
   <div id="prebuilt-binary-result" style="display: none;">
+    <h2>Install Prebuilt Binary</h2>
     <p>All files are signed with
       <a href="https://jedisct1.github.io/minisign/">minisign</a>
       using this public key:</p>
-    <pre><code>RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex</code></pre>
+    <pre><code var="$page.custom.get!('minisign')"></code></pre>
     <table id="prebuilt-binary-table"></table>
   </div>
-  <script>
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-      get: (searchParams, name) => searchParams.get(name),
-      set: (searchParams, name, value) => searchParams.set(name, value),
-    });
-    document.getElementById("zig-version").value = params["zig_version"];
-
-    function formatBytes(bytes, decimals = 2) {
-      if (!+bytes) return '0 Bytes'
-
-      const k = 1024
-      const dm = decimals < 0 ? 0 : decimals
-      const sizes = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
-
-      const i = Math.floor(Math.log(bytes) / Math.log(k))
-
-      return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
-    }
-
-    async function update() {
-      let url = new URL(
-        "https://releases.zigtools.org/v1/zls/select-version",
-      );
-      url.searchParams.set("zig_version", params["zig_version"]);
-      url.searchParams.set("compatibility", params["compatibility"]);
-      const response = await fetch(url);
-      const json = await response.json();
-
-      const fname = document.getElementById("zig-version");
-      if ("error" in json) {
-        fname.setCustomValidity(json.error);
-        document.getElementById("form-result").style.display = "none";
-        return;
-      } else {
-        fname.setCustomValidity("");
-      }
-
-      if (!("version" in json) || !("date" in json)) {
-        alert("418 I'm a teapot");
-        document.getElementById("form-result").style.display = "none";
-        return;
-      }
-
-      const heading = document.createElement("tr");
-      for (const item of ["OS", "Arch", "Filename", "Signature", "Size"]) {
-        const th = document.createElement("th");
-        th.innerHTML = item;
-        heading.appendChild(th);
-      }
-
-      const thead = document.createElement("thead");
-      thead.appendChild(heading);
-
-      const tbody = document.createElement("tbody");
-
-      for (const [key, value] of Object.entries(json)) {
-        if (key === "version") continue;
-        if (key === "date") continue;
-
-        const target = key.split('-');
-
-        const arch = document.createElement("td");
-        arch.innerHTML = target[0];
-
-        const os = document.createElement("td");
-        os.innerHTML = target[1].charAt(0).toUpperCase() + target[1].slice(1);
-
-        const index = value.tarball.lastIndexOf("/") + 1;
-        const tarballLink = document.createElement("a");
-        tarballLink.setAttribute("href", value.tarball);
-        tarballLink.innerHTML = value.tarball.substring(index);
-
-        const link = document.createElement("td");
-        link.innerHTML = tarballLink.outerHTML;
-
-        const signatureLink = document.createElement("a");
-        signatureLink.setAttribute("target", "_blank");
-        signatureLink.setAttribute("href", value.tarball + ".minisig");
-        signatureLink.innerHTML = "minisig";
-
-        const signature = document.createElement("td");
-        signature.innerHTML = signatureLink.outerHTML;
-
-        const size = document.createElement("td");
-        size.setAttribute("title", "Base 1024");
-        size.innerHTML = formatBytes(parseInt(value.size));
-
-        const tr = document.createElement("tr");
-        tr.appendChild(os);
-        tr.appendChild(arch);
-        tr.appendChild(link);
-        tr.appendChild(signature);
-        tr.appendChild(size);
-
-        tbody.appendChild(tr);
-      }
-
-      const table = document.createElement("table");
-      table.appendChild(thead);
-      table.appendChild(tbody);
-
-      document.getElementById("form-table").innerHTML = table.outerHTML;
-      document.getElementById("form-result").style.display = ""; 
-    };
-
-    if (params["zig_version"] && params["compatibility"]) {
-      update();
-    }
-  </script>
   <div id="page" var="$page.content"></div>
   <!-- This prevents the view from jumping when closing details -->
   <div style="padding-bottom: 80vh"></div>
+  <script var="$site.asset('install.js').bytes()"></script>
 </main>
