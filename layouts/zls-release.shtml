@@ -8,6 +8,12 @@
       }
     }
 
+    h2,
+    h3,
+    h4 {
+      border-bottom: 1px dashed var(--border-color);
+    }
+
     .release-nav {
       padding: 0.25rem 0;
     }

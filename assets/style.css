@@ -61,6 +61,7 @@ p code {
 h1,
 h2,
 h3,
+h4,
 b,
 code,
 strong {
@@ -76,24 +77,29 @@ h4,
 h5,
 h6 {
   font-family: sans-serif;
-  font-weight: bold;
   font-size: inherit;
+  font-weight: bold;
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
 }
 
 /* Table */
@@ -102,14 +108,22 @@ table {
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  text-align: left;
 }
 
 th {
+  font-size: large;
+  padding: 0 0.5rem;
   border-bottom: 1px solid var(--border-color);
 }
 
 td {
-  padding: 0.25rem 0.25rem;
+  align-self: center;
+  padding: 0.5rem;
+}
+
+tr:nth-child(2n) > td {
+  background-color: var(--pre-background-color);
 }
 
 /* Figure */
@@ -137,10 +151,6 @@ li a {
   padding: 0.4rem 0.4rem 0.4rem 0;
 }
 
-tr:nth-child(2n) > td {
-  background-color: var(--pre-background-color);
-}
-
 /* Classes */
 
 #content,
@@ -166,14 +176,8 @@ tr:nth-child(2n) > td {
 /* Color */
 
 :root {
-  --banner-note-color: rgb(35, 134, 54);
-  --banner-warning-color: rgb(158, 106, 3);
-  --banner-important-color: rgb(137, 87, 229);
-
   --zig-orange: #f7a41d;
-}
-
-:root {
+  
   --background-color: white;
   --text-color: #222;
   --text-highlight-color: #111;

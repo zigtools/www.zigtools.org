@@ -216,12 +216,8 @@ For more information on the health check results refer to [Health check](https:/
 
   </summary>
 
-<blockquote class="banner-warning">
-
 The [mason](https://github.com/williamboman/mason.nvim) package manager can only install the latest tagged release of ZLS which should **not** be used with Zig master.
 Do **not** use ZLS from mason with Zig master.
-
-</blockquote>
 
 <details name="vim-extensions">
   <summary>
