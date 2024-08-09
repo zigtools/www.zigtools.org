@@ -166,9 +166,10 @@ li a {
   display: flex;
   justify-content: center;
   font-size: larger;
-  width: 100%;
   height: 3rem;
   gap: 0.4rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   border-bottom: thick solid var(--zig-orange);
   background-color: var(--nav-background-color);
 }
