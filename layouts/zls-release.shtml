@@ -7,15 +7,19 @@
           border: 1px solid #333;
       }
     }
+
+    .release-nav {
+      padding: 0.25rem 0;
+    }
   </style>
 </head>
 <header id="header">
   <!-- TODO add a direct link to the GitHub Release -->
-  <nav>
+  <nav class="release-nav">
     <p>
       <a href="https://github.com/zigtools/zls/releases">GitHub Releases</a>
       •
-      <a href="https://github.com/zigtools/zls/wiki/Installation">Installation Guide</a>
+      <a href="/zls/install/index.html">Installation Guide</a>
       •
       <a href="https://discord.gg/Jp4DHkqkYs">ZLS Discord</a>
     </p>

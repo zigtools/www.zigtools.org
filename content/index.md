@@ -9,7 +9,7 @@
 }  
 ---
 
-# ZLS
+## ZLS
 
 ZLS is a non-official implementation of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) for [Zig](https://github.com/ziglang/zig) in [Zig](https://github.com/ziglang/zig). It provides developers with IDE features in their editor.
 
@@ -18,14 +18,14 @@ ZLS is a non-official implementation of the [Language Server Protocol](https://m
 - [GitHub](https://github.com/zigtools/zls)
 - [Discord Server](https://discord.gg/5m5U3qpUhk)
 
-# Zig Playground
+## Zig Playground
 
 A demonstration of Zig and ZLS running inside of a browser using Webassembly.
 
 - [Website](https://playground.zigtools.org/)
 - [GitHub](https://github.com/zigtools/playground)
 
-# zig-lsp-codegen
+## zig-lsp-codegen
 
 zig-lsp-codegen provides all necessary building blocks to develop [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations (like ZLS) in [Zig](https://github.com/ziglang/zig).
 

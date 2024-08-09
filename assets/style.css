@@ -8,15 +8,66 @@ nav {
   text-align: center;
 }
 
-#main-nav {
+body {
   display: flex;
-  justify-content: center;
-  font-size: larger;
-  width: 100%;
-  height: 3rem;
-  border-bottom: thick solid var(--zig-orange);
-  gap: 0.4rem;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
+
+footer {
+  margin: 0.5rem;
+  margin-top: 1.5rem;
+  align-self: center;
+  text-align: center;
+}
+
+a {
+  font-weight: bold;
+  color: var(--link-color);
+}
+
+a:not(:hover) {
+  text-decoration: none;
+}
+
+pre {
+  border: 0 dashed;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  padding: 0.4rem 0.25rem;
+  overflow: auto;
+  background-color: var(--pre-background-color);
+  border-color: var(--border-color);
+}
+
+p:has(+ pre) {
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p code {
+  font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+b,
+code,
+strong {
+  color: var(--text-highlight-color);
+}
+
+/* Heading */
 
 h1,
 h2,
@@ -34,107 +85,34 @@ h1 {
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 
-h1 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  align-self: center;
-  text-align: center;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0.4rem;
-  margin-bottom: 0.8rem;
-}
-
-h2,
-h3 {
-  border-bottom: 1px dashed #666;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
-#content,
-#header > :not(nav) {
-  flex: 1;
-  align-self: center;
-  box-sizing: border-box;
-  padding: 0 1.5rem;
-  max-width: min(750px, 100vw);
-}
-
-footer {
-  margin-top: 20px;
-  align-self: center;
-  text-align: center;
-}
-
-footer > p {
-  margin: 0.4rem;
-}
-
-a {
-  font-weight: bold;
-}
-
-a:not(:hover) {
-  text-decoration: none;
-}
-
-pre {
-  border: 0 dashed;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  padding: 0.4rem 0.25rem;
-  overflow: auto;
-}
-
-p:has(+ pre) {
-  margin-bottom: 0;
-}
-
-p {
-  margin-top: 0.35rem;
-  margin-bottom: 0.35rem;
-}
-
-p code {
-  font-weight: bold;
-}
+/* Table */
 
 table {
   width: 100%;
-  height: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 th {
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid var(--border-color);
 }
 
 td {
-  padding: 0.35rem 0.25rem;
+  padding: 0.25rem 0.25rem;
 }
+
+/* Figure */
 
 figure {
   margin-left: 0;
@@ -145,8 +123,10 @@ figure img {
   max-width: 100%;
 }
 
-body {
-  color: #222;
+/* Lists */
+
+ul {
+  padding-left: 1.5rem;
 }
 
 li + li {
@@ -158,40 +138,32 @@ li a {
 }
 
 tr:nth-child(2n) > td {
-  background-color: var(--bg);
+  background-color: var(--pre-background-color);
 }
 
-a {
-  color: #111;
+/* Classes */
+
+#content,
+#header > :not(nav) {
+  flex: 1;
+  align-self: center;
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  max-width: min(48rem, 100vw);
 }
 
-pre {
-  background-color: var(--bg);
-  border-color: var(--border);
+#main-nav {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  width: 100%;
+  height: 3rem;
+  gap: 0.4rem;
+  border-bottom: thick solid var(--zig-orange);
+  background-color: var(--nav-background-color);
 }
 
-@media (prefers-color-scheme: dark) {
-  #main-nav {
-    background-color: #242424;
-    color: #ccc;
-  }
-
-  body {
-    background-color: #121212;
-    color: #ccc;
-  }
-
-  h1,
-  h2,
-  h3,
-  a,
-  b,
-  strong {
-    color: #eee;
-  }
-}
-
-/* Code Highlighting */
+/* Color */
 
 :root {
   --banner-note-color: rgb(35, 134, 54);
@@ -202,9 +174,15 @@ pre {
 }
 
 :root {
-  --bg: #f5f5f5;
-  --fg: #000;
-  --border: #444;
+  --background-color: white;
+  --text-color: #222;
+  --text-highlight-color: #111;
+  --link-color: #121212;
+  --border-color: #666;
+  --pre-background-color: #f5f5f5;
+  --pre-foreground-color: black;
+  --nav-background-color: white;
+
   /** 
     * The luminance values have carefully choosen to fufill the WCAG Minimum
     * Contrast Criterion (AA)
@@ -221,9 +199,14 @@ pre {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #191919;
-    --fg: #eee;
-    --border: #aaa;
+    --background-color: #121212;
+    --text-color: #ccc;
+    --text-highlight-color: #eee;
+    --link-color: #eee;
+    --pre-background-color: #191919;
+    --pre-foreground-color: #eee;
+    --nav-background-color: #242424;
+
     --comment: hsl(270, 10%, 55%);
     --orange: hsl(35, 70%, 50%);
     --cyan: hsl(180, 50%, 50%);
@@ -283,6 +266,6 @@ pre {
 
 @media (prefers-color-scheme: dark) {
   .variable {
-    color: var(--fg);
+    color: var(--pre-foreground-color);
   }
 }

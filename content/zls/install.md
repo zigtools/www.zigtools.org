@@ -9,7 +9,7 @@
 } 
 ---
 
-# Install Editor Extension
+## Install Editor Extension
 
 <!-- TODO: individualy document for each editor-extension whether they can find Zig or ZLS in $PATH -->
 
@@ -19,7 +19,7 @@
 <details name="editor-extensions">
   <summary>
 
-## Visual Studio Code
+### Visual Studio Code
 
   </summary>
 
@@ -31,7 +31,7 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 <details name="editor-extensions">
   <summary>
 
-<h2 id="sublime-text">Sublime Text</h2> <!-- linked from "In-Editor Configuration" -->
+<h3 id="sublime-text">Sublime Text</h3> <!-- linked from "In-Editor Configuration" -->
 
   </summary>
   
@@ -58,7 +58,7 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 
 </details> <!-- show Zig.sublime-settings -->
 
-### Sublime Text 4
+#### Sublime Text 4
 
 <details>
 <summary>
@@ -113,7 +113,7 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 
 </details> <!-- show LSP.sublime-settings -->
 
-### Sublime Text 3
+#### Sublime Text 3
 
 <details>
 <summary>
@@ -144,7 +144,7 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 <details name="editor-extensions">
   <summary>
 
-## CLion / other JetBrains IDEs
+### CLion / other JetBrains IDEs
 
   </summary>
 
@@ -162,7 +162,7 @@ If everything is set up correctly, an LSP status indicator should appear in the 
 <details name="editor-extensions">
   <summary>
 
-<h2 id="helix">Helix</h2> <!-- linked from "In-Editor Configuration" -->
+<h3 id="helix">Helix</h3> <!-- linked from "In-Editor Configuration" -->
 
   </summary>
 
@@ -212,7 +212,7 @@ For more information on the health check results refer to [Health check](https:/
 <details name="editor-extensions">
   <summary>
 
-## Neovim / Vim8
+### Neovim / Vim8
 
   </summary>
 
@@ -226,7 +226,7 @@ Do **not** use ZLS from mason with Zig master.
 <details name="vim-extensions">
   <summary>
 
-<h3 id="nvim-lspconfig">nvim-lspconfig</h3> <!-- linked from "In-Editor Configuration" -->
+<h4 id="nvim-lspconfig">nvim-lspconfig</h4> <!-- linked from "In-Editor Configuration" -->
 
   </summary>
 
@@ -238,7 +238,7 @@ Install the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager.
 
 <summary>
 
-#### `init.lua` with vim-plug
+##### `init.lua` with vim-plug
 
 </summary>
 
@@ -289,7 +289,7 @@ lspconfig.zls.setup {
 
 <summary>
 
-#### `init.vim` with vim-plug
+##### `init.vim` with vim-plug
 
 </summary>
 
@@ -341,7 +341,7 @@ EOF
 <details name="vim-extensions">
   <summary>
   
-### CoC
+#### CoC
   
   </summary>
 
@@ -368,7 +368,7 @@ Add ZLS in your `coc-settings.json` (open it using `:CocConfig`) like this:
 <details name="vim-extensions">
   <summary>
 
-### YouCompleteMe
+#### YouCompleteMe
 
   </summary>
 
@@ -393,7 +393,7 @@ let g:ycm_language_server =
 <details name="vim-extensions">
   <summary>
 
-### LanguageClient-neovim
+#### LanguageClient-neovim
 
   </summary>
 
@@ -413,7 +413,7 @@ let g:LanguageClient_serverCommands = {
 <details name="editor-extensions">
   <summary>
 
-## Emacs
+### Emacs
 
   </summary>
 
@@ -427,7 +427,7 @@ Use `M-x eglot` in a zig-mode buffer to start the server.
 <details name="editor-extensions">
   <summary>
 
-## Doom Emacs
+### Doom Emacs
 
   </summary>
 
@@ -440,7 +440,7 @@ Use `M-x eglot` in a zig-mode buffer to start the server.
 <details name="editor-extensions">
   <summary>
 
-## Spacemacs
+### Spacemacs
 
   </summary>
 
@@ -456,7 +456,7 @@ Use `M-x eglot` in a zig-mode buffer to start the server.
 <details name="editor-extensions">
   <summary>
 
-## Kate
+### Kate
 
   </summary>
 
@@ -480,14 +480,14 @@ If you wish to manually specify the path to the ZLS executable, open `Settings -
 
 </details> <!-- Kate -->
 
-# Configuration
+## Configuration
 
 > ZLS works well without any configuration, all config options have reasonable defaults. Feel free to read through the available config options but unless there is something you want to change, there is no need to configure ZLS.
 
 <details name="configuration">
   <summary>
 
-## In-Editor Configuration (recommended)
+### In-Editor Configuration (recommended)
 
   </summary>
 
@@ -508,7 +508,7 @@ This feature is available for the following editors:
 <details name="configuration">
   <summary>
 
-## zls.json
+### zls.json
 
   </summary>
 
@@ -529,7 +529,7 @@ The file must be valid JSON which cannot contain comments or trailing commas.
 <details>
   <summary>
 
-### Available Configuration Options
+#### Available Configuration Options
 
   </summary>
 
@@ -540,11 +540,11 @@ You can find all available config options by looking at [src/Config.zig](https:/
 <details>
   <summary>
 
-### Where should the zls.json be created?
+#### Where should the zls.json be created?
 
   </summary>
 
-#### ZLS since 0.14.0-dev.50+3354fdcb
+##### ZLS since 0.14.0-dev.50+3354fdcb
 
 Running `zls env` will show you where ZLS will look for the zls.json file:
 
@@ -574,7 +574,7 @@ After creating the configuration file at `$local_config_dir/zls.json`, `zls env`
 }
 ```
 
-#### ZLS before 0.14.0-dev.50+3354fdcb
+##### ZLS before 0.14.0-dev.50+3354fdcb
 
 Running `zls --show-config-path` will show a path to an already existing zls.json or a path to the local configuration folder instead.
 
@@ -592,7 +592,7 @@ info  ( main ): A path to the local configuration folder will be printed instead
 <details name="configuration">
   <summary>
 
-## Per-build Configuration (advanced)
+### Per-build Configuration (advanced)
 
   </summary>
 
@@ -603,7 +603,7 @@ The following options can be set on a per-project basis by placing `zls.build.js
 | `relative_builtin_path` | `?[]const u8`    | `null`        | If present, this path is used to resolve `@import("builtin")`                                                                                             |
 | `build_options`         | `?[]BuildOption` | `null`        | If present, this contains a list of user options to pass to the build. This is useful when options are used to conditionally add packages in `build.zig`. |
 
-### `BuildOption`
+#### `BuildOption`
 
 `BuildOption` is defined as follows:
 

@@ -2,23 +2,32 @@
 <title id="title" var="$page.title"></title>
 <head id="head">
   <style>
-    #header h1 {
-      font-size: 3rem;
+    h1 {
+      font-size: xxx-large;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+      align-self: center;
+      text-align: center;
     }
-    #header h2 {
-        border: none;
-        align-self: center;
-        text-align: center;
+
+    #header > p {
+      text-align: center;
+    }
+
+    h2 {
+      font-size: xx-large;
+      margin-top: 1.5rem;
+      margin-bottom: 0.25rem;
     }
   </style>
 </head>
 <header id="header">
   <h1>Zigtools</h1>
-  <h2>We make free and open-source tools
+  <p>We make free and open-source tools
     <br>
     for the
-    <i><a href="https://github.com/ziglang/zig">@ziglang</a></i>
-    community.</h2>
+    <i><a href="https://ziglang.org/">@ziglang</a></i>
+    community.</p>
 </header>
 <main id="content">
   <div id="page" var="$page.content"></div>
