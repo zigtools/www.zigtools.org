@@ -155,6 +155,8 @@ li a {
 
 #content,
 #header > :not(nav) {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   align-self: center;
   box-sizing: border-box;
@@ -209,7 +211,7 @@ li a {
     --text-highlight-color: #eee;
     --link-color: #eee;
     --pre-background-color: #191919;
-    --pre-foreground-color: #eee;
+    --pre-foreground-color: #c8c8c8;
     --nav-background-color: #242424;
 
     --comment: hsl(270, 10%, 55%);

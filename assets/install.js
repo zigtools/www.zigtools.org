@@ -1,4 +1,16 @@
-const updateDetails = () => {
+const form = document.querySelector("form");
+const zigVersion = document.getElementById("zig-version");
+const error = document.getElementById("zig-version-error");
+
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, name) => searchParams.get(name),
+  set: (searchParams, name, value) => searchParams.set(name, value),
+});
+
+const zigVersionRegex =
+  /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-dev\.(\d+)\+([0-9a-fA-F]{7,9}))?$/;
+
+function updateDetails() {
   if (window.location.hash) {
     let node = document.getElementById(window.location.hash.substring(1));
     while (node) {
@@ -8,22 +20,9 @@ const updateDetails = () => {
       node = node.parentElement;
     }
   }
-};
+}
 
-window.onload = updateDetails;
-window.onhashchange = () => {
-  updateDetails();
-  if (window.location.hash) {
-    document.getElementById(window.location.hash.substring(1)).scrollIntoView();
-  }
-};
-
-const params = new Proxy(new URLSearchParams(window.location.search), {
-  get: (searchParams, name) => searchParams.get(name),
-  set: (searchParams, name, value) => searchParams.set(name, value),
-});
-document.getElementById("zig-version").value = params["zig_version"];
-
+/** https://stackoverflow.com/a/18650828 */
 function formatBytes(bytes, decimals = 2) {
   if (!+bytes) return "0 Bytes";
 
@@ -46,31 +45,7 @@ function formatBytes(bytes, decimals = 2) {
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 }
 
-async function update() {
-  const versionInput = document.getElementById("zig-version");
-
-  const url = new URL("https://releases.zigtools.org/v1/zls/select-version");
-  url.searchParams.set("zig_version", versionInput.value);
-  url.searchParams.set("compatibility", params["compatibility"] ?? "full");
-  const response = await fetch(url);
-  const json = await response.json();
-
-  if ("message" in json) {
-    versionInput.setCustomValidity(json.message);
-    document.getElementById("build-from-source-result").style.display = "none";
-    document.getElementById("prebuilt-binary-result").style.display = "none";
-    return;
-  } else {
-    versionInput.setCustomValidity("");
-  }
-
-  if (!("version" in json) || !("date" in json)) {
-    alert("418 I'm a teapot");
-    document.getElementById("build-from-source-result").style.display = "none";
-    document.getElementById("prebuilt-binary-result").style.display = "none";
-    return;
-  }
-
+function createBinaryTable(json) {
   const heading = document.createElement("tr");
   for (const item of ["OS", "Arch", "Filename", "Signature", "Size"]) {
     const th = document.createElement("th");
@@ -129,15 +104,76 @@ async function update() {
   table.appendChild(thead);
   table.appendChild(tbody);
 
-  document.getElementById("prebuilt-binary-table").innerHTML = table.outerHTML;
+  return table;
+}
 
-  document.getElementById("build-from-source-result").style.display = "none";
-  document.getElementById("prebuilt-binary-result").style.display = "none";
+function displayZigVersionMessage(message) {
+  if (message) {
+    zigVersion.className = "invalid";
+    error.textContent = message;
+    error.className = "error active";
+  } else {
+    zigVersion.className = "valid";
+    error.textContent = "";
+    error.className = "error";
+  }
+}
+
+async function update() {
+  if (zigVersion.value.length === 0) return;
+
+  if (!zigVersionRegex.test(zigVersion.value)) {
+    displayZigVersionMessage("Invalid Zig Version!");
+    return false;
+  }
+
+  const buildFromSourceResult = document.getElementById(
+    "build-from-source-result"
+  );
+  const prebuiltBinaryResult = document.getElementById(
+    "prebuilt-binary-result"
+  );
+  const prebuiltBinaryTable = document.getElementById("prebuilt-binary-table");
+
+  const url = new URL("https://releases.zigtools.org/v1/zls/select-version");
+  url.searchParams.set("zig_version", zigVersion.value);
+  url.searchParams.set("compatibility", params["compatibility"] ?? "full");
+
+  const response = await fetch(url);
+  json = await response.json();
+
+  if ("error" in json) {
+    console.trace();
+    displayZigVersionMessage(`Internal Failure: ${json.error}`);
+    return false;
+  }
+
+  if ("message" in json) {
+    displayZigVersionMessage(json.message);
+    buildFromSourceResult.style.display = "none";
+    prebuiltBinaryResult.style.display = "none";
+    return;
+  } else {
+    displayZigVersionMessage();
+  }
+
+  if (!("version" in json) || !("date" in json)) {
+    alert("418 I'm a teapot");
+    buildFromSourceResult.style.display = "none";
+    prebuiltBinaryResult.style.display = "none";
+    return false;
+  }
+
+  const table = createBinaryTable(json);
+  prebuiltBinaryTable.innerHTML = table.outerHTML;
+
+  buildFromSourceResult.style.display = "none";
+  prebuiltBinaryResult.style.display = "none";
   switch (params["compatibility"]) {
     default:
     case "full": {
-      document.getElementById("build-from-source-result").style.display = "";
-      
+      buildFromSourceResult.style.display = "";
+
       // `indexOf` returns `-1` when not found, how convenient...
       const tag = json.version.substring(json.version.indexOf("+") + 1);
 
@@ -149,11 +185,53 @@ git checkout ${tag}
 zig build -Doptimize=ReleaseSafe`;
     }
     case "only-runtime": {
-      document.getElementById("prebuilt-binary-result").style.display = "";
+      prebuiltBinaryResult.style.display = "";
       break;
     }
   }
 }
+
+window.addEventListener("load", () => {
+  updateDetails();
+
+  const isValid =
+    zigVersion.value.length === 0 || zigVersionRegex.test(zigVersion.value);
+  zigVersion.className = isValid ? "valid" : "invalid";
+});
+
+zigVersion.addEventListener("input", () => {
+  const isValid =
+    zigVersion.value.length === 0 || zigVersionRegex.test(zigVersion.value);
+  if (isValid) {
+    displayZigVersionMessage();
+  } else {
+    zigVersion.className = "invalid";
+  }
+});
+
+form.addEventListener("submit", (event) => {
+  const isValid =
+    zigVersion.value.length === 0 || zigVersionRegex.test(zigVersion.value);
+  if (!isValid) {
+    event.preventDefault();
+    displayZigVersionMessage("Invalid Zig Version!");
+    return false;
+  }
+  displayZigVersionMessage();
+
+  return true;
+});
+
+window.addEventListener("hashchange", () => {
+  updateDetails();
+  if (window.location.hash) {
+    document
+      .getElementById(window.location.hash.substring(1))
+      ?.scrollIntoView();
+  }
+});
+
+zigVersion.value = params["zig_version"] ?? "";
 
 if (params["zig_version"]) {
   update();

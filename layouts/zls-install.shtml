@@ -2,6 +2,11 @@
 <title id="title" var="$page.title"></title>
 <head id="head">
   <style>
+    #content,
+    #header > :not(nav) {
+      max-width: min(58rem, 100vw);
+    }
+
     h1,
     h2 {
       align-self: center;
@@ -9,8 +14,8 @@
     }
 
     h1 {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      margin-top: 1.25rem;
+      margin-bottom: 1.25rem;
     }
 
     h3 {
@@ -32,12 +37,6 @@
 
     details > :last-child {
       padding-bottom: 1rem;
-    }
-
-    .tagline {
-      font-size: 1rem;
-      font-style: italic;
-      margin: 0.25rem 0;
     }
 
     .vscode-banner {
@@ -68,7 +67,6 @@
     #prebuilt-binary-result {
       display: block;
       overflow: auto;
-      white-space: nowrap;
     }
 
     #prebuilt-binary-result pre {
@@ -102,32 +100,55 @@
       content: "+" !important;
     }
 
-    form {
-      display:flex;
+    .form-input-container {
+      display: flex;
       flex-direction: column;
-      margin: 1rem 4rem;
-      gap: 0.5rem;
+    }
+
+    .form-button-container {
+      display: flex;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     form input {
-      text-align: center;
       outline: none;
-      background-color: transparent;
+      text-align: center;
+      font-size: xx-large;
       border-width: 0;
       border-bottom-width: 3px;
-      padding: 0.5rem;
-      margin-top: 1.5rem;
-      font-size: xx-large;
 
+      background-color: transparent;
       color: #000;
       border-color: var(--zig-orange);
     }
 
+    form input.invalid {
+      border-color: red;
+    }
+
     form button {
-      flex: 1 1 0%;
-      padding: 0.5rem;
+      flex: 1 1 0;
+      padding: 0.75rem;
       border: 1px solid;
       border-color: #666;
+      font-size: large;
+    }
+
+    #zig-version-error {
+      background-color: var(--pre-background-color);
+      border-radius: 0 0 1rem 1rem;
+    }
+
+    #zig-version-error.active {
+      padding: 0.5rem 1rem;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -159,23 +180,20 @@
         users only need the
         <a href="https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig">official Zig Language extension</a>.
       </p>
-      <p class="tagline">No need to manually install Zig or ZLS.</p>
+      <p><em>No need to manually install Zig or ZLS.</em></p>
     </div>
   </div>
-  <form>
-    <input
-    type="text"
-    id="zig-version"
-    name="zig_version"
-    placeholder="What is your Zig Version?"
-    required
-  >
-    <!-- pattern="(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d\*)" -->
-    <div style="display: flex; gap: 0.5rem">
-      <button id="button-from-source" class="install-button" type="submit" name="compatibility" value="full">
+  <form name="ZLS Version Selection" aria-label="ZLS Version Selection">
+    <div class="form-input-container">
+      <label for="zig-version">Zig Version</label>
+      <input title="the Zig version you are using" type="text" id="zig-version" name="zig_version" required>
+      <span id="zig-version-error" aria-live="polite"></span>
+    </div>
+    <div class="form-button-container">
+      <button title="manually build ZLS from source" id="button-from-source" class="install-button" type="submit" name="compatibility" value="full">
         Build From Source
       </button>
-      <button id="button-binary" class="install-button" type="submit" name="compatibility" value="only-runtime">
+      <button title="download a prebuilt binary of ZLS" id="button-binary" class="install-button" type="submit" name="compatibility" value="only-runtime">
         Prebuilt Binary
       </button>
     </div>
