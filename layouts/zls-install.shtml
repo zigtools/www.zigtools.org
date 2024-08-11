@@ -38,6 +38,17 @@
       padding-bottom: 1rem;
     }
 
+    .header-experimental-warning {
+      width: 100%;
+      text-align: center;
+      background-color: hsl(0, 60%, 40%);
+    }
+
+    .header-experimental-warning,
+    .header-experimental-warning a {
+      color: white;
+    }
+
     .vscode-banner {
       display: flex;
       width: fit-content;
@@ -166,6 +177,12 @@
   </style>
 </head>
 <header id="header">
+  <div class="header-experimental-warning">
+    <p>
+      This is install tool is very new! Feel free to report any
+      <a href="https://github.com/zigtools/www.zigtools.org/issues">Issues</a>.
+    </p>
+  </div>
   <h1 class="title" var="$page.title"></h1>
 </header>
 <main id="content">
