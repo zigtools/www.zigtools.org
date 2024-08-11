@@ -4,8 +4,7 @@ header {
 }
 
 nav {
-  align-items: center;
-  text-align: center;
+  padding: 0.75rem 0;
 }
 
 body {
@@ -83,7 +82,7 @@ h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
 }
 
 h2 {
@@ -153,8 +152,7 @@ li a {
 
 /* Classes */
 
-#content,
-#header > :not(nav) {
+#content {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -168,12 +166,14 @@ li a {
   display: flex;
   justify-content: center;
   font-size: larger;
-  height: 3rem;
   gap: 0.4rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
   border-bottom: thick solid var(--zig-orange);
   background-color: var(--nav-background-color);
+}
+
+.centered {
+  align-items: center;
+  text-align: center;
 }
 
 /* Color */

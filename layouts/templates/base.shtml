@@ -13,7 +13,7 @@
     <super>
   </head>
   <body>
-    <nav id="main-nav">
+    <nav id="main-nav" class="centered">
       <a href="/">Home</a>
       •
       <a href="/zls/install/index.html">Install ZLS</a>

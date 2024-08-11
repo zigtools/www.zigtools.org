@@ -13,24 +13,18 @@
     h4 {
       border-bottom: 1px dashed var(--border-color);
     }
-
-    .release-nav {
-      padding: 0.25rem 0;
-    }
   </style>
 </head>
 <header id="header">
   <!-- TODO add a direct link to the GitHub Release -->
-  <nav class="release-nav">
-    <p>
-      <a href="https://github.com/zigtools/zls/releases">GitHub Releases</a>
-      •
-      <a href="/zls/install/index.html">Installation Guide</a>
-      •
-      <a href="https://discord.gg/Jp4DHkqkYs">ZLS Discord</a>
-    </p>
+  <nav class="release-nav centered">
+    <a href="https://github.com/zigtools/zls/releases">GitHub Releases</a>
+    •
+    <a href="/zls/install/index.html">Installation Guide</a>
+    •
+    <a href="https://discord.gg/Jp4DHkqkYs">ZLS Discord</a>
   </nav>
-  <h1 class="title" var="$page.title"></h1>
+  <h1 class="title centered" var="$page.title"></h1>
 </header>
 <main id="content">
   <div id="page" var="$page.content"></div>
