@@ -99,8 +99,8 @@
     #zig-version-error.active {
       padding: 0.5rem 1rem;
     }
-    
-    details> :not(summary) {
+
+    details > :not(summary) {
       margin-left: 1.5rem;
     }
 
