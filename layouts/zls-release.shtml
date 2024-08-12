@@ -19,9 +19,7 @@
   <!-- TODO add a direct link to the GitHub Release -->
   <nav class="release-nav centered">
     <a href="https://github.com/zigtools/zls/releases">GitHub Releases</a>
-    •
     <a href="/zls/install/index.html">Installation Guide</a>
-    •
     <a href="https://discord.gg/Jp4DHkqkYs">ZLS Discord</a>
   </nav>
   <h1 class="title centered" var="$page.title"></h1>

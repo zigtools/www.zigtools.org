@@ -4,7 +4,16 @@ header {
 }
 
 nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
   padding: 0.75rem 0;
+}
+
+@media (max-width: 800px) {
+  nav {
+    flex-direction: column;
+  }
 }
 
 body {
@@ -159,14 +168,11 @@ li a {
   align-self: center;
   box-sizing: border-box;
   padding: 0 1.5rem;
-  max-width: min(48rem, 100vw);
+  max-width: min(800px, 100vw);
 }
 
 #main-nav {
-  display: flex;
-  justify-content: center;
   font-size: larger;
-  gap: 0.4rem;
   border-bottom: thick solid var(--zig-orange);
   background-color: var(--nav-background-color);
 }
