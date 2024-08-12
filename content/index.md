@@ -11,7 +11,7 @@
 
 ## ZLS
 
-ZLS is a non-official implementation of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) for [Zig](https://github.com/ziglang/zig) in [Zig](https://github.com/ziglang/zig). It provides developers with IDE features in their editor.
+ZLS is a non-official implementation of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) for [Zig](https://ziglang.org/) in [Zig](https://ziglang.org/). It provides developers with IDE features in their editor.
 
 - [Installation Guide](zls/install/index.html)
 - [Releases](zls/releases/)
@@ -27,7 +27,7 @@ A demonstration of Zig and ZLS running inside of a browser using Webassembly.
 
 ## zig-lsp-codegen
 
-zig-lsp-codegen provides all necessary building blocks to develop [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations (like ZLS) in [Zig](https://github.com/ziglang/zig).
+zig-lsp-codegen provides all necessary building blocks to develop [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations (like ZLS) in [Zig](https://ziglang.org/).
 
 <!-- https://github.com/kristoff-it/ziggy     Soon™  -->
 <!-- https://github.com/kristoff-it/superhtml Soon™  -->
