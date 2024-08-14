@@ -92,12 +92,12 @@
     }
 
     #zig-version-error {
-      background-color: var(--pre-background-color);
-      border-radius: 0 0 1rem 1rem;
+      color: red;
+      font-size: 1.1rem;
     }
 
     #zig-version-error.active {
-      padding: 0.5rem 1rem;
+      padding: 0.25rem 1rem;
     }
 
     details > :not(summary) {
@@ -202,8 +202,7 @@
   </div>
   <form name="ZLS Version Selection" aria-label="ZLS Version Selection">
     <div class="form-input-container">
-      <label for="zig-version">Zig Version</label>
-      <input title="the Zig version you are using" type="text" id="zig-version" name="zig_version" required>
+      <input title="the Zig version you are using" type="text" id="zig-version" name="zig_version" placeholder="Enter your Zig Version" required>
       <span id="zig-version-error" aria-live="polite"></span>
     </div>
     <div class="form-button-container">
@@ -230,6 +229,8 @@
       using this public key:</p>
     <pre><code var="$page.custom.get!('minisign')"></code></pre>
     <table id="prebuilt-binary-table"></table>
+    <p>Provided by
+      <a href="https://github.com/zigtools/release-worker">zigtools/release-worker</a></p>
   </div>
   <div id="page" var="$page.content"></div>
   <!-- This prevents the view from jumping when closing details -->
