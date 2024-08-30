@@ -9,7 +9,7 @@
       <super>
       - zigtools
     </title>
-    <style var="$site.asset('style.css').bytes()"></style>
+    <style :text="$site.asset('style.css').bytes()"></style>
     <super>
   </head>
   <body>
