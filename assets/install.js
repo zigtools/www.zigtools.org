@@ -45,7 +45,7 @@ function formatBytes(bytes, decimals = 2) {
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 }
 
-function createBinaryTable(json) {
+function createBinaryTable(entries) {
   const heading = document.createElement("tr");
   for (const item of ["OS", "Arch", "Filename", "Signature", "Size"]) {
     const th = document.createElement("th");
@@ -58,7 +58,7 @@ function createBinaryTable(json) {
 
   const tbody = document.createElement("tbody");
 
-  for (const [key, value] of Object.entries(json)) {
+  for (const [key, value] of entries) {
     if (key === "version") continue;
     if (key === "date") continue;
 
@@ -164,7 +164,25 @@ async function update() {
     return false;
   }
 
-  const table = createBinaryTable(json);
+  const { date, version, ...artifacts } = json;
+
+  const sortScore = {
+    windows: 1,
+    macos: 2,
+    linux: 3,
+    wasi: 4,
+  };
+
+  const artifactEntries = Object.entries(artifacts);
+  artifactEntries.sort(([lhs], [rhs]) => {
+    const lhsOS = lhs.split("-")[1];
+    const rhsOS = rhs.split("-")[1];
+    const lhsScore = sortScore[lhsOS] ?? 5;
+    const rhsScore = sortScore[rhsOS] ?? 5;
+    return lhsScore > rhsScore;
+  });
+
+  const table = createBinaryTable(artifactEntries);
   prebuiltBinaryTable.innerHTML = table.outerHTML;
 
   buildFromSourceResult.style.display = "none";
