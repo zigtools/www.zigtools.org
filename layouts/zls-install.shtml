@@ -289,10 +289,6 @@
       <summary><h4>YouCompleteMe</h4></summary>
       <ctx :html="$page.contentSection('ycm')"></ctx>
     </details>
-    <details name="vim-extensions">
-      <summary><h4>LanguageClient-neovim</h4></summary>
-      <ctx :html="$page.contentSection('languageclient-neovim')"></ctx>
-    </details>
   </details>
   <details name="editor-extensions">
     <summary><h3>Emacs</h3></summary>

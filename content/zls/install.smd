@@ -285,17 +285,6 @@ let g:ycm_language_server =
     \\ ]
 ```
 
-[]($section.id('languageclient-neovim'))
-
-- Install the LanguageClient-neovim from [here](https://github.com/autozimu/LanguageClient-neovim).
-- Edit your neovim configuration and add `zls` for zig filetypes:
-
-```
-let g:LanguageClient_serverCommands = {
-        \\ 'zig': ['/path/to/zls_executable'],
-        \\ }
-```
-
 []($section.id('emacs'))
 
 - Use the inbuilt eglot mode. Make sure ZLS is in your path.
