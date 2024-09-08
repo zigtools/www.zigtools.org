@@ -220,7 +220,9 @@
 
 We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
 
-[![OpenCollective Backers](https://opencollective.com/zigtools/backers.svg?width=890&limit=1000)](https://opencollective.com/zigtools#category-CONTRIBUTE)
+```=html
+<a href="https://opencollective.com/zigtools#category-CONTRIBUTE"><img src="https://opencollective.com/zigtools/backers.svg?width=890&limit=1000" alt="OpenCollective Backers"></a>
+```
 
 **Full Changelog**: [0.9.0...0.10.0](https://github.com/zigtools/zls/compare/0.9.0...0.10.0)
 

@@ -7,6 +7,7 @@
 } 
 ---
 
+```=html
 <style>
 /** There should be proper light-mode versions of every image but this gave surprisingly good results. */
 @media (prefers-color-scheme: light) {
@@ -15,15 +16,19 @@
   }
 }
 </style>
+```
 
 ## Feature improvements 
 
 ### New Type Hints ([#1444](https://github.com/zigtools/zls/pull/1444)) ([#1512](https://github.com/zigtools/zls/pull/1512)) ([#1778](https://github.com/zigtools/zls/pull/1778))
 
+```=html
 <!-- thank you @Koranir and @nullptrdev -->
+```
 
 New inlay hints have been added for variable declarations, captured values and struct literal fields.
 
+```=html
 <!--
 const std = @import("std");
 
@@ -38,6 +43,7 @@ pub fn main() !void {
     }
 }
 -->
+```
 
 ![new type hints](new-type-hints.png)
 
@@ -111,18 +117,24 @@ Completions inside an `@import` will include the `std` and `builtin` module with
 
 A config option in Vim/Neovim depends on the LSP or completion plugin being used.
 
+
+```=html
 <!-- https://invent.kde.org/utilities/kate/-/blob/master/addons/lspclient/lspclientcompletion.cpp -->
+```
 
 Kate Editor has a config option for this feature `Configure` -> `Editing` -> `Auto Completion` -> `Auto word completion` -> `Remove tail on complete` but it does not use ZLS.
 
 #### completions for function aliases with self parameters ([#1656](https://github.com/zigtools/zls/pull/1656))
 
+```=html
 <!-- thank you @nolanderc -->
+```
 
 Declarations to function alias that take a self parameter are now included when providing completions on member access.
 
 The following example would previously not give any completions.
 
+```=html
 <!--
 const Foo = struct {
     const alias = func;
@@ -135,6 +147,7 @@ test {
     foo.
 }
 -->
+```
 
 ![completions on function alias](completions-on-function-alias.png)
 
@@ -172,7 +185,9 @@ When your editor does not support displaying a message window, you will still fi
 
 #### autofix disabled by default
 
+```=html
 <!-- @Techatrix **sad autofix noises** -->
+```
 
 The autofix feature is now disabled by default. ([#1657](https://github.com/zigtools/zls/pull/1657))
 
@@ -194,7 +209,9 @@ This options served as a workaround for an issue with long completion detail ent
 
 ### Performance
 
+```=html
 <!-- thank you @SuperAuguste -->
+```
 
 The [DocumentScope](https://github.com/zigtools/zls/blob/master/src/DocumentScope.zig) is an internal datastructure of ZLS that keeps track of variables, declarations and their scopes. Most analysis relies on it to perform symbol lookups, iterate symbols or quickly traverse scopes. Every time a document is modified, the DocumentScope is rebuilt for the entire document so it has been rewritten with Data-oriented design principles in mind to reduce its performance footprint. ([#1517](https://github.com/zigtools/zls/pull/1517))
 
@@ -251,7 +268,9 @@ When encountering issues, do not hesitate to report your issues on the [Github i
 
 We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
 
-[![OpenCollective Backers](https://opencollective.com/zigtools/backers.svg?width=890&limit=1000)](https://opencollective.com/zigtools#category-CONTRIBUTE)
+```=html
+<a href="https://opencollective.com/zigtools#category-CONTRIBUTE"><img src="https://opencollective.com/zigtools/backers.svg?width=890&limit=1000" alt="OpenCollective Backers"></a>
+```
 
 **Full Changelog**: [0.11.0...0.12.0](https://github.com/zigtools/zls/compare/0.11.0...0.12.0)
 
