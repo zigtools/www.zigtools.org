@@ -1,5 +1,5 @@
 <extend template="base.shtml">
-<title id="title" :html="$page.title"></title>
+<title id="title" :text="$page.title"></title>
 <head id="head">
   <style>
     h1 {

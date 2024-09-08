@@ -1,5 +1,5 @@
 <extend template="base.shtml">
-<title id="title" :html="$page.title"></title>
+<title id="title" :text="$page.title"></title>
 <head id="head">
   <style>
     h1,
@@ -175,7 +175,7 @@
 </head>
 <header id="header">
   <div id="header-experimental-warning" :html="$page.contentSection('header-experimental-warning')"></div>
-  <h1 class="title" :html="$page.title"></h1>
+  <h1 class="title" :text="$page.title"></h1>
 </header>
 <main id="content">
   <div class="vscode-banner">
@@ -218,7 +218,7 @@
     <p>All files are signed with
       <a href="https://jedisct1.github.io/minisign/">minisign</a>
       using this public key:</p>
-    <pre><code :html="$page.custom.get('minisign')"></code></pre>
+    <pre><code :text="$page.custom.get('minisign')"></code></pre>
     <table id="prebuilt-binary-table"></table>
     <p>Provided by
       <a href="https://github.com/zigtools/release-worker">zigtools/release-worker</a></p>

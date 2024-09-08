@@ -1,5 +1,5 @@
 <extend template="base.shtml">
-<title id="title" :html="$page.title"></title>
+<title id="title" :text="$page.title"></title>
 <head id="head">
   <style>
     h1,
@@ -29,7 +29,7 @@
   </style>
 </head>
 <header id="header">
-  <h1 class="title" :html="$page.title"></h1>
+  <h1 class="title" :text="$page.title"></h1>
 </header>
 <main id="content">
   <div id="page" :html="$page.content()"></div>
