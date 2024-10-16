@@ -212,9 +212,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ziglang/zig.vim'       " https://github.com/ziglang/zig.vim
 call plug#end()
 
--- disable format-on-save from `ziglang/zig.vim`
+" disable format-on-save from `ziglang/zig.vim`
 let g:zig_fmt_autosave = 0
--- don't show parse errors in a separate window
+" don't show parse errors in a separate window
 let g:zig_fmt_parse_errors = 0
 
 :lua << EOF
