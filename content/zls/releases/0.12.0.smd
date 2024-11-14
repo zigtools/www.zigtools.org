@@ -271,7 +271,7 @@ We'd like to take a second to thank all our awesome [contributors](https://githu
 ```=html
 <figure>
     <a href="https://opencollective.com/zigtools#category-CONTRIBUTE">
-        <img src="https://opencollective.com/zigtools/backers.svg?width=890&limit=1000" alt="OpenCollective Backers">
+        <img src="https://opencollective.com/zigtools/backers.svg?limit=1000" alt="OpenCollective Backers">
     </a>
 </figure>
 ```
