@@ -1,0 +1,25 @@
+---
+{
+    .title = "Doom Emacs",
+    .date = @date("2020-02-07T02:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+    },
+}  
+---
+
+># [Author's Notice]($block.attrs('warning'))
+> This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
+
+1. Install [Doom Emacs](https://github.com/doomemacs/doomemacs)
+2. Enable `:tools lsp` module
+3. Enable `:lang (zig +lsp)` module
+4. Run `doom sync` in a terminal
+5. Set in-editor configuration (optional)
+6. Run `doom doctor` to check if Zig and ZLS have been found
+
+## Configuration
+
+Doom Emacs uses [lsp-mode](https://github.com/emacs-lsp/lsp-mode/) as the LSP Plugin. In-Editor configuration for lsp-mode can be found [here](/zls/editors/emacs).

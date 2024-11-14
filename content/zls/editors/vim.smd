@@ -1,0 +1,19 @@
+---
+{
+    .title = "Neovim / Vim8",
+    .date = @date("2020-02-06T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+}  
+---
+
+The following LSP plugins are documented:
+
+- [nvim-lspconfig](/zls/editors/vim/nvim-lspconfig) (recommended for Neovim users)
+- [CoC](/zls/editors/vim/coc)
+- [YouCompleteMe](/zls/editors/vim/ycm)
+
+
+># [Warning]($block.attrs('warning'))
+>
+>The [mason](https://github.com/williamboman/mason.nvim) package manager can only install the latest tagged release of ZLS which should **not** be used with Zig master.

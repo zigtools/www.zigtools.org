@@ -24,6 +24,6 @@
   </nav>
   <h1 class="title centered" :text="$page.title"></h1>
 </header>
-<main id="content">
-  <div id="page" :html="$page.content()"></div>
-</main>
+<div id="content">
+  <main id="page" :html="$page.content()"></main>
+</div>

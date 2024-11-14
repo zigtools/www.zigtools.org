@@ -1,0 +1,22 @@
+---
+{
+    .title = "Spacemacs",
+    .date = @date("2020-02-07T03:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+    },
+}  
+---
+
+># [Author's Notice]($block.attrs('warning'))
+> This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
+
+- Add `lsp` and `zig` to `dotspacemacs-configuration-layers` in your `.spacemacs` file.
+- If you don't have `zig` or `zls` in your `PATH`, add the following to `dotspacemacs/user-config` in your `.spacemacs` file:
+
+```
+(setq lsp-zig-zls-executable "/path/to/zls_executable")
+(setq lsp-zig-zig-exe-path "/path/to/zig_executable")
+```

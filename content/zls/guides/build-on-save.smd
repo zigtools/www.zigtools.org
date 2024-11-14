@@ -1,0 +1,80 @@
+---
+{
+    .title = "Build-On-Save",
+    .date = @date("2020-04-01T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+} 
+---
+
+ZLS can be configured to run your build script on save. If that results in build errors, they will be displayed in your editor like any other diagnostic.
+
+## Configuration
+
+By default, ZLS will automatically enable Build-On-Save if your build script defines a "check" step. Otherwise you will need set the `enable_build_on_save` config option.
+You can use `build_on_save_args` to configure which command-line arguments should be passed to your build script.
+
+Here is an example:
+```json
+{
+    "enable_build_on_save": true,
+    "build_on_save_args": ["install", "-Dtarget=wasm32-wasi", "-fwasmtime"],
+}
+```
+
+># [Warning to ZLS 0.13.0 users]($block.attrs('warning'))
+>
+>The behaviour of ZLS 0.13.0 (anything before `0.14.0-dev.144+fcb8bcb5d` to be precise) is different from the current nightly build.
+>
+>The `enable_build_on_save` option need to be enabled even if a "check" step is defined. The `build_on_save_args` is also no available. `build_on_save_step` needs to be used instead which can only specify the step name but no additional arguments.
+
+## Add a "check" step to your build.zig
+
+This part is more deeply tied to your specific project but the gist is the following: whatever you do to define your main executable / module / library, you do it again in a new step named check.
+
+I'll use for this example the executable definition step you get generated automatically from `zig init`.
+
+```zig
+// This is an example executable definition, no need to copy it.
+const exe = b.addExecutable(.{
+    .name = "foo",
+    .root_source_file = b.path("src/main.zig"),
+    .target = target,
+    .optimize = optimize,
+});
+
+// Any other code to define dependencies would probably be here.
+
+b.installArtifact(exe);
+
+
+// This is where the interesting part begins.
+// As you can see we are re-defining the same executable but 
+// we're binding it to a dedicated build step.
+const exe_check = b.addExecutable(.{
+    .name = "foo",
+    .root_source_file = b.path("src/main.zig"),
+    .target = target,
+    .optimize = optimize,
+});
+
+// Any other code to define dependencies would probably be here.
+
+
+// These two lines you might want to copy
+// (make sure to rename 'exe_check')
+const check = b.step("check", "Check if foo compiles");
+check.dependOn(&exe_check.step);
+```
+
+The most important part about this second executable definition is that we ask to build it, **but we never install it**. If you look at the final line of the first section, you will see that we call `b.installArtifact` on the original executable, but for the executable bound to the "check" step, we don't.
+
+This one-line difference will have a big impact on the resulting behavior of the build as it will add the `-fno-emit-bin` flag to the compiler invocation which, in other words, means that Zig will analyze your code (and report any error) but it won't bother calling into LLVM since you don't plan to install the executable anyway.
+
+The result is that you will get diagnostics pretty fast since you won't have to go through the “LLVM Emit Code…” phase.
+
+Once you're done with this, restart your editor (or at least ZLS), **save your file with an error in it**, and enjoy your new spiffy diagnostics.
+
+## Special Thanks
+
+This Guide is based on the ["Improving Your Zig Language Server Experience"](https://kristoff.it/blog/improving-your-zls-experience/) Blog Post by Loris Cro.

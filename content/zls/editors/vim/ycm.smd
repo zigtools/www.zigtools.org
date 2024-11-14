@@ -1,0 +1,29 @@
+---
+{
+    .title = "YouCompleteMe",
+    .date = @date("2020-02-06T03:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+      "code-action-on-save": "Unsupported"
+    },
+}  
+---
+
+1. Install [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
+2. Install [zig.vim](https://github.com/ziglang/zig.vim)
+3. Add these lines to your `.vimrc`:
+
+```vim
+let g:ycm_language_server =
+    \\ [
+    \\    {
+    \\     'name': 'zls',
+    \\     'filetypes': [ 'zig' ],
+    \\     'cmdline': [ '/path/to/zls_executable' ]
+    \\    }
+    \\ ]
+```
+
+To apply in-editor configuration or manually specify paths to `zig`, please refer to the YCM [LSP Configuration Docs](https://github.com/ycm-core/YouCompleteMe?tab=readme-ov-file#lsp-configuration).

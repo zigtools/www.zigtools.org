@@ -1,73 +1,38 @@
-<extend template="base.shtml">
+<extend template="with-zls-docs.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head">
+  <link rel="dns-prefetch" href="https://releases.zigtools.org/">
   <style>
-    h1,
-    h2 {
-      align-self: center;
-      text-align: center;
-    }
-
-    h1 {
-      margin-top: 1.25rem;
-      margin-bottom: 1.25rem;
-    }
-
-    h3 {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    h4,
-    h5,
-    h6 {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    h3,
-    h4 {
-      border-bottom: 1px dashed var(--border-color);
-    }
-
-    details > :last-child {
-      padding-bottom: 1rem;
-    }
-
-    #header-experimental-warning {
-      padding: 0 1rem;
-      text-align: center;
-      background-color: hsl(0, 60%, 40%);
-    }
-
-    #header-experimental-warning,
-    #header-experimental-warning a {
-      color: white;
-    }
-
-    .vscode-banner {
+    .banner {
       display: flex;
       width: fit-content;
       text-align: center;
       gap: 1rem;
-      background-color: var(--pre-background-color);
+      background-color: var(--secondary-background-color);
       border: 0.3rem solid;
       border-radius: 9999px;
-      border-color: rgb(0, 120, 212);
       padding: 0 1.5rem;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0.5rem auto;
     }
 
-    .vscode-banner > * {
+    .banner > * {
       display: flex;
       flex-direction: column;
       align-self: center;
     }
 
-    .vscode-banner img {
+    .banner img {
       height: 3.5rem;
       aspect-ratio: 25 / 29;
+    }
+
+    .vscode-banner {
+      border-color: rgb(0, 120, 212);
+      font-size: smaller;
+    }
+
+    .noscript-banner {
+      border-color: rgb(200, 0, 0);
     }
 
     #prebuilt-binary-result {
@@ -94,25 +59,6 @@
 
     #zig-version-error.active {
       padding: 0.25rem 1rem;
-    }
-
-    details > :not(summary) {
-      margin-left: 1.5rem;
-    }
-
-    summary {
-      display: flex;
-    }
-    summary > * {
-      flex-grow: 1;
-    }
-    summary::before {
-      content: "\2212";
-      margin-right: 0.5rem;
-      align-self: center;
-    }
-    details[open] > summary::before {
-      content: "+" !important;
     }
 
     form {
@@ -173,22 +119,19 @@
     }
   </style>
 </head>
-<header id="header">
-  <div id="header-experimental-warning" :html="$page.contentSection('header-experimental-warning')"></div>
-  <h1 class="title" :text="$page.title"></h1>
-</header>
-<main id="content">
-  <div class="vscode-banner">
+<header id="header"></header>
+<div id="main">
+  <noscript>
+    <div class="banner noscript-banner">
+      <p>The install tool requires JavaScript to be enabled in your browser!</p>
+    </div>
+  </noscript>
+  <div class="banner vscode-banner">
     <div>
       <img src="$site.asset('vscode.svg').link()" alt="Visual Studio Code Icon">
     </div>
     <div>
-      <p>
-        <strong>VS Code</strong>
-        users only need the
-        <a href="https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig">official Zig Language extension</a>.
-      </p>
-      <p><em>No need to manually install Zig or ZLS.</em></p>
+      <ctx :html="$page.contentSection('vscode-banner')"></ctx>
     </div>
   </div>
   <form name="ZLS Version Selection" aria-label="ZLS Version Selection">
@@ -206,120 +149,11 @@
     </div>
   </form>
   <div id="build-from-source-result" style="display: none;">
-    <h2>Build From Source</h2>
-    <p>To built ZLS from source, run the following commands:</p>
-    <pre><code id="build-from-source-code"></code></pre>
-    <p>If you wish to add Zig or ZLS to your
-      <code>$PATH</code>, please refer to the
-      <a href="https://ziglang.org/learn/getting-started/#direct-download">Zig Getting Started Guide</a>.</p>
+    <ctx :html="$page.contentSection('build-from-source')"></ctx>
   </div>
   <div id="prebuilt-binary-result" style="display: none;">
-    <h2>Install Prebuilt Binary</h2>
-    <p>All files are signed with
-      <a href="https://jedisct1.github.io/minisign/">minisign</a>
-      using this public key:</p>
-    <pre><code :text="$page.custom.get('minisign')"></code></pre>
-    <table id="prebuilt-binary-table"></table>
-    <p>Provided by
-      <a href="https://github.com/zigtools/release-worker">zigtools/release-worker</a></p>
+    <ctx :html="$page.contentSection('install-prebuilt-binary')"></ctx>
   </div>
-  <!-- `name` attribute on `<details>`:  https://caniuse.com/mdn-html_elements_details_name -->
   <ctx :html="$page.contentSection('install-editor-extension')"></ctx>
-  <details name="editor-extensions">
-    <summary><h3>Visual Studio Code</h3></summary>
-    <ctx :html="$page.contentSection('visual-studio-code')"></ctx>
-  </details>
-  <details name="editor-extensions">
-    <summary><h3>Sublime Text</h3></summary>
-    <ctx :html="$page.contentSection('sublime-text')"></ctx>
-    <details>
-      <summary>
-        <p>show
-          <strong>Zig.sublime-settings</strong></p>
-      </summary>
-      <ctx :html="$page.contentSection('zig-sublime-settings')"></ctx>
-    </details>
-    <h4>Sublime Text 4</h4>
-    <details>
-      <summary>
-        <p>show
-          <strong>LSP.sublime-settings</strong></p>
-      </summary>
-      <ctx :html="$page.contentSection('lsp-sublime-settings-4')"></ctx>
-    </details>
-    <h4>Sublime Text 3</h4>
-    <details>
-      <summary>
-        <p>show
-          <strong>LSP.sublime-settings</strong></p>
-      </summary>
-      <ctx :html="$page.contentSection('lsp-sublime-settings-3')"></ctx>
-    </details>
-  </details>
-  <details name="editor-extensions">
-    <summary><h3>CLion / other JetBrains IDEs</h3></summary>
-    <ctx :html="$page.contentSection('jetbrains')"></ctx>
-  </details>
-  <details name="editor-extensions">
-    <summary><h3>Helix</h3></summary>
-    <ctx :html="$page.contentSection('helix')"></ctx>
-  </details>
-  <details name="editor-extensions">
-    <summary><h3>Neovim / Vim8</h3></summary>
-    <ctx :html="$page.contentSection('vim')"></ctx>
-    <details name="vim-extensions">
-      <summary><h4>nvim-lspconfig</h4></summary>
-      <ctx :html="$page.contentSection('nvim-lspconfig')"></ctx>
-      <details>
-        <summary><h5><code>init.lua</code>
-            with vim-plug</h5></summary>
-        <ctx :html="$page.contentSection('nvim-lspconfig-init-lua')"></ctx>
-      </details>
-      <details>
-        <summary><h5><code>init.vim</code>
-            with vim-plug</h5></summary>
-        <ctx :html="$page.contentSection('nvim-lspconfig-init-vimscript')"></ctx>
-      </details>
-    </details>
-    <details name="vim-extensions">
-      <summary><h4>CoC</h4></summary>
-      <ctx :html="$page.contentSection('coc')"></ctx>
-    </details>
-    <details name="vim-extensions">
-      <summary><h4>YouCompleteMe</h4></summary>
-      <ctx :html="$page.contentSection('ycm')"></ctx>
-    </details>
-  </details>
-  <details name="editor-extensions">
-    <summary><h3>Emacs</h3></summary>
-    <ctx :html="$page.contentSection('emacs')"></ctx>
-  </details>
-  <details name="editor-extensions">
-    <summary><h3>Doom Emacs</h3></summary>
-    <ctx :html="$page.contentSection('doom-emacs')"></ctx>
-  </details>
-  <details name="editor-extensions">
-    <summary><h3>Spacemacs</h3></summary>
-    <ctx :html="$page.contentSection('spacemacs')"></ctx>
-  </details>
-  <details name="editor-extensions">
-    <summary><h3>Kate</h3></summary>
-    <ctx :html="$page.contentSection('kate')"></ctx>
-  </details>
-  <h2>Configuration</h2>
-  <details name="configuration">
-    <summary><h3>In-Editor Configuration (recommended)</h3></summary>
-    <ctx :html="$page.contentSection('in-editor-configuration')"></ctx>
-  </details>
-  <details name="configuration">
-    <summary><h3>zls.json</h3></summary>
-    <ctx :html="$page.contentSection('zls-json-configuration')"></ctx>
-  </details>
-  <details name="configuration">
-    <summary><h3>Per-build Configuration (advanced)</h3></summary>
-    <ctx :html="$page.contentSection('per-build-configuration')"></ctx>
-  </details>
-  <!-- This prevents the view from jumping when closing details -->
-  <div style="padding-bottom: 80vh"></div>
   <script :html="$site.asset('install.js').bytes()"></script>
-</main>
+</div>

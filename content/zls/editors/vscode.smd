@@ -1,0 +1,53 @@
+---
+{
+    .title = "VS Code",
+    .date = @date("2020-02-01T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+      "code-action-on-save": "Supported"
+    },
+}  
+---
+
+Using ZLS in VS Code is as simple as installing the [official Zig Language extension](https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig).
+
+- [open in VS Code]($link.url('vscode:extension/ziglang.vscode-zig').new(true))
+- [open in VSCodium]($link.url('vscodium:extension/ziglang.vscode-zig').new(true))
+
+## Configuration
+
+The VS Code extension can automatically install Zig and ZLS. The extension is intended to provide the best possible experience Out-of-the-Box without extra configuration.
+
+With that being said, there are some Zig specific settings that you may wish to apply:
+
+```json
+  // All nested settings will only affect Zig files.
+  "[zig]": {
+    // Formatting with ZLS matches `zig fmt`.
+    // The Zig FAQ answers some questions about `zig fmt`:
+    // https://github.com/ziglang/zig/wiki/FAQ
+    //
+    // disable format-on-save
+    // "editor.formatOnSave": false,
+
+    // disable inlay hints
+    // "editor.inlayHints.enabled": "off",
+
+    // overwrite words when accepting completions
+    "editor.suggest.insertMode": "replace",
+    // The `foldingProviderModel` provides more accurate stick scroll scopes
+    "editor.stickyScroll.defaultModel": "foldingProviderModel",
+    "editor.codeActionsOnSave": {
+      // Run code actions that currently supports adding and removing discards.
+      // "source.fixAll": "explicit",
+      
+      // Run code actions that sorts @import declarations.
+      // Available since ZLS `0.14.0-dev.188+2be424de5`
+      // "source.organizeImports": "explicit",
+    }
+  },
+```
+
+Add it to your `settings.json` (open with `Preferences: Open User Settings (JSON)`)

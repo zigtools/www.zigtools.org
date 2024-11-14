@@ -2,17 +2,23 @@
 <title id="title" :text="$page.title"></title>
 <head id="head">
   <style>
+    #content {
+      max-width: min(100%, 800px);
+    }
+
     h1 {
       font-size: 3.25rem;
       margin-top: 1rem;
       margin-bottom: 0.5rem;
-      align-self: center;
-      text-align: center;
     }
 
     h2 {
       margin-top: 1.5rem;
       margin-bottom: 0.25rem;
+    }
+
+    li + li {
+      margin-top: 0.6rem;
     }
   </style>
 </head>
@@ -24,6 +30,6 @@
     <i><a href="https://ziglang.org/">@ziglang</a></i>
     community.</p>
 </header>
-<main id="content">
-  <div id="page" :html="$page.content()"></div>
-</main>
+<div id="content">
+  <main id="page" :html="$page.content()"></main>
+</div>

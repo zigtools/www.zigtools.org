@@ -1,0 +1,48 @@
+---
+{
+    .title = "Emacs",
+    .date = @date("2020-02-07T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+}  
+---
+
+># [Author's Notice]($block.attrs('warning'))
+> This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
+
+The following Emacs *Variants* are documented:
+
+- [GNU Emacs](/zls/editors/emacs/gnu-emacs)
+- [Doom Emacs](/zls/editors/emacs/doom-emacs)
+- [Spacemacs](/zls/editors/emacs/spacemacs)
+
+## zig-mode
+
+The [zig-mode](https://github.com/ziglang/zig-mode) plugin provides syntax highlighting and automatic indentation for Zig. It can be used in combination with lsp-mode or Eglot.
+
+## lsp-mode
+
+If you don't have `zls` or `zig` in your `PATH`, set the following configuration variables:
+
+```
+(setq lsp-zig-zls-executable "/path/to/zls_executable")
+(setq lsp-zig-zig-exe-path "/path/to/zig_executable")
+```
+
+The available configuration are documented [here](https://emacs-lsp.github.io/lsp-mode/page/lsp-zig/).
+
+># [Warning]($block.attrs('warning'))
+> Be aware that the configuration options may not match what is available in your installed ZLS version.
+
+### Code Actions
+
+### source.fixAll
+
+Running `source.fixall` code actions without enabling the `force_autofix` config option is currently not supported See [emacs-lsp/lsp-mode#1842](https://github.com/emacs-lsp/lsp-mode/issues/1842)
+
+### source.organizeImports
+
+># [Note]($block.attrs('note'))
+>The `source.organizeImports` code action is available since ZLS `0.14.0-dev.188+2be424de5`.
+
+Use `s-l r o` to manually execute the code action.

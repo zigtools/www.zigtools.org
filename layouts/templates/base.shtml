@@ -15,15 +15,16 @@
   <body>
     <nav id="main-nav" class="centered">
       <a href="/">Home</a>
-      <a href="/zls/install/index.html">Install ZLS</a>
+      <a href="/zls/install">ZLS</a>
+      <a href="https://github.com/sponsors/zigtools">Sponsor</a>
       <a href="https://github.com/zigtools" target="_blank">GitHub</a>
     </nav>
     <header id="header">
       <super>
     </header>
-    <main id="content">
+    <div id="content">
       <super>
-    </main>
+    </div>
     <footer>
       <p>This
         <a href="https://github.com/zigtools/www.zigtools.org">Website</a>

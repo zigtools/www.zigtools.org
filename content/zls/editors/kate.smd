@@ -1,0 +1,55 @@
+---
+{
+    .title = "Kate",
+    .date = @date("2020-02-08T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+    },
+}  
+---
+
+Kate has builtin support for Zig and automatically asks you to enable ZLS if if is found in your `$PATH`.
+
+You can enable some LSP related settings like "Inlay Hints" or "Format on Save" under `Settings -> LSP Client -> Client Settings`
+
+If you wish to manually specify the path to the ZLS executable or apply [in-editor-configuration](/zls/configure/in-editor), open `Settings -> LSP Client -> User Server Settings` and add the following snippet (and remove comments):
+
+```json
+{
+  "servers": {
+    "zig": {
+      "command": ["/path/to/zls_executable"],
+      "url": "https://github.com/zigtools/zls",
+      "highlightingModeRegex": "^Zig$",
+      // There are two ways to set config options:
+      //   - edit your `zls.json` that applies to any editor that uses ZLS
+      //   - set in-editor config options with the `initializationOptions` field below.
+      //
+      // Further information on how to configure ZLS:
+      // https://zigtools.org/zls/configure/
+      //
+      // Support for `initializationOptions` in Kate requires at least ZLS `0.14.0-dev.22+a263b8dc6`.
+      "initializationOptions": {
+        // Whether to enable build-on-save diagnostics
+        //
+        // Further information about build-on save:
+        // https://zigtools.org/zls/guides/build-on-save/
+        // "enable_build_on_save": true,
+
+        // omit the following line if `zig` is in your PATH
+        "zig_exe_path": "/path/to/zig_executable"
+      }
+    }
+  }
+}
+```
+
+># [Warning]($block.attrs('warning'))
+>
+>Be aware that Kate does not support Json with comments or trailing commas.
+
+## Code Actions on save
+
+Kate does not support code actions on save.

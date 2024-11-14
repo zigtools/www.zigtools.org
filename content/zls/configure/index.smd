@@ -1,0 +1,12 @@
+---
+{
+    .title = "Configuration",
+    .date = @date("2020-03-01T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+}  
+---
+
+- [In-Editor Configuration](./in-editor) (recommended)
+- [zls.json](./zls-json)
+- [Per-build Configuration](./per-build) (advanced)

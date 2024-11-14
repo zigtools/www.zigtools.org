@@ -1,0 +1,30 @@
+---
+{
+    .title = "GNU Emacs",
+    .date = @date("2020-02-07T01:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+    },
+}  
+---
+
+># [Author's Notice]($block.attrs('warning'))
+> This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
+
+## Eglot
+
+1. Install [Melpa](https://melpa.org/#/getting-started)
+2. Install [zig mode](https://github.com/ziglang/zig-mode) (optional)
+
+You can use the builtin [Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/index.html) LSP Client.
+
+- Use the inbuilt eglot mode. Make sure ZLS is in your PATH.
+
+Use `M-x eglot` in a zig-mode buffer to start the server.
+
+Eglot supports [In-Editor configuration](https://www.gnu.org/software/emacs/manual/html_node/eglot/Advanced-server-configuration.html)
+
+# lsp-mode
+

@@ -47,7 +47,7 @@ pub fn main() !void {
 
 ![new type hints](new-type-hints.png)
 
-These new inlay hints can be seperately configured with the following new config options:
+These new inlay hints can be separately configured with the following new config options:
 
 - `inlay_hints_show_parameter_name`
 - `inlay_hints_show_variable_type_hints`

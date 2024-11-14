@@ -3,15 +3,31 @@ header {
   flex-direction: column;
 }
 
-nav {
+#main-nav, .release-nav {
   display: flex;
   justify-content: center;
   gap: 1rem;
   padding: 0.75rem 0;
 }
 
-@media (max-width: 800px) {
-  nav {
+#content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-self: center;
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  max-width: min(100%, 800px);
+}
+
+#main-nav {
+  font-size: larger;
+  border-bottom: thick solid var(--zig-orange);
+  background-color: var(--nav-background-color);
+}
+
+@media (max-width: 600px) {
+  #main-nav {
     flex-direction: column;
   }
 }
@@ -47,10 +63,54 @@ pre {
   border: 0 dashed;
   border-top-width: 1px;
   border-bottom-width: 1px;
-  padding: 0.4rem 0.25rem;
+  padding: 0;
   overflow: auto;
-  background-color: var(--pre-background-color);
+  background-color: var(--secondary-background-color);
   border-color: var(--border-color);
+}
+
+
+@media (min-width: 600px) {
+  pre {
+    margin: 1rem;
+  }
+}
+
+pre code {
+  background-color: var(--secondary-background-color);
+  padding: 0.4rem 0.25rem;
+  display: block;
+  padding-right: 0;
+}
+
+pre::before {
+  display: block;
+  font-size: 1.2em;
+  padding: 0.5rem;
+  position: sticky;
+  z-index: 10;
+  background-color: var(--tertiary-background-color);
+  color: var(--code-text-color);
+}
+
+pre:has(> code.zig):before {
+  content: "Zig";
+}
+
+pre:has(> code.json):before {
+  content: "JSON";
+}
+
+pre:has(> code.lua):before {
+  content: "Lua";
+}
+
+pre:has(> code.vim):before {
+  content: "Vim";
+}
+
+pre:has(> code.toml):before {
+  content: "TOML";
 }
 
 p:has(+ pre) {
@@ -92,6 +152,7 @@ h6 {
 
 h1 {
   font-size: 2.75rem;
+  text-align: center;
 }
 
 h2 {
@@ -131,7 +192,7 @@ td {
 }
 
 tr:nth-child(2n) > td {
-  background-color: var(--pre-background-color);
+  background-color: var(--secondary-background-color);
 }
 
 /* Figure */
@@ -143,6 +204,11 @@ figure {
 
 figure img {
   max-width: 100%;
+  height: auto;
+}
+
+figure figcaption {
+  text-align: center;
 }
 
 /* Lists */
@@ -151,53 +217,56 @@ ul {
   padding-left: 1.5rem;
 }
 
-li + li {
-  margin-top: 0.6rem;
-}
-
-li a {
-  padding: 0.4rem 0.4rem 0.4rem 0;
-}
-
 /* Classes */
-
-#content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-self: center;
-  box-sizing: border-box;
-  padding: 0 1.5rem;
-  max-width: min(800px, 100vw);
-}
-
-#main-nav {
-  font-size: larger;
-  border-bottom: thick solid var(--zig-orange);
-  background-color: var(--nav-background-color);
-}
 
 .centered {
   align-items: center;
   text-align: center;
 }
 
+.block {
+  border-left: 0.3rem solid;
+  padding: 0.25rem 1rem;
+  margin: 0.75rem 0;
+}
+
+.block h1 {
+  font-size: 1em;
+  position: relative !important;
+  margin: 0  0.25rem !important;
+  text-align: left;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.note {
+  border-color: #4493F8;
+}
+
+.tip {
+  border-color: #3FB950;
+}
+
+.warning {
+  border-color: #CCCC49;
+}
+
 /* Color */
 
 :root {
   --zig-orange: #f7a41d;
+  --border-color: #666;
 
   --background-color: white;
-  --text-color: #222;
-  --text-highlight-color: #111;
-  --link-color: #121212;
-  --border-color: #666;
-  --pre-background-color: #f5f5f5;
-  --pre-foreground-color: black;
+  --secondary-background-color: #f5f5f5;
+  --tertiary-background-color: #eaeaea;
   --nav-background-color: white;
+  --code-text-color: black;
+  --text-highlight-color: #111;
+  --text-color: #222;
+  --link-color: #121212;
 
   /** 
-    * The luminance values have carefully choosen to fufill the WCAG Minimum
+    * The luminance values have carefully chosen to fulfill the WCAG Minimum
     * Contrast Criterion (AA)
     */
   --comment: hsl(270, 10%, 40%);
@@ -213,12 +282,13 @@ li a {
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #121212;
-    --text-color: #ccc;
-    --text-highlight-color: #eee;
-    --link-color: #eee;
-    --pre-background-color: #191919;
-    --pre-foreground-color: #c8c8c8;
+    --secondary-background-color: #191919;
+    --tertiary-background-color: #242424;
     --nav-background-color: #242424;
+    --code-text-color: #c8c8c8;
+    --text-highlight-color: #fafafa;
+    --text-color: #ccc;
+    --link-color: #eee;
 
     --comment: hsl(270, 10%, 55%);
     --orange: hsl(35, 70%, 50%);
@@ -279,6 +349,6 @@ li a {
 
 @media (prefers-color-scheme: dark) {
   .variable {
-    color: var(--pre-foreground-color);
+    color: var(--code-text-color);
   }
 }

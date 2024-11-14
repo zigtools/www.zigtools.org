@@ -1,0 +1,49 @@
+---
+{
+    .title = "View Logs",
+    .date = @date("2020-04-02T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+} 
+---
+
+># [Warning]($block.attrs('warning'))
+>
+>A non-debug build of ZLS will not report debug logs (by default) and stack traces when ZLS crashes.
+>
+>It is recommended to [building from source](https://github.com/zigtools/zls#from-source) without `-Doptimize` to include more verbose log messages.
+
+## zls.log
+
+># [Note]($block.attrs('note'))
+>This feature has been added in ZLS `0.14.0-dev.50+3354fdcb`.
+
+Run `zls env` and then look for the `log_file` property:
+
+```json
+{
+ "version": "0.14.0-dev.50+3354fdcb",
+ "global_cache_dir": "/home/anon/.cache/zls",
+ "global_config_dir": "/etc/xdg",
+ "local_config_dir": "/home/anon/.config",
+ "config_file": null,
+ "log_file": "/home/anon/.cache/zls/zls.log"
+}
+```
+
+The logs can then be found in `/home/anon/.cache/zls/zls.log`. Please note that ZLS will not empty the file when restarting but always append logs instead. The log file will not contain stack traces when ZLS crashes. Use Editor logs when the stack trace should be included.
+
+## Use Editor logs
+
+| Code Editor         | Instructions                                  | Notes                                                                                                             |
+| ------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Visual Studio Code  | Bottom Panel -> Output -> Zig Language Server | requires the `ziglang.vscode-zig` extension                                                                       |
+| Sublime Text        | `LSP: Toggle Log Panel`                       | requires the `LSP` package                                                                                        |
+| JetBrains IDE with ZigBrains | Start the editor through the terminal |                                                                                                                   |
+| Helix               | `Open the helix log file. [:log-open]`        |                                                                                                                   |
+| nvim-lspconfig      | `:LspLog`                                     | [nvim-lspconfig Troubleshooting](https://github.com/neovim/nvim-lspconfig#troubleshooting)                        |
+| NeoVim/Vim with CoC | `:CocCommand workspace.showOutput`            | [CoC Debug language server](https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel) |
+| Emacs with LSP-Mode | `lsp-workspace-show-log`                      | [LSP Mode Troubleshooting](https://emacs-lsp.github.io/lsp-mode/page/troubleshooting/#troubleshooting)            |
+| Kate                | Bottom Sidebar -> Output                      |                                                                                                                   |
+
+If your code editor or extension is not included in the above table, feel free to open an issue about it or edit this page directly.

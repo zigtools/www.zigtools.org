@@ -1,0 +1,28 @@
+---
+{
+    .title = "Per-Build Config",
+    .date = @date("2020-03-04T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+} 
+---
+
+The following options can be set on a per-project basis by placing `zls.build.json` in the project root directory next to `build.zig`.
+
+| Option                  | Type             | Default value | What it Does                                                                                                                                              |
+| ----------------------- | ---------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `relative_builtin_path` | `?[]const u8`    | `null`        | If present, this path is used to resolve `@import("builtin")`                                                                                             |
+| `build_options`         | `?[]BuildOption` | `null`        | If present, this contains a list of user options to pass to the build. This is useful when options are used to conditionally add packages in `build.zig`. |
+
+#### `BuildOption`
+
+`BuildOption` is defined as follows:
+
+```zig
+const BuildOption = struct {
+    name: []const u8,
+    value: ?[]const u8 = null,
+};
+```
+
+When `value` is present, the option will be passed the same as in `zig build -Dname=value`. When `value` is `null`, the option will be passed as a flag instead as in `zig build -Dflag`.

@@ -1,0 +1,45 @@
+---
+{
+    .title = "Helix",
+    .date = @date("2020-02-04T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+      "code-action-on-save": "Unsupported"
+    },
+}  
+---
+
+If `zls` and `zig` are in your `PATH`, everything should work out of the box.
+
+To apply in-editor configuration or manually specify paths to `zls` or `zig`, open `<config_dir>/helix/languages.toml` and add the following:
+
+```toml
+[language-server.zls]
+# omit the following line if `zls` is in your PATH
+command = "/path/to/zls_executable"
+# There are two ways to set config options:
+#   - edit your `zls.json` that applies to any editor that uses ZLS
+#   - set in-editor config options with the `config.<name>` fields below.
+#
+# Further information on how to configure ZLS:
+# https://zigtools.org/zls/configure/
+
+# omit the following line if `zig` is in your PATH
+config.zig_exe_path = "/path/to/zig_executable"
+```
+
+Further information on [languages.toml files](https://docs.helix-editor.com/languages.html#languagestoml-files).
+
+To make sure that Zig and ZLS are set up as expected you should run the Helix health check:
+
+```
+hx --health zig
+```
+
+For more information on the health check results refer to [Health check](https://github.com/helix-editor/helix/wiki/Healthcheck).
+
+## Code Actions on save
+
+Helix does not yet support running code actions on save. See [helix-editor/helix#1565](https://github.com/helix-editor/helix/issues/1565).

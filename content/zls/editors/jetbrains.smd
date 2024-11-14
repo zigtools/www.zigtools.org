@@ -1,0 +1,21 @@
+---
+{
+    .title = "JetBrains IDEs",
+    .date = @date("2020-02-03T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Limited",
+      "code-action-on-save": "Unsupported"
+    },
+}  
+---
+
+- Install the [ZigBrains](https://plugins.jetbrains.com/plugin/22456-zigbrains) plugin from the marketplace
+- Restart the IDE (necessary for the plugin to integrate itself correctly)
+
+If you have both `zig` and `zls` in your `PATH`, then the plugin should automatically detect both.
+
+If not, Go to `Settings` -> `Languages & Frameworks` -> `Zig`, and point the `Toolchain Location` and `ZLS path` to the zig compiler's directory and the ZLS executable, respectively.
+
+If everything is set up correctly, an LSP status indicator should appear in the bottom right corner and turn to green when you open a .zig file in the editor.

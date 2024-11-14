@@ -1,0 +1,115 @@
+---
+{
+    .title = "Conquer of Completion (CoC)",
+    .date = @date("2020-02-06T02:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+      "code-action-on-save": "Supported"
+    },
+}  
+---
+
+1. Install [CoC](https://github.com/neoclide/coc.nvim)
+1. Install [zig.vim](https://github.com/ziglang/zig.vim)
+2. Install [jsonc.vim](https://github.com/neoclide/jsonc.vim) (optional, so that comments in json are not highlighted as errors)
+3. Add ZLS in your `coc-settings.json` (open it using `:CocConfig`) like this:
+
+```json
+{
+  // Show inlay hints in the editor. Inlay hints are short annotations within the code,
+  // which show variable types or parameter names.
+  // "inlayHint.enable": true,
+  
+  // Use the language server to perform code highlighting
+  "semanticTokens.enable": true,
+
+  "languageserver": {
+    "zls": {
+      // use `"command": "zls"` if `zls` is in your PATH
+      "command": "/path/to/zls_executable",
+      "filetypes": [ "zig", "zon" ],
+      // There are two ways to set config options:
+      //   - edit your `zls.json` that applies to any editor that uses ZLS
+      //   - set in-editor config options with the `settings` field below.
+      //
+      // Further information on how to configure ZLS:
+      // https://zigtools.org/zls/configure/
+      "settings": {
+        // Whether to enable build-on-save diagnostics
+        //
+        // Further information about build-on save:
+        // https://zigtools.org/zls/guides/build-on-save/
+        // "zls.enable_build_on_save": true,
+
+        // omit the following line if `zig` is in your PATH
+        "zls.zig_exe_path": "/path/to/zig_executable",
+      }
+    },
+  }
+}
+```
+
+## Setup format on save
+
+```lua
+-- don't show parse errors in a separate window
+vim.g.zig_fmt_parse_errors = 0
+-- disable format-on-save from `ziglang/zig.vim`
+vim.g.zig_fmt_autosave = 0
+-- enable  format-on-save from coc.nvim + ZLS
+--
+-- Formatting with ZLS matches `zig fmt`.
+-- The Zig FAQ answers some questions about `zig fmt`:
+-- https://github.com/ziglang/zig/wiki/FAQ
+vim.api.nvim_create_autocmd('BufWritePre',{
+  pattern = {"*.zig", "*.zon"},
+  command = "call CocActionAsync('format')"
+})
+```
+
+```vim
+" disable format-on-save from `ziglang/zig.vim`
+let g:zig_fmt_autosave = 0
+" don't show parse errors in a separate window
+let g:zig_fmt_parse_errors = 0
+
+" enable format-on-save from coc.nvim + ZLS
+"
+" Formatting with ZLS matches `zig fmt`.
+" The Zig FAQ answers some questions about `zig fmt`:
+" https://github.com/ziglang/zig/wiki/FAQ
+autocmd BufWritePre *.zig,*.zon call CocActionAsync('format')
+```
+
+## Code Actions on save
+
+### source.fixAll
+
+```lua
+vim.api.nvim_create_autocmd('BufWritePre',{
+  pattern = {"*.zig", "*.zon"},
+  command = "call CocActionAsync('fixAll')"
+})
+```
+
+```vim
+autocmd BufWritePre *.zig,*.zon call CocActionAsync('fixAll')
+```
+
+### source.organizeImports
+
+># [Note]($block.attrs('note'))
+>The `source.organizeImports` code action is available since ZLS `0.14.0-dev.188+2be424de5`.
+
+```lua
+vim.api.nvim_create_autocmd('BufWritePre',{
+  pattern = {"*.zig", "*.zon"},
+  command = "call CocActionAsync('organizeImport')"
+})
+```
+
+```vim
+autocmd BufWritePre *.zig,*.zon call CocActionAsync('organizeImport')
+```

@@ -1,0 +1,34 @@
+---
+{
+    .title = "In-Editor Config",
+    .date = @date("2020-03-02T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+} 
+---
+
+In-Editor Config (or Workspace Config) will integrate with the config system of you editor to configure ZLS on a per-editor basis. 
+
+Some editors (like VS Code) also allow workspace-specific configuration. If you want to share the same configuration across multiple editors, please refer to the [zls.json]($link.page('zls/configure/zls-json')) alternative.
+
+## Supported Editors
+
+| Editor                                                        |  in-editor config support |
+| ------------------------------------------------------------- | ------------------------- |
+| [VS Code](/zls/editors/vscode)                                | Yes                       |
+| [Sublime Text](/zls/editors/sublime-text)                     | Yes                       |
+| [ZigBrains for JetBrains](/zls/editors/jetbrains)             | Limited\*                 |
+| [Helix](/zls/editors/helix)                                   | Yes                       |
+| [Zed](/zls/editors/zed)                                       | Yes\*\*                   |
+| [Neovim with nvim-lspconfig](/zls/editors/vim/nvim-lspconfig) | Yes                       |
+| [Vim/Neovim with CoC](/zls/editors/vim/coc)                   | Yes                       |
+| [Vim/Neovim with YCM](/zls/editors/vim/ycm)                   | Yes\*\*\*                 |
+| [Emacs with eglot](/zls/editors/emacs)                        | Yes                       |
+| [Emacs with lsp-mode](/zls/editors/emacs)                     | Yes                       |
+| [Kate](/zls/editors/kate)                                     | Yes\*\*                   |
+
+\* Only a subset of config options are available.
+
+\*\* In-Editor configuration for these editors requires at least ZLS `0.14.0-dev.22+a263b8dc6`.
+
+\*\*\* In-Editor configuration is somewhat tedious to setup for this Editor. You may favor the [zls.json]($link.page('zls/configure/zls-json')) alternative.

@@ -1,0 +1,64 @@
+---
+{
+    .title = "Zed",
+    .date = @date("2020-02-05T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+    .custom = {
+      "in-editor-configuration": "Supported",
+      "code-action-on-save": "Supported"
+    },
+}  
+---
+
+># [Warning]($block.attrs('warning'))
+>Zed will automatically install the latest tagged release of ZLS. The tagged release will **not** be compatible with Zig nightly.
+
+Add the following to your `settings.json`:
+
+```json
+{
+  "languages": {
+    "Zig": {
+      // Formatting with ZLS matches `zig fmt`.
+      // The Zig FAQ answers some questions about `zig fmt`:
+      // https://github.com/ziglang/zig/wiki/FAQ
+      "format_on_save": "language_server",
+      "code_actions_on_format": {
+        // Run code actions that currently supports adding and removing discards.
+        // "source.fixAll": true,
+
+        // Run code actions that sorts @import declarations.
+        // Available since ZLS `0.14.0-dev.188+2be424de5`
+        // "source.organizeImports": true,
+      }
+    }
+  },
+  "lsp": {
+    "zls": {
+      "binary": {
+        // omit the following line if `zls` is in your PATH
+        "path": "/path/to/zls_executable",
+      },
+      // There are two ways to set config options:
+      //   - edit your `zls.json` that applies to any editor that uses ZLS
+      //   - set in-editor config options with the `initialization_options` field below.
+      //
+      // Further information on how to configure ZLS:
+      // https://zigtools.org/zls/configure/
+      //
+      // Support for `initializationOptions` in Zed requires at least ZLS `0.14.0-dev.22+a263b8dc6`.
+      "initialization_options": {
+        // Whether to enable build-on-save diagnostics
+        //
+        // Further information about build-on save:
+        // https://zigtools.org/zls/guides/build-on-save/
+        // "enable_build_on_save": true,
+
+        // omit the following line if `zig` is in your PATH
+        "zig_exe_path": "/path/to/zig_executable",
+      }
+    }
+  }
+}
+```
