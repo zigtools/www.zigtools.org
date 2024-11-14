@@ -1,8 +1,8 @@
 ---
 {
-    .title = "ZLS 0.11.0 Release Notes",
+    .title = "ZLS 0.11.0",
     .date = @date("2023-08-13T16:23:12Z"),
-    .author = "Sample Author",
+    .author = "Techatrix",
     .layout = "zls-release.shtml",
 } 
 ---
