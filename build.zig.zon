@@ -11,7 +11,7 @@
     .paths = .{
         "content",
         "layouts",
-        "static",
+        "assets",
         "build.zig",
         "build.zig.zon",
         "LICENSE",
