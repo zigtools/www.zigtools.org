@@ -63,7 +63,7 @@ lspconfig.zls.setup {
       -- enable_build_on_save: true,
 
       -- omit the following line if `zig` is in your PATH
-      zig_exe_path: '/path/to/zig_executable'
+      zig_exe_path = '/path/to/zig_executable'
     }
   }
 }
