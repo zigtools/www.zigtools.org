@@ -22,7 +22,7 @@ The [zig-mode](https://github.com/ziglang/zig-mode) plugin provides syntax highl
 
 ## lsp-mode
 
-If you don't have `zls` or `zig` in your `PATH`, set the following configuration variables:
+If you don't have `zig` or `zls` in your `PATH`, set the following configuration variables:
 
 ```
 (setq lsp-zig-zls-executable "/path/to/zls_executable")

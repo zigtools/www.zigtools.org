@@ -13,7 +13,7 @@
 
 If `zls` and `zig` are in your `PATH`, everything should work out of the box.
 
-To apply in-editor configuration or manually specify paths to `zls` or `zig`, open `<config_dir>/helix/languages.toml` and add the following:
+To apply in-editor configuration or manually specify the path to `zig` or `zls`, open `<config_dir>/helix/languages.toml` and add the following:
 
 ```toml
 [language-server.zls]

@@ -22,7 +22,7 @@ Here is an example:
 }
 ```
 
-># [Warning to ZLS 0.13.0 users]($block.attrs('warning'))
+># [ZLS 0.13.0]($block.attrs('note'))
 >
 >The behaviour of ZLS 0.13.0 (anything before `0.14.0-dev.144+fcb8bcb5d` to be precise) is different from the current nightly build.
 >

@@ -14,7 +14,7 @@ Kate has builtin support for Zig and automatically asks you to enable ZLS if if 
 
 You can enable some LSP related settings like "Inlay Hints" or "Format on Save" under `Settings -> LSP Client -> Client Settings`
 
-If you wish to manually specify the path to the ZLS executable or apply [in-editor-configuration](/zls/configure/in-editor), open `Settings -> LSP Client -> User Server Settings` and add the following snippet (and remove comments):
+To apply [in-editor-configuration](/zls/configure/in-editor) or manually specify the path to `zig` or `zls`, open `Settings -> LSP Client -> User Server Settings` and add the following snippet (and remove comments):
 
 ```json
 {

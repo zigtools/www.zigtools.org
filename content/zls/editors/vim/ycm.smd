@@ -26,4 +26,4 @@ let g:ycm_language_server =
     \\ ]
 ```
 
-To apply in-editor configuration or manually specify paths to `zig`, please refer to the YCM [LSP Configuration Docs](https://github.com/ycm-core/YouCompleteMe?tab=readme-ov-file#lsp-configuration).
+To apply in-editor configuration or manually specify the path to `zig`, please refer to the YCM [LSP Configuration Docs](https://github.com/ycm-core/YouCompleteMe?tab=readme-ov-file#lsp-configuration).
