@@ -44,6 +44,7 @@ The logs can then be found in `/home/anon/.cache/zls/zls.log`. Please note that 
 | nvim-lspconfig      | `:LspLog`                                     | [nvim-lspconfig Troubleshooting](https://github.com/neovim/nvim-lspconfig#troubleshooting)                        |
 | NeoVim/Vim with CoC | `:CocCommand workspace.showOutput`            | [CoC Debug language server](https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel) |
 | Emacs with LSP-Mode | `lsp-workspace-show-log`                      | [LSP Mode Troubleshooting](https://emacs-lsp.github.io/lsp-mode/page/troubleshooting/#troubleshooting)            |
+| Emacs with Eglot    | `M-x eglot-stderr-buffer`                     | [Troubleshooting Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/Troubleshooting-Eglot.html)     |
 | Kate                | Bottom Sidebar -> Output                      |                                                                                                                   |
 
 If your code editor or extension is not included in the above table, feel free to open an issue about it or edit this page directly.
