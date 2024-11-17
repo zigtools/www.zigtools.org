@@ -12,18 +12,30 @@
 ---
 
 1. Install [CoC](https://github.com/neoclide/coc.nvim)
-1. Install [zig.vim](https://github.com/ziglang/zig.vim)
-2. Install [jsonc.vim](https://github.com/neoclide/jsonc.vim) (optional, so that comments in json are not highlighted as errors)
-3. Add ZLS in your `coc-settings.json` (open it using `:CocConfig`) like this:
+2. Install [zig.vim](https://github.com/ziglang/zig.vim)
+3. Install [jsonc.vim](https://github.com/neoclide/jsonc.vim) (optional, so that comments in json are not highlighted as errors)
+4. place the following snippet in your `coc-settings.json` (open it using `:CocConfig`)
+5. place the following snippet in your `init.lua` / `init.vim` / `.vimrc`
 
 ```json
+// coc-settings.json
 {
-  // Show inlay hints in the editor. Inlay hints are short annotations within the code,
-  // which show variable types or parameter names.
-  // "inlayHint.enable": true,
-  
-  // Use the language server to perform code highlighting
-  "semanticTokens.enable": true,
+  // All nested settings will only affect Zig files.
+  "[zig]": {
+    // enable format-on-save from CoC + ZLS
+    //
+    // Formatting with ZLS matches `zig fmt`.
+    // The Zig FAQ answers some questions about `zig fmt`:
+    // https://github.com/ziglang/zig/wiki/FAQ
+    "coc.preferences.formatOnSave": true,
+
+    // Show inlay hints in the editor. Inlay hints are short annotations within the code,
+    // which show variable types or parameter names.
+    // "inlayHint.enable": true,
+    
+    // Use the language server to perform code highlighting
+    "semanticTokens.enable": true
+  },
 
   "languageserver": {
     "zls": {
@@ -44,43 +56,29 @@
         // "zls.enable_build_on_save": true,
 
         // omit the following line if `zig` is in your PATH
-        "zls.zig_exe_path": "/path/to/zig_executable",
+        "zls.zig_exe_path": "/path/to/zig_executable"
       }
-    },
+    }
   }
 }
 ```
 
-## Setup format on save
-
 ```lua
+-- init.lua
+
 -- don't show parse errors in a separate window
 vim.g.zig_fmt_parse_errors = 0
 -- disable format-on-save from `ziglang/zig.vim`
 vim.g.zig_fmt_autosave = 0
--- enable  format-on-save from coc.nvim + ZLS
---
--- Formatting with ZLS matches `zig fmt`.
--- The Zig FAQ answers some questions about `zig fmt`:
--- https://github.com/ziglang/zig/wiki/FAQ
-vim.api.nvim_create_autocmd('BufWritePre',{
-  pattern = {"*.zig", "*.zon"},
-  command = "call CocActionAsync('format')"
-})
 ```
 
 ```vim
-" disable format-on-save from `ziglang/zig.vim`
-let g:zig_fmt_autosave = 0
+" init.vim or .vimrc
+
 " don't show parse errors in a separate window
 let g:zig_fmt_parse_errors = 0
-
-" enable format-on-save from coc.nvim + ZLS
-"
-" Formatting with ZLS matches `zig fmt`.
-" The Zig FAQ answers some questions about `zig fmt`:
-" https://github.com/ziglang/zig/wiki/FAQ
-autocmd BufWritePre *.zig,*.zon call CocActionAsync('format')
+" disable format-on-save from `ziglang/zig.vim`
+let g:zig_fmt_autosave = 0
 ```
 
 ## Code Actions on save
