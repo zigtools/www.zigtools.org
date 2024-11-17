@@ -38,7 +38,15 @@ The available configuration are documented [here](https://emacs-lsp.github.io/ls
 
 ### source.fixAll
 
-Running `source.fixall` code actions without enabling the `force_autofix` config option is currently not supported See [emacs-lsp/lsp-mode#1842](https://github.com/emacs-lsp/lsp-mode/issues/1842)
+Running `source.fixall` code actions is not natively supported by lsp-mode. See [emacs-lsp/lsp-mode#1842](https://github.com/emacs-lsp/lsp-mode/issues/1842)
+
+ZLS can work around this limitation by enabling the `force_autofix` config option.
+
+># [ZLS 0.13.0]($block.attrs('note'))
+>
+>The behaviour of ZLS 0.13.0 (anything before `0.14.0-dev.214+05ea40b50` to be precise) is different from the current nightly build.
+>
+>The `enable_autofix` option must be used instead of `force_autofix`.
 
 ### source.organizeImports
 

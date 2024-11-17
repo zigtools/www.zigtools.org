@@ -13,18 +13,67 @@
 ># [Author's Notice]($block.attrs('warning'))
 > This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
 
-## Eglot
+## [Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/index.html) 
 
 1. Install [Melpa](https://melpa.org/#/getting-started)
-2. Install [zig mode](https://github.com/ziglang/zig-mode) (optional)
+2. Install [zig mode](https://github.com/ziglang/zig-mode)
 
-You can use the builtin [Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/index.html) LSP Client.
+To apply [in-editor-configuration](/zls/configure/in-editor) or manually specify the path to `zig` or `zls`, add the following:
 
-- Use the inbuilt eglot mode. Make sure ZLS is in your PATH.
+```
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+    '(zig-mode . (
+      ;; Use `zls` if it is in your PATH
+      "/path/to/zls_executable"
+      ;; There are two ways to set config options:
+      ;;   - edit your `zls.json` that applies to any editor that uses ZLS
+      ;;   - set in-editor config options with the `initializationOptions` field below.
+      ;;
+      ;; Further information on how to configure ZLS:
+      ;; https://zigtools.org/zls/configure/
+      ;;
+      ;; Support for `initializationOptions` in Emacs requires at least ZLS `0.14.0-dev.22+a263b8dc6`.
+      :initializationOptions 
+        (;; Whether to enable build-on-save diagnostics
+         ;;
+         ;; Further information about build-on save:
+         ;; https://zigtools.org/zls/guides/build-on-save/
+         ;;enable_build_on_save t
+         
+         ;; omit the following line if `zig` is in your PATH
+         :zig_exe_path "/path/to/zig_executable"
+         )))))
+```
 
-Use `M-x eglot` in a zig-mode buffer to start the server.
+Eglot also supports Project-specific or User-specific [server configuration](https://www.gnu.org/software/emacs/manual/html_node/eglot/Advanced-server-configuration.html).
 
-Eglot supports [In-Editor configuration](https://www.gnu.org/software/emacs/manual/html_node/eglot/Advanced-server-configuration.html)
+Use `M-x eglot` in a zig-mode buffer to start the server or add a hook:
+
+```
+(add-hook 'zig-mode-hook 'eglot-ensure)
+```
+
+### Code Actions
+
+### source.fixAll
+
+Add the following to run `source.fixAll` code action on save:
+
+```
+(add-hook 'zig-mode-hook
+  (lambda ()
+    (add-hook 'before-save-hook
+      (lambda ()
+        (eglot-code-actions nil nil "source.fixAll" t)))))
+```
+
+### source.organizeImports
+
+># [Note]($block.attrs('note'))
+>The `source.organizeImports` code action is available since ZLS `0.14.0-dev.188+2be424de5`.
+
+Use `M-x eglot-code-action-organize-imports` to manually execute the code action.
 
 # lsp-mode
 
