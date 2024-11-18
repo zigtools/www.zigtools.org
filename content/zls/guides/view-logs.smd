@@ -41,6 +41,7 @@ The logs can then be found in `/home/anon/.cache/zls/zls.log`. Please note that 
 | Sublime Text        | `LSP: Toggle Log Panel`                       | requires the `LSP` package                                                                                        |
 | JetBrains IDE with ZigBrains | Start the editor through the terminal |                                                                                                                   |
 | Helix               | `Open the helix log file. [:log-open]`        |                                                                                                                   |
+| Zed                 | `debug: open language server logs`            |                                                                                                                   |
 | nvim-lspconfig      | `:LspLog`                                     | [nvim-lspconfig Troubleshooting](https://github.com/neovim/nvim-lspconfig#troubleshooting)                        |
 | NeoVim/Vim with CoC | `:CocCommand workspace.showOutput`            | [CoC Debug language server](https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel) |
 | Emacs with LSP-Mode | `lsp-workspace-show-log`                      | [LSP Mode Troubleshooting](https://emacs-lsp.github.io/lsp-mode/page/troubleshooting/#troubleshooting)            |
