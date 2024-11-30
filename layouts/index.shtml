@@ -2,10 +2,6 @@
 <title id="title" :text="$page.title"></title>
 <head id="head">
   <style>
-    #content {
-      max-width: min(100%, 800px);
-    }
-
     h1 {
       font-size: 3.25rem;
       margin-top: 1rem;

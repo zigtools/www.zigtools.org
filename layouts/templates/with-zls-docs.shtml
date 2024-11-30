@@ -9,7 +9,7 @@
       flex-direction: row;
       gap: 1rem;
       max-width: inherit;
-      width: min(100%, 1000px);
+      width: min(100%, 1200px);
       margin-top: 50px;
     }
 
