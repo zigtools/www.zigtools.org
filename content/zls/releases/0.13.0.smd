@@ -31,13 +31,13 @@ We'd like to take a second to thank all our awesome [contributors](https://githu
 
 ## Release Artifacts
 
-| OS      | Arch    | Filename                                                                                                      |
-| ------- | ------- | ------------------------------------------------------------------------------------------------------------- |
-| Windows | x86_64  | [zls-x86_64-windows.zip](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-windows.zip)     |
-| Windows | x86     | [zls-x86-windows.zip](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86-windows.zip)           |
-| macOS   | aarch64 | [zls-aarch64-macos.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-aarch64-macos.tar.xz) |
-| macOS   | x86_64  | [zls-x86_64-macos.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-macos.tar.xz)   |
-| Linux   | x86_64  | [zls-x86_64-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86_64-linux.tar.xz)   |
-| Linux   | x86     | [zls-x86-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-x86-linux.tar.xz)         |
-| Linux   | aarch64 | [zls-aarch64-linux.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-aarch64-linux.tar.xz) |
-| Wasm    | WASI    | [zls-wasm32-wasi.tar.xz](https://github.com/zigtools/zls/releases/download/0.12.0/zls-wasm32-wasi.tar.xz)     |
+| OS      | Arch    | Filename                                                                                | Signature                                                                      | Size       |
+| ------- | ------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------- |
+| Windows | x86_64  | [zls-x86_64-windows.zip  ](https://builds.zigtools.org/zls-windows-x86_64-0.13.0.zip)   | [minisig](https://builds.zigtools.org/zls-windows-x86_64-0.13.0.zip.minisig)   | 3.7 MiB    |
+| Windows | x86     | [zls-x86-windows.zip     ](https://builds.zigtools.org/zls-windows-x86-0.13.0.zip)      | [minisig](https://builds.zigtools.org/zls-windows-x86-0.13.0.zip.minisig)      | 3.6 MiB    |
+| macOS   | aarch64 | [zls-aarch64-macos.tar.xz](https://builds.zigtools.org/zls-macos-aarch64-0.13.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-macos-aarch64-0.13.0.tar.xz.minisig) | 1023.1 KiB |
+| macOS   | x86_64  | [zls-x86_64-macos.tar.xz ](https://builds.zigtools.org/zls-macos-x86_64-0.13.0.tar.xz)  | [minisig](https://builds.zigtools.org/zls-macos-x86_64-0.13.0.tar.xz.minisig)  | 907.57 KiB |
+| Linux   | x86_64  | [zls-x86_64-linux.tar.xz ](https://builds.zigtools.org/zls-linux-x86_64-0.13.0.tar.xz)  | [minisig](https://builds.zigtools.org/zls-linux-x86_64-0.13.0.tar.xz.minisig)  | 2.97 MiB   |
+| Linux   | x86     | [zls-x86-linux.tar.xz    ](https://builds.zigtools.org/zls-linux-x86-0.13.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-linux-x86-0.13.0.tar.xz.minisig)     | 3.19 MiB   |
+| Linux   | aarch64 | [zls-aarch64-linux.tar.xz](https://builds.zigtools.org/zls-linux-aarch64-0.13.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-linux-aarch64-0.13.0.tar.xz.minisig) | 3.14 MiB   |
+| Wasm    | WASI    | [zls-wasm32-wasi.tar.xz  ](https://builds.zigtools.org/zls-wasi-wasm32-0.13.0.tar.xz)   | [minisig](https://builds.zigtools.org/zls-wasi-wasm32-0.13.0.tar.xz.minisig)   | 2.13 MiB   |
