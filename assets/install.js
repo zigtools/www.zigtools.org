@@ -166,20 +166,24 @@ async function update() {
 
   const { date, version, ...artifacts } = json;
 
-  const sortScore = {
-    windows: 1,
-    macos: 2,
-    linux: 3,
-    wasi: 4,
-  };
+  const targets = [
+    "windows-x86_64",
+    "windows-aarch64",
+    "windows-x86",
+    "macos-aarch64",
+    "macos-x86_64",
+    "linux-x86_64",
+    "linux-x86",
+    "linux-aarch64",
+    "linux-arm",
+    "wasi-wasm32",
+  ];
 
   const artifactEntries = Object.entries(artifacts);
   artifactEntries.sort(([lhs], [rhs]) => {
-    const lhsOS = lhs.split("-")[1];
-    const rhsOS = rhs.split("-")[1];
-    const lhsScore = sortScore[lhsOS] ?? 5;
-    const rhsScore = sortScore[rhsOS] ?? 5;
-    return lhsScore > rhsScore;
+    const [lhsArch, lhsOS] = lhs.split("-");
+    const [rhsArch, rhsOS] = rhs.split("-");
+    return targets.indexOf(`${lhsOS}-${lhsArch}`) - targets.indexOf(`${rhsOS}-${rhsArch}`);
   });
 
   const table = createBinaryTable(artifactEntries);
