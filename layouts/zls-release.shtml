@@ -13,6 +13,25 @@
     h4 {
       border-bottom: 1px dashed var(--border-color);
     }
+
+    #footer {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding: 0.25rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    #footer a {
+      text-decoration: none;
+      color: inherit;
+      padding: 0.25rem;
+    }
+
+    #footer .title {
+      font-weight: bold;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <header id="header">
@@ -26,4 +45,22 @@
 </header>
 <div id="content">
   <main id="page" :html="$page.content()"></main>
+  <nav id="footer">
+    <ctx :if="$page.prevPage()">
+      <a href="$if.link()" style="margin-right: auto;">
+        <p>
+          ←
+          <span class="title" :text="$if.title"></span>
+        </p>
+      </a>
+    </ctx>
+    <ctx :if="$page.nextPage()">
+      <a href="$if.link()" style="margin-left: auto; text-align: right;">
+        <p>
+          <span class="title" :text="$if.title"></span>
+          →
+        </p>
+      </a>
+    </ctx>
+  </nav>
 </div>
