@@ -43,7 +43,16 @@ RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex
 
 Provided by [zigtools/release-worker](https://github.com/zigtools/release-worker).
 
-[]($section.id('install-editor-extension'))
-## Install Editor Extension
+[]($section.id('zig-zls-version-compatibility'))
+## Zig + ZLS version compatibility
 
-Please header over to the "Editor Configuration" section to set up the editor of your choice.
+If you decide to install Zig or ZLS through a different method (e.g. package managers), make sure that you install compatible versions:
+- A tagged release of Zig should be used with the same tagged release of ZLS (and vice versa). 
+- A nightly build of Zig should be used with a nightly build of ZLS (and vice versa).
+
+The install tool above will automatically resolve compatible Zig and ZLS versions.
+
+[]($section.id('next-steps'))
+## Next steps
+
+After installing ZLS, please head over to the "Editor Configuration" section to set up the editor(s) of your choice.

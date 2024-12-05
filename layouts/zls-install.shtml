@@ -154,6 +154,7 @@
   <div id="prebuilt-binary-result" style="display: none;">
     <ctx :html="$page.contentSection('install-prebuilt-binary')"></ctx>
   </div>
-  <ctx :html="$page.contentSection('install-editor-extension')"></ctx>
+  <ctx :html="$page.contentSection('zig-zls-version-compatibility')"></ctx>
+  <ctx :html="$page.contentSection('next-steps')"></ctx>
   <script :html="$site.asset('install.js').bytes()"></script>
 </div>
