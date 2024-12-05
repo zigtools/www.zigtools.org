@@ -122,6 +122,16 @@ autocmd BufWritePre *.zig,*.zon lua vim.lsp.buf.format()
 EOF
 ```
 
+## Health Check
+
+To make sure that ZLS is set up as expected, open a `.zig` file and run the following health checks:
+
+```
+:checkhealth lspconfig vim.lsp
+```
+
+For more information on the health check, refer to [Health check](https://neovim.io/doc/user/health).
+
 ## Code Actions on save
 
 ### source.fixAll
