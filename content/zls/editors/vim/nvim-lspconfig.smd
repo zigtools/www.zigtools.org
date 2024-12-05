@@ -11,6 +11,10 @@
 }  
 ---
 
+># [Warning]($block.attrs('warning'))
+>
+>The [mason](https://github.com/williamboman/mason.nvim) package manager can only install the latest tagged release of ZLS which should **not** be used with Zig nightly/master.
+
 The following two configs **only** contain the necessary Zig specific configuration. Please refer to [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) on how to setup everything else like [keybindings](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#suggested-configuration) or [autocompletion](https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion).
 
 Install the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager.

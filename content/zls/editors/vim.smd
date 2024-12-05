@@ -13,7 +13,6 @@ The following LSP plugins are documented:
 - [CoC](/zls/editors/vim/coc)
 - [YouCompleteMe](/zls/editors/vim/ycm)
 
-
 ># [Warning]($block.attrs('warning'))
 >
->The [mason](https://github.com/williamboman/mason.nvim) package manager can only install the latest tagged release of ZLS which should **not** be used with Zig master.
+>The [mason](https://github.com/williamboman/mason.nvim) package manager can only install the latest tagged release of ZLS which should **not** be used with Zig nightly/master.
