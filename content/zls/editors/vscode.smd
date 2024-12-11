@@ -18,21 +18,24 @@ Using ZLS in VS Code is as simple as installing the [official Zig Language exten
 
 ## Configuration
 
-The VS Code extension can automatically install Zig and ZLS. The extension is intended to provide the best possible experience Out-of-the-Box without extra configuration.
+The VS Code extension will automatically install Zig and ZLS. The extension is intended to provide the best possible experience Out-of-the-Box without extra configuration.
 
 With that being said, there are some Zig specific settings that you may wish to apply:
 
 ```json
+// settings.json (open with `Preferences: Open User Settings (JSON)`)
+{
+  "zig.zls.enabled": "on",
+  // You can more more Zig and ZLS options here
+
   // All nested settings will only affect Zig files.
   "[zig]": {
     // Formatting with ZLS matches `zig fmt`.
     // The Zig FAQ answers some questions about `zig fmt`:
     // https://github.com/ziglang/zig/wiki/FAQ
     //
-    // disable format-on-save
     // "editor.formatOnSave": false,
 
-    // disable inlay hints
     // "editor.inlayHints.enabled": "off",
 
     // overwrite words when accepting completions
@@ -48,6 +51,34 @@ With that being said, there are some Zig specific settings that you may wish to 
       // "source.organizeImports": "explicit",
     }
   },
+  "editor.semanticTokenColorCustomizations": {
+    "rules": {
+      "*.deprecated": {
+        // highlight semantic tokens that are marked as "deprecated"
+        "strikethrough": true
+      }
+    }
+  }
+}
 ```
 
-Add it to your `settings.json` (open with `Preferences: Open User Settings (JSON)`)
+### Additional Config Options
+
+The available config options in the VS Code extension match those that are offered by the latest nightly build of ZLS. (sometimes they are out of sync)
+
+To set config options that are offered by older ZLS version (e.g. `enable_autofix` for ZLS `0.13.0`) you can use the `zig.zls.additionalOptions` property:
+
+```json
+// settings.json (open with `Preferences: Open User Settings (JSON)`)
+{
+  "zig.zls.additionalOptions": {
+    // Here are some examples of config options that have been removed:
+    "zig.zls.enableAutofix": true, // Will set the "enable_autofix" config option
+    "zig.zls.buildOnSaveStep": "foo", // Will set the "build_on_save_step" config option
+
+    // All values have to be converted to camelCase and get prefixed with `zig.zls`. 
+  },
+}
+```
+
+You can check the [ZLS logs](zls/guides/view-logs) to see if the additional options have been set. Unknown config options will be silently ignored.
