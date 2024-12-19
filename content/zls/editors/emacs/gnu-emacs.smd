@@ -1,7 +1,7 @@
 ---
 {
     .title = "GNU Emacs",
-    .date = @date("2020-02-07T01:00:00"),
+    .date = @date("2020-04-07T01:00:00"),
     .author = "Sample Author",
     .layout = "zls-docs.shtml",
     .custom = {
