@@ -28,6 +28,12 @@ With that being said, there are some Zig specific settings that you may wish to 
   "zig.zls.enabled": "on",
   // You can more more Zig and ZLS options here
 
+  // Whether to enable build-on-save diagnostics
+  //
+  // Further information about build-on save:
+  // https://zigtools.org/zls/guides/build-on-save/
+  // "zig.zls.enableBuildOnSave": true,
+
   // All nested settings will only affect Zig files.
   "[zig]": {
     // Formatting with ZLS matches `zig fmt`.
