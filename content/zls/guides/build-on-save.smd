@@ -11,7 +11,7 @@ ZLS can be configured to run your build script on save. If that results in build
 
 ## Configuration
 
-By default, ZLS will automatically enable Build-On-Save if your build script defines a "check" step. Otherwise you will need set the `enable_build_on_save` config option.
+By default, ZLS will automatically enable Build-On-Save if your build script defines a "check" step. Otherwise you will need to set the `enable_build_on_save` config option.
 You can use `build_on_save_args` to configure which command-line arguments should be passed to your build script.
 
 Here is an example:

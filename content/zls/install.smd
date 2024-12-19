@@ -12,7 +12,7 @@
 
 []($section.id('vscode-banner'))
 
-**VS Code** users only needs the [official Zig Language extension](https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig).
+**VS Code** users only need the [official Zig Language extension](https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig).
 
 *No need to manually install Zig or ZLS.*
 
