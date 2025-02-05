@@ -7,7 +7,7 @@
 } 
 ---
 
-In-Editor Config (or Workspace Config) will integrate with the config system of you editor to configure ZLS on a per-editor basis. 
+In-Editor Config (or Workspace Config) will integrate with the config system of your editor to configure ZLS on a per-editor basis. 
 
 Some editors (like VS Code) also allow workspace-specific configuration. If you want to share the same configuration across multiple editors, please refer to the [zls.json]($link.page('zls/configure/zls-json')) alternative.
 
