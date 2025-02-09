@@ -1,0 +1,58 @@
+---
+{
+    .title = "Downstream Packaging",
+    .date = @date("2020-08-04T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+} 
+---
+
+># [Info]($block.attrs('info'))
+>
+> This Guide is targeted at developers who create downstream packages of ZLS.
+
+## Build Options
+
+Run `zig build --help` in the root of ZLS source directory to print usage information.
+
+Here are some of the common build options:
+
+- `-Doptimize=ReleaseSafe`
+- `-Dtarget`
+- `-Dcpu=baseline` (opposite of `-march=native`)
+- `--prefix`
+
+## Resolve version string
+
+When compiling a tagged release of ZLS, the version is hard coded. No further action is needed.
+
+For development builds, the version string is determined by running `git -C . describe --match "*.*.*" --tags` and formatting the output as `MAJOR.MINOR.PATCH-dev.COMMIT_HEIGHT+SHORT_COMMIT_HASH` (e.g. `0.14.0-dev.365+6a16b27`). If the version cannot be resolved, it defaults to `MAJOR.MINOR.PATCH-dev` (e.g. `0.14.0-dev`). This logic is implemented in the `getVersion` function within `build.zig`.
+
+If building ZLS without access to Git metadata (e.g., from a shallow clone or tarball), it is recommended to manually specify the version string using the `-Dversion-string` build option.
+
+## Dependency fetching
+
+ZLS uses the Zig's builtin package manager to fetch dependencies and compile them from source. By default, Zig stores dependencies in the global cache directory at `$(zig env | jq -r .global_cache_dir)/p`, where each dependency is uniquely identified by a hash of its content.
+
+The content after building ZLS may look similar to this:
+
+```bash
+$ tree $(zig env | jq -r .global_cache_dir)/p
+/home/me/.cache/zig/p
+├── 1220102cb2c669d82184fb1dc5380193d37d68b54e8d75b76b2d155b9af7d7e2e76d
+│   ├── build.zig
+│   ├── DiffMatchPatch.zig
+│   └── ...
+├── 12205f5e7505c96573f6fc5144592ec38942fb0a326d692f9cddc0c7dd38f9028f29
+│   ├── build.zig
+│   ├── build.zig.zon
+│   ├── known-folders.zig
+│   └── ...
+└── 12208e12a10e78de19f140acae65e6edc20189459dd208d5f6b7afdf0aa894113d1b
+    ├── build.zig
+    ├── build.zig.zon
+    ├── src
+    └── ...
+```
+
+If you need to fetch dependencies in a separate phase (e.g. during the configure phase), use `--system [pkgdir]` to disable automatic package fetching and manually specify the directory containing the fetched dependencies. Dependency hashes and URLs can be found in the `build.zig.zon` file.

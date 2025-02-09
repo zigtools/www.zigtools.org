@@ -140,7 +140,7 @@
       </details>
       <details open="">
         <summary>Usage Guides</summary>
-        <ul :loop="$site.pages('zls/guides/build-on-save','zls/guides/view-logs')">
+        <ul :loop="$site.pages('zls/guides/build-on-save','zls/guides/view-logs','zls/guides/packaging')">
           <li>
             <a
               class="$loop.it.isCurrent().then('selected')"
