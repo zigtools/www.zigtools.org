@@ -18,4 +18,4 @@ If you have both `zig` and `zls` in your `PATH`, then the plugin should automati
 
 If not, Go to `Settings` -> `Languages & Frameworks` -> `Zig`, and point the `Toolchain Location` and `ZLS path` to the zig compiler's directory and the ZLS executable, respectively.
 
-If everything is set up correctly, an LSP status indicator should appear in the bottom right corner and turn to green when you open a .zig file in the editor.
+If everything is set up correctly, you should see a "Zig Language Server" in the `Language Servers` Tool Window in the left margin.
