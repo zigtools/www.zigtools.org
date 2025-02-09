@@ -9,6 +9,13 @@
 
 ZLS can be configured to run your build script on save. If that results in build errors, they will be displayed in your editor like any other diagnostic.
 
+># [Warning (Linux)]($block.attrs('warning'))
+>
+> On Linux, Build-On-Save requires a kernel version of at least `6.5`. Use `uname -r` to check your version. If an incompatible version is used, a warning will be [logged](/zls/guides/view-logs/) and Build-On-Save will be disabled.
+> A workaround implementation is available if `enable_build_on_save` has been set to `true`.
+>
+> This is especially important to WSL2 (Windows Subsystem for Linux version 2) users where the default kernel version is `5.15` as of January 2025.
+
 ## Configuration
 
 By default, ZLS will automatically enable Build-On-Save if your build script defines a "check" step. Otherwise you will need to set the `enable_build_on_save` config option.
