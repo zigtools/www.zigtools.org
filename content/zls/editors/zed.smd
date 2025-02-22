@@ -25,7 +25,7 @@ Add the following to your `settings.json`:
       // https://github.com/ziglang/zig/wiki/FAQ
       "format_on_save": "language_server",
       // Make sure that zls is the primary language server
-      "language_servers": ["zls", "..."]
+      "language_servers": ["zls", "..."],
       "code_actions_on_format": {
         // Run code actions that currently supports adding and removing discards.
         // "source.fixAll": true,
