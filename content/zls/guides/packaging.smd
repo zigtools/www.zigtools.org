@@ -13,7 +13,7 @@
 
 ## Build Options
 
-Run `zig build --help` in the root of ZLS source directory to print usage information.
+Run `zig build --help` in the root of the ZLS source directory to print usage information.
 
 Here are some of the common build options:
 
