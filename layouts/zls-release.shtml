@@ -46,7 +46,7 @@
 <div id="content">
   <main id="page" :html="$page.content()"></main>
   <nav id="footer">
-    <ctx :if="$page.prevPage()">
+    <ctx :if="$page.prevPage?()">
       <a href="$if.link()" style="margin-right: auto;">
         <p>
           ←
@@ -54,7 +54,7 @@
         </p>
       </a>
     </ctx>
-    <ctx :if="$page.nextPage()">
+    <ctx :if="$page.nextPage?()">
       <a href="$if.link()" style="margin-left: auto; text-align: right;">
         <p>
           <span class="title" :text="$if.title"></span>
