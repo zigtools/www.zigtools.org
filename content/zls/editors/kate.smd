@@ -29,8 +29,6 @@ To apply [in-editor-configuration](/zls/configure/in-editor) or manually specify
       //
       // Further information on how to configure ZLS:
       // https://zigtools.org/zls/configure/
-      //
-      // Support for `initializationOptions` in Kate requires at least ZLS `0.14.0-dev.22+a263b8dc6`.
       "initializationOptions": {
         // Whether to enable build-on-save diagnostics
         //

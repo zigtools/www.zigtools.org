@@ -42,15 +42,6 @@ Running `source.fixall` code actions is not natively supported by lsp-mode. See 
 
 ZLS can work around this limitation by enabling the `force_autofix` config option.
 
-># [ZLS 0.13.0]($block.attrs('note'))
->
->The behaviour of ZLS 0.13.0 (anything before `0.14.0-dev.214+05ea40b50` to be precise) is different from the current nightly build.
->
->The `enable_autofix` option must be used instead of `force_autofix`.
-
 ### source.organizeImports
-
-># [Note]($block.attrs('note'))
->The `source.organizeImports` code action is available since ZLS `0.14.0-dev.188+2be424de5`.
 
 Use `s-l r o` to manually execute the code action.

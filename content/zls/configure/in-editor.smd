@@ -19,16 +19,14 @@ Some editors (like VS Code) also allow workspace-specific configuration. If you 
 | [Sublime Text](/zls/editors/sublime-text)                     | Yes                       |
 | [ZigBrains for JetBrains](/zls/editors/jetbrains)             | Limited\*                 |
 | [Helix](/zls/editors/helix)                                   | Yes                       |
-| [Zed](/zls/editors/zed)                                       | Yes\*\*                   |
+| [Zed](/zls/editors/zed)                                       | Yes                       |
 | [Neovim with nvim-lspconfig](/zls/editors/vim/nvim-lspconfig) | Yes                       |
 | [Vim/Neovim with CoC](/zls/editors/vim/coc)                   | Yes                       |
-| [Vim/Neovim with YCM](/zls/editors/vim/ycm)                   | Yes\*\*\*                 |
+| [Vim/Neovim with YCM](/zls/editors/vim/ycm)                   | Yes\*\*                   |
 | [Emacs with eglot](/zls/editors/emacs)                        | Yes                       |
 | [Emacs with lsp-mode](/zls/editors/emacs)                     | Yes                       |
-| [Kate](/zls/editors/kate)                                     | Yes\*\*                   |
+| [Kate](/zls/editors/kate)                                     | Yes                       |
 
 \* Only a subset of config options are available.
 
-\*\* In-Editor configuration for these editors requires at least ZLS `0.14.0-dev.22+a263b8dc6`.
-
-\*\*\* In-Editor configuration is somewhat tedious to setup for this Editor. You may favor the [zls.json]($link.page('zls/configure/zls-json')) alternative.
+\*\* In-Editor configuration is somewhat tedious to setup for this Editor. You may favor the [zls.json]($link.page('zls/configure/zls-json')) alternative.

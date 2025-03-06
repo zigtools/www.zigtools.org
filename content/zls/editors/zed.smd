@@ -31,7 +31,6 @@ Add the following to your `settings.json`:
         // "source.fixAll": true,
 
         // Run code actions that sorts @import declarations.
-        // Available since ZLS `0.14.0-dev.188+2be424de5`
         // "source.organizeImports": true,
       }
     }
@@ -48,8 +47,6 @@ Add the following to your `settings.json`:
       //
       // Further information on how to configure ZLS:
       // https://zigtools.org/zls/configure/
-      //
-      // Support for `initializationOptions` in Zed requires at least ZLS `0.14.0-dev.22+a263b8dc6`.
       "initialization_options": {
         // Whether to enable build-on-save diagnostics
         //

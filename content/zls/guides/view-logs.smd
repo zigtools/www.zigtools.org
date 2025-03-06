@@ -15,9 +15,6 @@
 
 ## zls.log
 
-># [Note]($block.attrs('note'))
->This feature has been added in ZLS `0.14.0-dev.50+3354fdcb`.
-
 Run `zls env` and then look for the `log_file` property:
 
 ```json

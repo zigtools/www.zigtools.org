@@ -32,8 +32,6 @@ To apply [in-editor-configuration](/zls/configure/in-editor) or manually specify
       ;;
       ;; Further information on how to configure ZLS:
       ;; https://zigtools.org/zls/configure/
-      ;;
-      ;; Support for `initializationOptions` in Emacs requires at least ZLS `0.14.0-dev.22+a263b8dc6`.
       :initializationOptions 
         (;; Whether to enable build-on-save diagnostics
          ;;
@@ -69,9 +67,6 @@ Add the following to run `source.fixAll` code action on save:
 ```
 
 ### source.organizeImports
-
-># [Note]($block.attrs('note'))
->The `source.organizeImports` code action is available since ZLS `0.14.0-dev.188+2be424de5`.
 
 Use `M-x eglot-code-action-organize-imports` to manually execute the code action.
 

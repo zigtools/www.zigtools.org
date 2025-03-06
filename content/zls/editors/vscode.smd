@@ -53,7 +53,6 @@ With that being said, there are some Zig specific settings that you may wish to 
       // "source.fixAll": "explicit",
       
       // Run code actions that sorts @import declarations.
-      // Available since ZLS `0.14.0-dev.188+2be424de5`
       // "source.organizeImports": "explicit",
     }
   },

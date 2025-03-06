@@ -23,8 +23,6 @@ The file must be valid JSON which cannot contain comments or trailing commas.
 
 ## Where should the zls.json be created?
 
-### ZLS since 0.14.0-dev.50+3354fdcb
-
 Running `zls env` will show you where ZLS will look for the `zls.json` file:
 
 ```json
@@ -51,17 +49,6 @@ After creating the configuration file at `$local_config_dir/zls.json`, `zls env`
   "config_file": "/home/anon/.config/zls.json",
   "log_file": "/home/anon/.cache/zls/zls.log"
 }
-```
-
-### ZLS before 0.14.0-dev.50+3354fdcb (like ZLS 0.13.0)
-
-Running `zls --show-config-path` will show a path to an already existing `zls.json` or a path to the local configuration folder instead.
-
-```
-> zls --show-config-path
-info  ( main ): No config file zls.json found.
-info  ( main ): A path to the local configuration folder will be printed instead.
-/home/anon/.config/zls.json
 ```
 
 ## JSON Schema

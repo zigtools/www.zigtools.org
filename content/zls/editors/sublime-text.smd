@@ -44,7 +44,6 @@
     // "source.fixAll": true,
 
     // Run code actions that sorts @import declarations.
-    // Available since ZLS `0.14.0-dev.188+2be424de5`
     // "source.organizeImports": true,
   },
   // Show inlay hints in the editor. Inlay hints are short annotations within the code,

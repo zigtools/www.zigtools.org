@@ -98,9 +98,6 @@ autocmd BufWritePre *.zig,*.zon call CocActionAsync('fixAll')
 
 ### source.organizeImports
 
-># [Note]($block.attrs('note'))
->The `source.organizeImports` code action is available since ZLS `0.14.0-dev.188+2be424de5`.
-
 ```lua
 vim.api.nvim_create_autocmd('BufWritePre',{
   pattern = {"*.zig", "*.zon"},

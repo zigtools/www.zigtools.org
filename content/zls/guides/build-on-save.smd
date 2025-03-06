@@ -29,12 +29,6 @@ Here is an example:
 }
 ```
 
-># [ZLS 0.13.0]($block.attrs('note'))
->
->The behaviour of ZLS 0.13.0 (anything before `0.14.0-dev.144+fcb8bcb5d` to be precise) is different from the current nightly build.
->
->The `enable_build_on_save` option need to be enabled even if a "check" step is defined. The `build_on_save_args` is also not available. `build_on_save_step` needs to be used instead which can only specify the step name but no additional arguments.
-
 ## Add a "check" step to your build.zig
 
 This part is more deeply tied to your specific project but the gist is the following: whatever you do to define your main executable / module / library, you do it again in a new step named check.
