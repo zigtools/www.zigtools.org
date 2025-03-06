@@ -31,39 +31,39 @@ Here is an example:
 
 ## Add a "check" step to your build.zig
 
-This part is more deeply tied to your specific project but the gist is the following: whatever you do to define your main executable / module / library, you do it again in a new step named check.
+This part is more deeply tied to your specific project but the gist is the following: whatever you do to define your main executable or library, you do it again in a new step named check.
 
 I'll use for this example the executable definition step you get generated automatically from `zig init`.
 
 ```zig
-// This is an example executable definition, no need to copy it.
-const exe = b.addExecutable(.{
-    .name = "foo",
+// Create a "module" just like in the `zig init` template.
+const module = b.addModule("foo", .{
     .root_source_file = b.path("src/main.zig"),
     .target = target,
     .optimize = optimize,
 });
-
 // Any other code to define dependencies would probably be here.
 
+// Create an example from the given module.
+// Still the same as the `zig init` template.
+const exe = b.addExecutable(.{
+    .name = "foo",
+    .root_module = module,
+});
 b.installArtifact(exe);
 
-
 // This is where the interesting part begins.
-// As you can see we are re-defining the same executable but 
+// As you can see we are re-defining the same executable but
 // we're binding it to a dedicated build step.
 const exe_check = b.addExecutable(.{
     .name = "foo",
-    .root_source_file = b.path("src/main.zig"),
-    .target = target,
-    .optimize = optimize,
+    .root_module = module,
 });
+// There is no `b.installArtifact(exe_check);` here.
 
-// Any other code to define dependencies would probably be here.
-
-
-// These two lines you might want to copy
-// (make sure to rename 'exe_check')
+// Finally we add the "check" step which will be detected
+// by ZLS and automatically enable Build-On-Save.
+// If you copy this into your `build.zig`, make sure to rename 'foo'
 const check = b.step("check", "Check if foo compiles");
 check.dependOn(&exe_check.step);
 ```
