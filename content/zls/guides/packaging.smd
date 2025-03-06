@@ -39,16 +39,16 @@ The content after building ZLS may look similar to this:
 ```bash
 $ tree $(zig env | jq -r .global_cache_dir)/p
 /home/me/.cache/zig/p
-├── 1220102cb2c669d82184fb1dc5380193d37d68b54e8d75b76b2d155b9af7d7e2e76d
+├── N-V-__8AABhrAQAQLLLGadghhPsdxTgBk9N9aLVOjXW3ay0V
 │   ├── build.zig
 │   ├── DiffMatchPatch.zig
 │   └── ...
-├── 12205f5e7505c96573f6fc5144592ec38942fb0a326d692f9cddc0c7dd38f9028f29
+├── known_folders-0.0.0-Fy-PJtLDAADGDOwYwMkVydMSTp_aN-nfjCZw6qPQ2ECL
 │   ├── build.zig
 │   ├── build.zig.zon
 │   ├── known-folders.zig
 │   └── ...
-└── 12208e12a10e78de19f140acae65e6edc20189459dd208d5f6b7afdf0aa894113d1b
+└── lsp_codegen-0.1.0-CMjjo0ZXCQB-rAhPYrlfzzpU0u0u2MeGvUucZ-_g32eg
     ├── build.zig
     ├── build.zig.zon
     ├── src
