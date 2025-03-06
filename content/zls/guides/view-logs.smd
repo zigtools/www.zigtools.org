@@ -28,7 +28,9 @@ Run `zls env` and then look for the `log_file` property:
 }
 ```
 
-The logs can then be found in `/home/anon/.cache/zls/zls.log`. Please note that ZLS will not empty the file when restarting but always append logs instead. The log file will not contain stack traces when ZLS crashes. Use Editor logs when the stack trace should be included.
+The logs can then be found in `/home/anon/.cache/zls/zls.log`. You can configure which logs should be included with the `--log-file` flag. A debug build of ZLS will include all logs by default.
+
+Please note that ZLS will not empty the file when restarting but always append logs instead. The log file will not contain stack traces when ZLS crashes. Use Editor logs when the stack trace should be included.
 
 ## Use Editor logs
 
