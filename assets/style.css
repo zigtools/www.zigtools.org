@@ -202,7 +202,7 @@ figure {
   margin-right: 0;
 }
 
-figure img {
+figure img, figure video {
   max-width: 100%;
   height: auto;
 }

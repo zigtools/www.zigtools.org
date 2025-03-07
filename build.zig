@@ -10,6 +10,9 @@ pub fn build(b: *std.Build) !void {
         .assets_dir_path = "assets",
         .static_assets = &.{
             "robots.txt",
+            // Used in inlined html
+            "0.14.0-hover-over-character-literal.png",
+            "0.14.0-hover-over-character-literal-dark.png",
         },
     });
 }

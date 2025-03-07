@@ -1,0 +1,173 @@
+---
+{
+    .title = "ZLS 0.14.0",
+    .date = @date("2025-03-06T23:25:53Z"),
+    .author = "Techatrix",
+    .layout = "zls-release.shtml",
+} 
+---
+
+## Feature improvements 
+
+### New zigtools website
+
+As you may have noticed upon opening this page, a new https://zigtools.org website has been created, providing up-to-date documentation for ZLS. It is highly recommended to check it out, even if you've already set up ZLS previously.
+
+### Better Build On Save ([#2096](https://github.com/zigtools/zls/pull/2096))
+
+The build-on-save implementation has been completely rewritten to leverage Zig's new [File System Watching](https://ziglang.org/download/0.14.0/release-notes.html#toc-File-System-Watching) feature. When combined with [Incremental Compilation](https://ziglang.org/download/0.14.0/release-notes.html#toc-Incremental-Compilation), which is not yet enabled by default, this allows compile errors to be reported *almost* immediately after each save. For more details, check out to the ZLS [Build-On-Save](https://zigtools.org/zls/guides/build-on-save/) guide.
+
+Here is a showcase where build-on-save runs the equivalent of `zig build check --watch -fincremental` within the ZLS codebase:
+
+[build on save with incremental compilation enabled]($video.asset('build-on-save-demo.mp4').controls(true).loop(true).muted(true))
+
+### `zls env` command ([#1957](https://github.com/zigtools/zls/pull/1957))
+
+A new `zls env` command has been added, similar to zig env, serving the same purpose.
+
+Here is an example of how its output may look like:
+
+```json
+{
+ "version": "0.14.0",
+ "global_cache_dir": "/home/anon/.cache/zls",
+ "global_config_dir": "/etc/xdg",
+ "local_config_dir": "/home/anon/.config",
+ "config_file": "/home/anon/.config/zls.json",
+ "log_file": "/home/anon/.cache/zls/zls.log"
+}
+```
+
+The exact output can be found in the [`Env`](https://github.com/zigtools/zls/blob/7485feeeda45d1ad09422ae83af73307ab9e6c9e/src/main.zig#L132) struct.
+
+### `zls.log` ([#1957](https://github.com/zigtools/zls/pull/1957))
+
+Log messages are now written to a new `zls.log` file. Its content is more readable than some editor internal logs and does not require looking up how each editor manages LSP server logs. For more details, check out the [logging guide](https://zigtools.org/zls/guides/view-logs/).
+
+### configure autofix through editor settings ([#2063](https://github.com/zigtools/zls/pull/2063))
+
+Many editors provide their own settings for code actions on save, often offering a better user experience than relying on the LSP server like ZLS. If you have the "autofix" feature enabled via `enable_autofix`, you'll need to update your editor configuration. For upgrade instructions, check out the [Installation Guide](https://zigtools.org/zls/install/) and navigate to the relevant documentation for your editor.
+
+### hover over character literal ([#1991](https://github.com/zigtools/zls/pull/1991))
+
+Similar to hovering over a number literal, you can now hover over a character literal to view its value in various number systems.
+
+```=html
+<figure>
+    <picture style="display: flex;flex-direction: column;align-items: center;">
+        <source srcset="/0.14.0-hover-over-character-literal-dark.png" media="(prefers-color-scheme: dark)">
+        <img src="/0.14.0-hover-over-character-literal.png" alt="" width="450px" style="aspect-ratio: 600 / 500;">
+    </picture>
+    <figcaption>hovering over a character literal</figcaption>
+</figure>
+```
+
+### report zon specific compile errors
+
+Thanks to Zig's new standard library utilities for [ZON Parsing and Serialization](https://ziglang.org/download/0.14.0/release-notes.html#ZON-Parsing-and-Serialization), `.zon` files will now display diagnostic messages for syntactically invalid ZON code.
+
+### Code action to organize imports ([#2051](https://github.com/zigtools/zls/pull/2051))
+
+A new code action has been added that can organize top-level `@import` and alias declarations.
+
+Here is an example of how the code action will organize the code:
+
+```zig
+const std = @import("std");
+const Ast = std.zig.Ast;
+const Node = Ast.Node;
+const full = Ast.full;
+const builtin = @import("builtin");
+
+const lsp = @import("lsp");
+const types = lsp.types;
+
+const Config = @import("Config.zig");
+const offsets = @import("offsets.zig");
+```
+
+This code action can be manually invoked or automatically triggered on save. For more information on how to run this code action on save, check out the [Installation Guide](https://zigtools.org/zls/install/) and navigate to the relevant documentation for your editor. Be aware that not all editors support this feature.
+
+### convert string literal code action ([#2097](https://github.com/zigtools/zls/pull/2097))
+
+New code actions have been added to can convert between multi-line string literals and normal string literals.
+
+### progress report on build system ([#2141](https://github.com/zigtools/zls/pull/2141))
+
+ZLS now reports when it is processing a `build.zig` file to extract build system information. This may be shown in the status indicator of your editor if supported.
+
+#### removed `enable_inlay_hints` config option
+
+This feature should be configured through your editor. Refer to the documentation of your editor on how configure this feature.
+
+## Contributors
+
+Here is a list of everyone who has made at least one contribution to this release of ZLS:
+
+- Techatrix
+- mochalins
+- FnControlOption
+- Sekky61
+- xdBronch
+- Will Lillis
+- Auguste Rame
+- injuly
+- llogick
+- Alex Rønne Petersen
+- Ben Krieger
+- Julia Ortiz
+- kcbanner
+- Lorenzo Marzocchetti
+- Aleksei Piianin
+- Alexander Kosachev
+- Chinmay Dalal
+- Christofer Nolander
+- BratishkaErik
+- FalsePattern
+- GalaxyShard
+- Hicham Omari
+- InspectorBoat
+- Jarrod M.
+- Joshua Davis
+- Kevin Nguyen
+- Lee Cannon
+- Matthew Lugg
+- PanSashko
+- Sage Hane
+- Sam Atman
+- bangbangsheshotmedown
+- estevesnp
+- janis-bhm
+- sphaerophoria
+
+## Sponsors
+
+We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
+
+```=html
+<figure>
+    <a href="https://opencollective.com/zigtools#category-CONTRIBUTE">
+        <img src="https://opencollective.com/zigtools/backers.svg?limit=1000" alt="OpenCollective Backers">
+    </a>
+</figure>
+```
+
+**Full Changelog**: [0.13.0...0.14.0](https://github.com/zigtools/zls/compare/0.13.0...0.14.0)
+
+## Release Artifacts
+
+| OS      | Arch        | Filename                                                                                        | Signature                                                                          | Size       |
+| ------- | ----------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------- |
+| Windows | x86_64      | [zls-x86_64-windows.zip      ](https://builds.zigtools.org/zls-windows-x86_64-0.14.0.zip)       | [minisig](https://builds.zigtools.org/zls-windows-x86_64-0.14.0.zip.minisig)       | 4.18 MiB   |
+| Windows | aarch64     | [zls-aarch64-windows.zip     ](https://builds.zigtools.org/zls-windows-aarch64-0.14.0.zip)      | [minisig](https://builds.zigtools.org/zls-windows-aarch64-0.14.0.zip.minisig)      | 3.96 MiB   |
+| Windows | x86         | [zls-x86-windows.zip         ](https://builds.zigtools.org/zls-windows-x86-0.14.0.zip)          | [minisig](https://builds.zigtools.org/zls-windows-x86-0.14.0.zip.minisig)          | 4.35 MiB   |
+| macOS   | x86_64      | [zls-x86_64-macos.tar.xz     ](https://builds.zigtools.org/zls-macos-x86_64-0.14.0.tar.xz)      | [minisig](https://builds.zigtools.org/zls-macos-x86_64-0.14.0.tar.xz.minisig)      | 1.04 MiB   |
+| macOS   | aarch64     | [zls-aarch64-macos.tar.xz    ](https://builds.zigtools.org/zls-macos-aarch64-0.14.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-macos-aarch64-0.14.0.tar.xz.minisig)     | 906.22 KiB |
+| Linux   | x86_64      | [zls-x86_64-linux.tar.xz     ](https://builds.zigtools.org/zls-linux-x86_64-0.14.0.tar.xz)      | [minisig](https://builds.zigtools.org/zls-linux-x86_64-0.14.0.tar.xz.minisig)      | 3.4 MiB    |
+| Linux   | aarch64     | [zls-aarch64-linux.tar.xz    ](https://builds.zigtools.org/zls-linux-aarch64-0.14.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-linux-aarch64-0.14.0.tar.xz.minisig)     | 3.21 MiB   |
+| Linux   | armv7a      | [zls-armv7a-linux.tar.xz     ](https://builds.zigtools.org/zls-linux-armv7a-0.14.0.tar.xz)      | [minisig](https://builds.zigtools.org/zls-linux-armv7a-0.14.0.tar.xz.minisig)      | 3.37 MiB   |
+| Linux   | riscv64     | [zls-riscv64-linux.tar.xz    ](https://builds.zigtools.org/zls-linux-riscv64-0.14.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-linux-riscv64-0.14.0.tar.xz.minisig)     | 4.12 MiB   |
+| Linux   | powerpc64le | [zls-powerpc64le-linux.tar.xz](https://builds.zigtools.org/zls-linux-powerpc64le-0.14.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-linux-powerpc64le-0.14.0.tar.xz.minisig) | 3.38 MiB   |
+| Linux   | x86         | [zls-x86-linux.tar.xz        ](https://builds.zigtools.org/zls-linux-x86-0.14.0.tar.xz)         | [minisig](https://builds.zigtools.org/zls-linux-x86-0.14.0.tar.xz.minisig)         | 3.44 MiB   |
+| Linux   | loongarch64 | [zls-loongarch64-linux.tar.xz](https://builds.zigtools.org/zls-linux-loongarch64-0.14.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-linux-loongarch64-0.14.0.tar.xz.minisig) | 3.09 MiB   |
+| Wasm    | WASI        | [zls-wasm32-wasi.tar.xz      ](https://builds.zigtools.org/zls-wasi-wasm32-0.14.0.tar.xz)       | [minisig](https://builds.zigtools.org/zls-wasi-wasm32-0.14.0.tar.xz.minisig)       | 2.21 MiB   |
