@@ -11,6 +11,12 @@ zls release that works and compiles for the zig 0.9.0 release! Enjoy <3
 
 ## Release Artifacts
 
+All files are signed with [minisign](https://jedisct1.github.io/minisign/) using this public key:
+
+```
+RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex
+```
+
 | OS      | Arch    | Filename                                                                               | Signature                                                                     | Size      |
 | ------- | ------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------- |
 | Windows | x86_64  | [zls-x86_64-windows.zip  ](https://builds.zigtools.org/zls-windows-x86_64-0.9.0.zip)   | [minisig](https://builds.zigtools.org/zls-windows-x86_64-0.9.0.zip.minisig)   | 1.55 MiB  |
