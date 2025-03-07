@@ -7,11 +7,11 @@
 } 
 ---
 
-## Feature improvements 
-
-### New zigtools website
+## New zigtools website
 
 As you may have noticed upon opening this page, a new https://zigtools.org website has been created, providing up-to-date documentation for ZLS. It is highly recommended to check it out, even if you've already set up ZLS previously.
+
+## Feature improvements 
 
 ### Better Build On Save ([#2096](https://github.com/zigtools/zls/pull/2096))
 
