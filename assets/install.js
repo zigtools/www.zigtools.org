@@ -166,16 +166,21 @@ async function update() {
 
   const { date, version, ...artifacts } = json;
 
+  // Matches https://ziglang.org/download/
   const targets = [
     "windows-x86_64",
     "windows-aarch64",
     "windows-x86",
-    "macos-aarch64",
     "macos-x86_64",
+    "macos-aarch64",
     "linux-x86_64",
-    "linux-x86",
     "linux-aarch64",
-    "linux-arm",
+    "linux-armv7a",
+    "linux-armv",
+    "linux-riscv64",
+    "linux-powerpc64le",
+    "linux-x86",
+    "linux-loongarch64",
     "wasi-wasm32",
   ];
 
