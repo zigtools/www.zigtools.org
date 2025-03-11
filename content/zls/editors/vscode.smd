@@ -77,7 +77,9 @@ To set config options that are offered by older ZLS version (e.g. `enable_autofi
 // settings.json (open with `Preferences: Open User Settings (JSON)`)
 {
   "zig.zls.additionalOptions": {
-    // Here are some examples of config options that have been removed:
+    // UNKNOWN CONFIG OPTIONS WILL BE SILENTLY IGNORED
+
+    // Here are some examples of config options that have been REMOVED:
     "zig.zls.enableAutofix": true, // Will set the "enable_autofix" config option
     "zig.zls.buildOnSaveStep": "foo", // Will set the "build_on_save_step" config option
 
@@ -86,4 +88,4 @@ To set config options that are offered by older ZLS version (e.g. `enable_autofi
 }
 ```
 
-You can check the [ZLS logs](zls/guides/view-logs) to see if the additional options have been set. Unknown config options will be silently ignored.
+You can check the [ZLS logs](zls/guides/view-logs) to see if the additional options have been set.
