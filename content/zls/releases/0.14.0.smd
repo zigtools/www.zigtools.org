@@ -46,7 +46,7 @@ Log messages are now written to a new `zls.log` file. Its content is more readab
 
 ### configure autofix through editor settings ([#2063](https://github.com/zigtools/zls/pull/2063))
 
-Many editors provide their own settings for code actions on save, often offering a better user experience than relying on the LSP server like ZLS. If you have the "autofix" feature enabled via `enable_autofix`, you'll need to update your editor configuration. For upgrade instructions, check out the [Installation Guide](https://zigtools.org/zls/install/) and navigate to the relevant documentation for your editor.
+Many editors provide their own settings for code actions on save, often offering a better user experience than relying on the LSP server like ZLS. If you have the "autofix" feature enabled via `enable_autofix`, you'll need to update your editor configuration to enable `source.fixall` code actions instead. For upgrade instructions, check out the [Installation Guide](https://zigtools.org/zls/install/) and navigate to the relevant documentation for your editor.
 
 ### hover over character literal ([#1991](https://github.com/zigtools/zls/pull/1991))
 
