@@ -14,5 +14,6 @@ pub fn build(b: *std.Build) !void {
             "0.14.0-hover-over-character-literal.png",
             "0.14.0-hover-over-character-literal-dark.png",
         },
+        .image_size_attributes = true,
     });
 }
