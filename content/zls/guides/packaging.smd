@@ -38,6 +38,9 @@ The content after building ZLS may look similar to this:
 
 ```bash
 $ tree $(zig env | jq -r .global_cache_dir)/p
+```
+
+```
 /home/me/.cache/zig/p
 ├── N-V-__8AABhrAQAQLLLGadghhPsdxTgBk9N9aLVOjXW3ay0V
 │   ├── build.zig
