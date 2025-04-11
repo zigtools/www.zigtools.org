@@ -1,0 +1,13 @@
+Site {
+    .title = "Zigtools",
+    .host_url = "https://zigtools.org",
+    .content_dir_path = "content",
+    .layouts_dir_path = "layouts",
+    .assets_dir_path = "assets",
+    .static_assets = [
+        "robots.txt",
+        // Used in inlined html
+        "0.14.0-hover-over-character-literal.png",
+        "0.14.0-hover-over-character-literal-dark.png",
+    ],
+}

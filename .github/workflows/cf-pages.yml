@@ -12,13 +12,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Zig
-        uses: mlugg/setup-zig@v1
+      - name: Setup Zine
+        uses: kristoff-it/setup-zine@v1
         with:
-          version: 0.14.0
+          version: v0.10.1
 
       - name: Build
-        run: zig build --summary new
+        run: zine release
 
       - name: Deploy
         uses: cloudflare/pages-action@v1
@@ -26,6 +26,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: zigtools-website
-          directory: ./zig-out
+          directory: ./public
           # Optional: Used for adding GitHub deployments support
           githubToken: ${{ secrets.GITHUB_TOKEN }}

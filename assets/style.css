@@ -306,10 +306,11 @@ ul {
 }
 
 .keyword,
+.keyword_type,
 .conditional, /* switch */
 .attribute,
 .qualifier,
-.function.builtin {
+.function_builtin {
   color: var(--magenta);
 }
 
@@ -327,28 +328,26 @@ ul {
 
 .constructor,
 .property,
-.string.special.key {
+.string_special_key {
   color: var(--purple);
 }
 
 .variable,
-.type.builtin {
+.type_builtin {
   color: var(--blue);
-}
-
-.function,
-.call {
-  color: var(--deep-blue);
-}
-
-.number,
-.variable.builtin,
-.constant.builtin {
-  color: var(--orange);
 }
 
 @media (prefers-color-scheme: dark) {
   .variable {
     color: var(--code-text-color);
   }
+}
+
+.function_call {
+  color: var(--deep-blue);
+}
+
+.number,
+.constant_builtin {
+  color: var(--orange);
 }
