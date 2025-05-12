@@ -43,11 +43,11 @@ Add the following to your `settings.json`:
       },
       // There are two ways to set config options:
       //   - edit your `zls.json` that applies to any editor that uses ZLS
-      //   - set in-editor config options with the `initialization_options` field below.
+      //   - set in-editor config options with the `settings` field below.
       //
       // Further information on how to configure ZLS:
       // https://zigtools.org/zls/configure/
-      "initialization_options": {
+      "settings": {
         // Whether to enable build-on-save diagnostics
         //
         // Further information about build-on save:
