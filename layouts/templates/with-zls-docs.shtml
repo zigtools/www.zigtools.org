@@ -39,16 +39,12 @@
       flex: 0 0 15rem;
     }
 
-    #sidebar details {
-      list-style: none;
-    }
-
     #sidebar summary {
       border-top: 1px solid var(--border-color);
-      list-style: none;
       padding: 0.5rem 0;
       padding-left: 0.5rem;
       font-weight: bold;
+      cursor: default;
     }
 
     #sidebar ul {
