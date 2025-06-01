@@ -36,7 +36,7 @@ Please note that ZLS will not empty the file when restarting but always append l
 
 | Code Editor         | Instructions                                  | Notes                                                                                                             |
 | ------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Visual Studio Code  | Bottom Panel -> Output -> Zig Language Server | requires the `ziglang.vscode-zig` extension                                                                       |
+| Visual Studio Code  | Bottom Panel -> Output -> ZLS Language Server | requires the `ziglang.vscode-zig` extension                                                                       |
 | Sublime Text        | `LSP: Toggle Log Panel`                       | requires the `LSP` package                                                                                        |
 | JetBrains IDE with ZigBrains | Start the editor through the terminal |                                                                                                                   |
 | Helix               | `Open the helix log file. [:log-open]`        |                                                                                                                   |
