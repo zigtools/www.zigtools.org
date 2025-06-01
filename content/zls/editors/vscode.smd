@@ -26,7 +26,7 @@ With that being said, there are some Zig specific settings that you may wish to 
 // settings.json (open with `Preferences: Open User Settings (JSON)`)
 {
   "zig.zls.enabled": "on",
-  // You can more more Zig and ZLS options here
+  // You can add more Zig and ZLS options here
 
   // Whether to enable build-on-save diagnostics
   //
@@ -36,8 +36,7 @@ With that being said, there are some Zig specific settings that you may wish to 
 
   // All nested settings will only affect Zig files.
   "[zig]": {
-    // Formatting with ZLS matches `zig fmt`.
-    // The Zig FAQ answers some questions about `zig fmt`:
+    // The Zig FAQ answers some common questions about Zig's formatter (`zig fmt`)
     // https://github.com/ziglang/zig/wiki/FAQ
     //
     // "editor.formatOnSave": false,
@@ -46,8 +45,6 @@ With that being said, there are some Zig specific settings that you may wish to 
 
     // overwrite words when accepting completions
     "editor.suggest.insertMode": "replace",
-    // The `foldingProviderModel` provides more accurate stick scroll scopes
-    "editor.stickyScroll.defaultModel": "foldingProviderModel",
     "editor.codeActionsOnSave": {
       // Run code actions that currently supports adding and removing discards.
       // "source.fixAll": "explicit",
