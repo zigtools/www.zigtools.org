@@ -36,12 +36,12 @@ The available configuration are documented [here](https://emacs-lsp.github.io/ls
 
 ### Code Actions
 
-### source.fixAll
+#### source.fixAll
 
 Running `source.fixall` code actions is not natively supported by lsp-mode. See [emacs-lsp/lsp-mode#1842](https://github.com/emacs-lsp/lsp-mode/issues/1842)
 
 ZLS can work around this limitation by enabling the `force_autofix` config option.
 
-### source.organizeImports
+#### source.organizeImports
 
 Use `s-l r o` to manually execute the code action.

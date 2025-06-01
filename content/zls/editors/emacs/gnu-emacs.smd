@@ -54,7 +54,7 @@ Use `M-x eglot` in a zig-mode buffer to start the server or add a hook:
 
 ### Code Actions
 
-### source.fixAll
+#### source.fixAll
 
 Add the following to run `source.fixAll` code action on save:
 
@@ -66,7 +66,7 @@ Add the following to run `source.fixAll` code action on save:
         (eglot-code-actions nil nil "source.fixAll" t)))))
 ```
 
-### source.organizeImports
+#### source.organizeImports
 
 Use `M-x eglot-code-action-organize-imports` to manually execute the code action.
 
