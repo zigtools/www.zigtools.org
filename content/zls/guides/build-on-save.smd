@@ -7,48 +7,37 @@
 } 
 ---
 
-ZLS can be configured to run your build script on save. If that results in build errors, they will be displayed in your editor like any other diagnostic.
-
-># [Warning (Linux)]($block.attrs('warning'))
->
-> On Linux, Build-On-Save requires a kernel version of at least `6.5`. Use `uname -r` to check your version. If an incompatible version is used, a warning will be [logged](/zls/guides/view-logs/) and Build-On-Save will be disabled.
-> A workaround implementation is available if `enable_build_on_save` has been set to `true`.
->
-> This is especially important to WSL2 (Windows Subsystem for Linux version 2) users where the default kernel version is `5.15` as of January 2025.
+ZLS can be configured to build your project on save. If that results in errors, they will be displayed in your editor like any other diagnostic.
 
 ## Configuration
 
-By default, ZLS will automatically enable Build-On-Save if your build script defines a "check" step. Otherwise you will need to set the `enable_build_on_save` config option.
-You can use `build_on_save_args` to configure which command-line arguments should be passed to your build script.
+There are two ways to opt into Build-On-Save:
 
-Here is an example:
-```json
-{
-    "enable_build_on_save": true,
-    "build_on_save_args": ["install", "-Dtarget=wasm32-wasi", "-fwasmtime"],
-}
-```
+- The `build.zig` of your project defines a "check" step. (**recommended**)
+- The `enable_build_on_save` config option has been manually set to `true`.
 
-## Add a "check" step to your build.zig
+The first method avoids dealing with config options and can report compile errors quicker. Otherwise, enable the `enable_build_on_save` config option to use Build-On-Save even in projects that have no "check" step.
+
+### Add a "check" step to your build.zig
 
 This part is more deeply tied to your specific project but the gist is the following: whatever you do to define your main executable or library, you do it again in a new step named check.
 
 I'll use for this example the executable definition step you get generated automatically from `zig init`.
 
 ```zig
-// Create a "module" just like in the `zig init` template.
-const module = b.addModule("foo", .{
+// Create a module just like in the `zig init` template.
+const exe_mod = b.addModule("foo", .{
     .root_source_file = b.path("src/main.zig"),
     .target = target,
     .optimize = optimize,
 });
 // Any other code to define dependencies would probably be here.
 
-// Create an example from the given module.
+// Create an executable from the given module.
 // Still the same as the `zig init` template.
 const exe = b.addExecutable(.{
     .name = "foo",
-    .root_module = module,
+    .root_module = exe_mod,
 });
 b.installArtifact(exe);
 
@@ -57,7 +46,7 @@ b.installArtifact(exe);
 // we're binding it to a dedicated build step.
 const exe_check = b.addExecutable(.{
     .name = "foo",
-    .root_module = module,
+    .root_module = exe_mod,
 });
 // There is no `b.installArtifact(exe_check);` here.
 
@@ -75,6 +64,26 @@ This one-line difference will have a big impact on the resulting behavior of the
 The result is that you will get diagnostics pretty fast since you won't have to go through the “LLVM Emit Code…” phase.
 
 Once you're done with this, restart your editor (or at least ZLS), **save your file with an error in it**, and enjoy your new spiffy diagnostics.
+
+### Customize build arguments
+
+By default, ZLS will run the equivalent of the following command:
+
+```
+zig build check --watch
+```
+
+If no "check" step has been found and `enable_build_on_save` has been enabled, it will fall back to the "install" step.
+
+To further customize the build arguments, the `build_on_save_args` config option can be used. 
+
+Here are some arbitrary examples to showcase what could be done in theory:
+
+- Override which build step(s) should be run: `["check", "test"]`
+- Set project-specific build options: `["-Dtarget=wasm32-wasi"]`
+- Set additional build system flags: `["-j4"]`
+
+Run `zig build --help` to see what build steps and build options are available in your project. 
 
 ## Special Thanks
 
