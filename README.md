@@ -1,7 +1,6 @@
-
 # zigtools.org
 
-The Source Code for [zigtools.org](https://zigtools.org). Made with [Zine](https://github.com/kristoff-it/zine).
+The Source Code for [zigtools.org](https://zigtools.org). Made with [Zine](https://zine-ssg.io).
 
 # Test Locally
 
