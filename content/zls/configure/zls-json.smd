@@ -53,7 +53,7 @@ After creating the configuration file at `$local_config_dir/zls.json`, `zls env`
 
 ## JSON Schema
 
-ZLS provides a [JSON Schema](https://github.com/zigtools/zls/blob/master/schema.json) to validate the configuration file. It can be used to validate the configuration file and provide IntelliSense features to editors. Further information about JSON Schemas can be found at https://json-schema.org. 
+ZLS provides a [JSON Schema](https://github.com/zigtools/zls/blob/master/schema.json) for validating the config file and enabling IntelliSense features in editors. Further information about JSON Schemas can be found at https://json-schema.org. 
 
 You can add a mapping to `zls.json` that can be used by *some* editors:
 
@@ -68,5 +68,8 @@ You can add a mapping to `zls.json` that can be used by *some* editors:
 
 Please refer to your Editor's Documentation to find out if and how they support JSON Schemas. 
 
-Be aware that configuration options change over time. The example above assumes that you are using ZLS nightly/master. If you use a tagged release of ZLS, you will need to the JSON Schema of the respective version:
-`https://raw.githubusercontent.com/zigtools/zls/refs/tags/<ZLS_VERSION_HERE>/schema.json`.
+Be aware that configuration options change over time. The example above assumes that you are using ZLS nightly/master. When using a tagged release of ZLS, use the JSON Schema file corresponding to that version, like so:
+
+```
+https://raw.githubusercontent.com/zigtools/zls/refs/tags/<ZLS_VERSION_HERE>/schema.json
+```
