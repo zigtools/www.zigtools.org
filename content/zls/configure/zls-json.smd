@@ -7,6 +7,10 @@
 } 
 ---
 
+># [Recommendation]($block.attrs('note'))
+>
+> ZLS recommends using [in-editor configuration](in-editor) over a `zls.json` to integrate with the existing config system of your editor.
+
 You can configure ZLS by creating a `zls.json` configuration file. This config will apply to **all** editors that use ZLS.
 
 Here is an example of how a `zls.json` _could_ look like:
