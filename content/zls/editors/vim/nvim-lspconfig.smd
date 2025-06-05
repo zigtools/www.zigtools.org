@@ -178,3 +178,9 @@ autocmd BufWritePre *.zig,*.zon lua vim.lsp.buf.code_action({
   apply = true,
 })
 ```
+
+## Per-project config
+
+Neovim allows setting LSP settings per project via [exrc](https://neovim.io/doc/user/options.html#'exrc').
+
+If the use case for per-project config is to set the path to the Zig or ZLS executable, consider using [direnv](https://direnv.net/) to add it to your `$PATH` or use a version manager for Zig and ZLS.

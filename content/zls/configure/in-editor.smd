@@ -7,26 +7,32 @@
 } 
 ---
 
-In-Editor Config (or Workspace Config) will integrate with the config system of your editor to configure ZLS on a per-editor basis. 
-
-Some editors (like VS Code) also allow workspace-specific configuration. If you want to share the same configuration across multiple editors, please refer to the [zls.json]($link.page('zls/configure/zls-json')) alternative.
+In-Editor Config (a.k.a workspace configuration) will integrate with the config system of your editor to configure ZLS on a per-editor basis. Most editors also support per-project configuration.
 
 ## Supported Editors
 
-| Editor                                                        |  in-editor config support |
-| ------------------------------------------------------------- | ------------------------- |
-| [VS Code](/zls/editors/vscode)                                | Yes                       |
-| [Sublime Text](/zls/editors/sublime-text)                     | Yes                       |
-| [ZigBrains for JetBrains](/zls/editors/jetbrains)             | Limited\*                 |
-| [Helix](/zls/editors/helix)                                   | Yes                       |
-| [Zed](/zls/editors/zed)                                       | Yes                       |
-| [Neovim with nvim-lspconfig](/zls/editors/vim/nvim-lspconfig) | Yes                       |
-| [Vim/Neovim with CoC](/zls/editors/vim/coc)                   | Yes                       |
-| [Vim/Neovim with YCM](/zls/editors/vim/ycm)                   | Yes\*\*                   |
-| [Emacs with eglot](/zls/editors/emacs)                        | Yes                       |
-| [Emacs with lsp-mode](/zls/editors/emacs)                     | Yes                       |
-| [Kate](/zls/editors/kate)                                     | Yes                       |
+| Editor                                                        | supported? |
+| ------------------------------------------------------------- | ---------- |
+| [VS Code](/zls/editors/vscode)                                | Yes        |
+| [Sublime Text](/zls/editors/sublime-text)                     | Yes        |
+| [ZigBrains for JetBrains](/zls/editors/jetbrains)             | Limited\*  |
+| [Helix](/zls/editors/helix)                                   | Yes        |
+| [Zed](/zls/editors/zed)                                       | Yes        |
+| [Neovim with nvim-lspconfig](/zls/editors/vim/nvim-lspconfig) | Yes        |
+| [Vim/Neovim with CoC](/zls/editors/vim/coc)                   | Yes        |
+| [Vim/Neovim with YCM](/zls/editors/vim/ycm)                   | Yes        |
+| [Emacs with eglot](/zls/editors/emacs)                        | Yes        |
+| [Emacs with lsp-mode](/zls/editors/emacs)                     | Yes        |
+| [Kate](/zls/editors/kate)                                     | Yes        |
 
 \* Only a subset of config options are available.
 
-\*\* In-Editor configuration is somewhat tedious to setup for this Editor. You may favor the [zls.json]($link.page('zls/configure/zls-json')) alternative.
+## Available Config Options
+
+Most editors do not know which config options are available for a language server like ZLS. ZLS provides a [JSON Schema](https://github.com/zigtools/zls/blob/master/schema.json) that can be used to find all available config options.
+
+Be aware that configuration options change over time. The linked schema file above assumes that you are using ZLS nightly/master. When using a tagged release of ZLS, use the JSON Schema file corresponding to that version, like so:
+
+```
+https://raw.githubusercontent.com/zigtools/zls/refs/tags/<ZLS_VERSION_HERE>/schema.json
+```

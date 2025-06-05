@@ -61,3 +61,9 @@ Add the following to your `settings.json`:
   }
 }
 ```
+
+## Per-project config
+
+Zed supports per-project configuration by creating a `.zed/settings.json` inside a project. For more information, check the Zed about [configuration docs](https://zed.dev/docs/configuring-zed#configuring-zed). 
+
+If the use case for per-project config is to set the path to the Zig executable, consider using [direnv](https://zed.dev/docs/configuring-zed#direnv-integration) to add it to your `$PATH`.

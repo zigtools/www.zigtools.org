@@ -44,8 +44,6 @@ To apply [in-editor-configuration](/zls/configure/in-editor) or manually specify
          )))))
 ```
 
-Eglot also supports Project-specific or User-specific [server configuration](https://www.gnu.org/software/emacs/manual/html_node/eglot/Advanced-server-configuration.html).
-
 Use `M-x eglot` in a zig-mode buffer to start the server or add a hook:
 
 ```
@@ -70,5 +68,6 @@ Add the following to run `source.fixAll` code action on save:
 
 Use `M-x eglot-code-action-organize-imports` to manually execute the code action.
 
-# lsp-mode
+### Per-project config
 
+Eglot supports per-project configuration which is documented in the [Advanced server configuration](https://www.gnu.org/software/emacs/manual/html_node/eglot/Advanced-server-configuration.html) docs. 

@@ -51,3 +51,21 @@ To apply [in-editor-configuration](/zls/configure/in-editor) or manually specify
 ## Code Actions on save
 
 Kate does not support code actions on save.
+
+## Per-project config
+
+Kate's [LSP Client Plugin](https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-lspclient.html) allows setting LSP settings per project via a `.kateproject` file. Here is an example of how this could look like:
+
+```json
+{
+  "lspclient": {
+    "servers": {
+      "zig": {
+        "settings": {
+          "enable_build_on_save": true
+        }
+      }
+    }
+  }
+}
+```

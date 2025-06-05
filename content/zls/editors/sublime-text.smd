@@ -94,3 +94,7 @@
   }
 }
 ```
+
+## Per-project config
+
+The Sublime Text LSP plugin allows setting LSP settings per project via a `.sublime-project` file. See [per-project-overrides](https://lsp.sublimetext.io/client_configuration/#per-project-overrides).

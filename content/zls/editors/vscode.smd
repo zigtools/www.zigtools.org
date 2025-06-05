@@ -64,6 +64,8 @@ With that being said, there are some Zig specific settings that you may wish to 
 }
 ```
 
+For more information, checkout the VS Code docs about [Settings](https://code.visualstudio.com/docs/configure/settings).
+
 ### Additional Config Options
 
 The available config options in the VS Code extension match those that are offered by the latest nightly build of ZLS. (sometimes they are out of sync)
