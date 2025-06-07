@@ -16,7 +16,7 @@ There are two ways to opt into Build-On-Save:
 - The `build.zig` of your project defines a "check" step. (**recommended**)
 - The `enable_build_on_save` config option has been manually set to `true`.
 
-The first method avoids dealing with config options and can report compile errors quicker. Otherwise, enable the `enable_build_on_save` config option to use Build-On-Save even in projects that have no "check" step.
+The first method avoids dealing with config options and can report compile errors quicker.
 
 ### Add a "check" step to your build.zig
 
@@ -75,15 +75,13 @@ zig build check --watch
 
 If no "check" step has been found and `enable_build_on_save` has been enabled, it will fall back to the "install" step.
 
-To further customize the build arguments, the `build_on_save_args` config option can be used. 
+To further customize the build arguments, the `build_on_save_args` config option can be used. Here are some arbitrary examples to showcase what could be done in theory:
 
-Here are some arbitrary examples to showcase what could be done in theory:
+- Override which build step(s) should be run: `"build_on_save_args": ["check", "test"]`
+- Set project-specific build options: `"build_on_save_args": ["-Dtarget=wasm32-wasi"]`
+- Set additional build system flags: `"build_on_save_args": ["-j4"]`
 
-- Override which build step(s) should be run: `["check", "test"]`
-- Set project-specific build options: `["-Dtarget=wasm32-wasi"]`
-- Set additional build system flags: `["-j4"]`
-
-Run `zig build --help` to see what build steps and build options are available in your project. 
+Run `zig build --help` to find out what build steps and build options are available in your project. 
 
 ## Special Thanks
 
