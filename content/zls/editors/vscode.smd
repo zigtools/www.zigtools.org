@@ -66,9 +66,9 @@ With that being said, there are some Zig specific settings that you may wish to 
 
 For more information, checkout the VS Code docs about [Settings](https://code.visualstudio.com/docs/configure/settings).
 
-### Additional Config Options
+### Set outdated config options
 
-The available config options in the VS Code extension match those that are offered by the latest nightly build of ZLS. (sometimes they are out of sync)
+The available config options in the VS Code extension match those that are offered by the latest nightly build of ZLS. Be aware that hey may be out of sync.
 
 To set config options that are offered by older ZLS version (e.g. `enable_autofix` for ZLS `0.13.0`) you can use the `zig.zls.additionalOptions` property:
 
