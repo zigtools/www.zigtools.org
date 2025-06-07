@@ -70,7 +70,9 @@
 
     #sidebar-content {
       position: sticky;
-      top: 80px;
+      top: 40px;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
     }
 
     #footer {
