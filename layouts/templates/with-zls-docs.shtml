@@ -102,9 +102,7 @@
   </style>
   <super>
 </head>
-<header id="header">
-  <super>
-</header>
+<header id="header"></header>
 <div id="content">
   <nav id="sidebar">
     <div id="sidebar-content">

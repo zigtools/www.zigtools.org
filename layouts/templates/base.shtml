@@ -13,13 +13,13 @@
     <super>
   </head>
   <body>
-    <nav id="main-nav" class="centered">
-      <a href="/">Home</a>
-      <a href="/zls/install">ZLS</a>
-      <a href="https://github.com/sponsors/zigtools">Sponsor</a>
-      <a href="https://github.com/zigtools" target="_blank">GitHub</a>
-    </nav>
     <header id="header">
+      <nav id="main-nav" class="centered">
+        <a href="/">Home</a>
+        <a href="/zls/install">ZLS</a>
+        <a href="https://github.com/sponsors/zigtools">Sponsor</a>
+        <a href="https://github.com/zigtools" target="_blank">GitHub</a>
+      </nav>
       <super>
     </header>
     <div id="content">

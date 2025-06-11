@@ -1,7 +1,6 @@
 <extend template="with-zls-docs.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head"></head>
-<header id="header"></header>
 <div id="main">
   <main :html="$page.content()"></main>
 </div>
