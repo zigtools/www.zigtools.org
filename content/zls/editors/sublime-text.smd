@@ -27,8 +27,6 @@
 }
 ```
 
-## [Sublime Text 4]($section.id('lsp-sublime-settings-4'))
-
 ```json
 // LSP.sublime-settings
 {
@@ -73,23 +71,6 @@
         // omit the following line if `zig` is in your PATH
         "zig_exe_path": "/path/to/zig_executable"
       }
-    }
-  }
-}
-```
-
-## [Sublime Text 3]($section.id('lsp-sublime-settings-3'))
-
-```json
-// LSP.sublime-settings
-{
-  "clients": {
-    "zig": {
-      "command": ["/path/to/zls_executable"],
-      "enabled": true,
-      "languageId": "zig",
-      "scopes": ["source.zig"],
-      "syntaxes": ["Packages/Zig Language/Syntaxes/Zig.tmLanguage"]
     }
   }
 }
