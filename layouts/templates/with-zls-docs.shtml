@@ -159,20 +159,6 @@
   </nav>
   <div id="main">
     <h1 :text="$page.title"></h1>
-    <header id="main-header">
-      <ctx :if="$page.custom.get?('in-editor-configuration')">
-        <p title="Some Tooltip">
-          In Editor Configuration:
-          <ctx :text="$page.custom.get('in-editor-configuration')"></ctx>
-        </p>
-      </ctx>
-      <ctx :if="$page.custom.get?('code-action-on-save')">
-        <p title="Some Tooltip">
-          Code Action On Save:
-          <ctx :text="$page.custom.get('code-action-on-save')"></ctx>
-        </p>
-      </ctx>
-    </header>
     <super>
     <nav id="footer">
       <ctx :if="$page.prevPage?()">
