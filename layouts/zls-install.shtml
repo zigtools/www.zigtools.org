@@ -9,9 +9,8 @@
       text-align: center;
       gap: 1rem;
       background-color: var(--secondary-background-color);
-      border: 0.3rem solid;
-      border-radius: 9999px;
-      padding: 0 1.5rem;
+      border: 0.2rem solid;
+      padding: 0 1rem;
       margin: 0.5rem auto;
     }
 
