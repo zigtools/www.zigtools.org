@@ -19,8 +19,6 @@ The following two configs **only** contain the necessary Zig specific configurat
 
 Install the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager.
 
-[]($section.id('init-lua'))
-
 ```lua
 local vim = vim
 local Plug = vim.fn['plug#']
@@ -75,8 +73,6 @@ lspconfig.zls.setup {
   }
 }
 ```
-
-[]($section.id('init-vimscript'))
 
 ```vim
 call plug#begin('~/.config/nvim/plugged')
