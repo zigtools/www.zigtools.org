@@ -55,10 +55,6 @@ a {
   color: var(--link-color);
 }
 
-a:not(:hover) {
-  text-decoration: none;
-}
-
 pre {
   border: 0 dashed;
   border-top-width: 1px;
