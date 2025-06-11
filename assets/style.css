@@ -230,7 +230,12 @@ ul {
   margin: 0.75rem 0;
 }
 
-.block h1 {
+.block h1,
+.block h2,
+.block h3,
+.block h4,
+.block h5,
+.block h6 {
   font-size: 1em;
   position: relative !important;
   margin: 0  0.25rem !important;

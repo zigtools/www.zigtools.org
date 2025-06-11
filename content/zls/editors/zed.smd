@@ -11,7 +11,7 @@
 }  
 ---
 
-># [Warning]($block.attrs('warning'))
+>## [Warning]($block.attrs('warning'))
 >Zed will automatically install the latest tagged release of ZLS. The tagged release will **not** be compatible with Zig nightly.
 
 Add the following to your `settings.json`:

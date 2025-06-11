@@ -7,7 +7,7 @@
 } 
 ---
 
-># [Info]($block.attrs('note'))
+>## [Info]($block.attrs('note'))
 >
 > This Guide is targeted at developers who create downstream packages of ZLS.
 

@@ -44,7 +44,7 @@ To apply [in-editor-configuration](/zls/configure/in-editor) or manually specify
 }
 ```
 
-># [Warning]($block.attrs('warning'))
+>### [Warning]($block.attrs('warning'))
 >
 >Be aware that Kate does not support Json with comments or trailing commas.
 

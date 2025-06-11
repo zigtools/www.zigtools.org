@@ -10,7 +10,7 @@
 }  
 ---
 
-># [Author's Notice]($block.attrs('warning'))
+>## [Author's Notice]($block.attrs('warning'))
 > This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
 
 1. Install [Doom Emacs](https://github.com/doomemacs/doomemacs)

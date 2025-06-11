@@ -7,7 +7,7 @@
 } 
 ---
 
-># [Warning]($block.attrs('warning'))
+>## [Warning]($block.attrs('warning'))
 >
 >A non-debug build of ZLS will not report debug logs (by default) and stack traces when ZLS crashes.
 >

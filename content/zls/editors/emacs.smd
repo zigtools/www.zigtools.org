@@ -7,7 +7,7 @@
 }  
 ---
 
-># [Author's Notice]($block.attrs('warning'))
+>## [Author's Notice]($block.attrs('warning'))
 > This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
 
 The following Emacs *Variants* are documented:
@@ -31,7 +31,7 @@ If you don't have `zig` or `zls` in your `PATH`, set the following configuration
 
 The available configuration are documented [here](https://emacs-lsp.github.io/lsp-mode/page/lsp-zig/).
 
-># [Warning]($block.attrs('warning'))
+>### [Warning]($block.attrs('warning'))
 > Be aware that the configuration options may not match what is available in your installed ZLS version.
 
 ### Code Actions
