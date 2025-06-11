@@ -111,7 +111,7 @@
       }
       .form-button-container button {
         color: white;
-        background-color: transparent;
+        background-color: rgb(255, 255, 255, 3%);
       }
       .form-button-container button:hover {
         background-color: rgb(255, 255, 255, 10%);
