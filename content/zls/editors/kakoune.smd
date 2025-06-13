@@ -1,0 +1,19 @@
+---
+{
+    .title = "Kakoune",
+    .date = @date("2020-04-04T00:00:00"),
+    .author = "Sample Author",
+    .layout = "zls-docs.shtml",
+}
+---
+
+Install [kakoune-lsp](https://github.com/kakoune-lsp/kakoune-lsp).
+Make sure `zig` and `kak-lsp` are in your `PATH`.
+
+To enable lsp on start add the following to `<config_dir>/kak/kakrc`
+```sh
+eval %sh{kak-lsp}
+lsp-enable
+```
+
+You will probably want to add additional recommended keybindings found [here](https://github.com/kakoune-lsp/kakoune-lsp/blob/master/README.asciidoc#configure-key-mappings).
