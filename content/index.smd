@@ -23,12 +23,12 @@ A demonstration of Zig and ZLS running inside of a browser using Webassembly.
 - [Website](https://playground.zigtools.org/)
 - [GitHub](https://github.com/zigtools/playground)
 
-## zig-lsp-codegen
+## Zig LSP Kit
 
-zig-lsp-codegen provides all necessary building blocks to develop [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations (like ZLS) in [Zig](https://ziglang.org/).
+This library provides all necessary building blocks to develop [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations (like ZLS) in [Zig](https://ziglang.org/).
 
-- [GitHub](https://github.com/zigtools/zig-lsp-codegen)
-- [Documentation](https://zigtools.github.io/zig-lsp-codegen/)
+- [GitHub](https://github.com/zigtools/lsp-kit)
+- [Documentation](https://zigtools.github.io/lsp-kit)
 
 ```=html
 <!-- https://github.com/kristoff-it/ziggy     Soon™  -->
