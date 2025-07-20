@@ -17,7 +17,7 @@ To apply in-editor configuration or manually specify the path to `zig` or `zls`,
 command = "/path/to/zls_executable"
 # There are two ways to set config options:
 #   - edit your `zls.json` that applies to any editor that uses ZLS
-#   - set in-editor config options with the `config.<name>` fields below.
+#   - set in-editor config options with the `config.zls.<name>` fields below.
 #
 # Further information on how to configure ZLS:
 # https://zigtools.org/zls/configure/
@@ -26,10 +26,10 @@ command = "/path/to/zls_executable"
 #
 # Further information about build-on save:
 # https://zigtools.org/zls/guides/build-on-save/
-# config.enable_build_on_save = true
+# config.zls.enable_build_on_save = true
 
 # omit the following line if `zig` is in your PATH
-config.zig_exe_path = "/path/to/zig_executable"
+config.zls.zig_exe_path = "/path/to/zig_executable"
 ```
 
 Further information on [languages.toml files](https://docs.helix-editor.com/languages.html#languagestoml-files).
