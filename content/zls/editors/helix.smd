@@ -44,7 +44,7 @@ For more information on the health check results refer to [Health check](https:/
 
 ## Code Actions on save
 
-Running code actions on save is not supported by lsp-mode. See [helix-editor/helix#1565](https://github.com/helix-editor/helix/issues/1565)
+Running code actions on save is not supported by Helix. See [helix-editor/helix#1565](https://github.com/helix-editor/helix/issues/1565)
 
 #### source.fixAll
 
