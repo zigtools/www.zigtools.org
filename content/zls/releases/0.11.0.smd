@@ -87,4 +87,4 @@ RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex
 | Linux   | x86_64  | [zls-x86_64-linux.tar.xz ](https://builds.zigtools.org/zls-linux-x86_64-0.11.0.tar.xz)  | [minisig](https://builds.zigtools.org/zls-linux-x86_64-0.11.0.tar.xz.minisig)  | 2.83 MiB |
 | Linux   | x86     | [zls-x86-linux.tar.xz    ](https://builds.zigtools.org/zls-linux-x86-0.11.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-linux-x86-0.11.0.tar.xz.minisig)     | 2.82 MiB |
 | Linux   | aarch64 | [zls-aarch64-linux.tar.xz](https://builds.zigtools.org/zls-linux-aarch64-0.11.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-linux-aarch64-0.11.0.tar.xz.minisig) | 2.74 MiB |
-| Wasm    | WASI    | [zls-wasm32-wasi.tar.xz  ](https://builds.zigtools.org/zls-wasi-wasm32-0.11.0.tar.xz)   | [minisig](https://builds.zigtools.org/zls-wasi-wasm32-0.11.0.tar.xz.minisig)   | 2.67 MiB |
+| WASI    | Wasm    | [zls-wasm32-wasi.tar.xz  ](https://builds.zigtools.org/zls-wasi-wasm32-0.11.0.tar.xz)   | [minisig](https://builds.zigtools.org/zls-wasi-wasm32-0.11.0.tar.xz.minisig)   | 2.67 MiB |

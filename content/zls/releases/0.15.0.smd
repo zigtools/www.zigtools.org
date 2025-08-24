@@ -198,7 +198,7 @@ We'd like to take a second to thank all our awesome [contributors](https://githu
 
 ## Release Artifacts
 
->## [Recommendation]($block.attrs('note'))
+>## [Release filenames have changed]($block.attrs('warning'))
 >
 > The operating system and cpu archtecture in the filename have been swapped to match the equivalent change that happened in Zig's tarballs. `armv7a` also has been renamed to `arm` for the same reason.
 
@@ -223,4 +223,4 @@ RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex
 | Linux   | x86         | [zls-linux-x86.tar.xz        ](https://builds.zigtools.org/zls-x86-linux-0.15.0.tar.xz)         | [minisig](https://builds.zigtools.org/zls-x86-linux-0.15.0.tar.xz.minisig)         | 3.57 MiB   |
 | Linux   | loongarch64 | [zls-linux-loongarch64.tar.xz](https://builds.zigtools.org/zls-loongarch64-linux-0.15.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-loongarch64-linux-0.15.0.tar.xz.minisig) | 3.22 MiB   |
 | Linux   | s390x       | [zls-linux-s390x.tar.xz      ](https://builds.zigtools.org/zls-s390x-linux-0.15.0.tar.xz)       | [minisig](https://builds.zigtools.org/zls-s390x-linux-0.15.0.tar.xz.minisig)       | 3.95 MiB   |
-| Wasm    | WASI        | [zls-wasi-wasm32.tar.xz      ](https://builds.zigtools.org/zls-wasm32-wasi-0.15.0.tar.xz)       | [minisig](https://builds.zigtools.org/zls-wasm32-wasi-0.15.0.tar.xz.minisig)       | 2.21 MiB   |
+| WASI    | Wasm        | [zls-wasi-wasm32.tar.xz      ](https://builds.zigtools.org/zls-wasm32-wasi-0.15.0.tar.xz)       | [minisig](https://builds.zigtools.org/zls-wasm32-wasi-0.15.0.tar.xz.minisig)       | 2.21 MiB   |
