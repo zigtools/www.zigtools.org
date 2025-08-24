@@ -9,5 +9,15 @@ Site {
         // Used in inlined html
         "0.14.0-hover-over-character-literal.png",
         "0.14.0-hover-over-character-literal-dark.png",
+        "0.15.0-nvim-build-system-diagnostics.png",
+        "0.15.0-nvim-build-system-diagnostics-dark.png",
+        "0.15.0-nvim-highlight-control-flow.png",
+        "0.15.0-nvim-highlight-control-flow-dark.png",
+        "0.15.0-nvim-highlight-mutable.png",
+        "0.15.0-nvim-highlight-mutable-dark.png",
+        "0.15.0-nvim-highlight-static.png",
+        "0.15.0-nvim-highlight-static-dark.png",
+        "0.15.0-nvim-highlight-unused.png",
+        "0.15.0-nvim-highlight-unused-dark.png",
     ],
 }

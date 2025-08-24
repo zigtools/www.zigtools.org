@@ -11,6 +11,7 @@ A tagged release of ZLS is should be used with the same tagged release of Zig an
 
 | Version                                                         | Date       | Zig Release                                                |
 | --------------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
+| [ZLS 0.15.0](./0.15.0/)                                         | 2025-08-24 | [Zig 0.15.1](https://ziglang.org/download/#release-0.15.1) |
 | [ZLS 0.14.0](./0.14.0/)                                         | 2025-03-06 | [Zig 0.14.0](https://ziglang.org/download/#release-0.14.0) |
 | [ZLS 0.13.0](./0.13.0/)                                         | 2024-06-09 | [Zig 0.13.0](https://ziglang.org/download/#release-0.13.0) |
 | [ZLS 0.12.0](./0.12.0/)                                         | 2024-04-26 | [Zig 0.12.0](https://ziglang.org/download/#release-0.12.0) |

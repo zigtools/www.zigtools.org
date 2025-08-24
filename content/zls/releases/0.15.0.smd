@@ -1,0 +1,226 @@
+---
+{
+    .title = "ZLS 0.15.0",
+    .date = @date("2025-08-24T15:21:19Z"),
+    .author = "Techatrix",
+    .layout = "zls-release.shtml",
+} 
+---
+
+## Feature improvements 
+
+### Diagnostics
+
+#### show diagnostics from running build.zig ([#2377](https://github.com/zigtools/zls/pull/2377))
+
+Errors from failing to compile a `build.zig` file are now reported as diagnostics in the editor. They will also continue to be written to the [logs](/zls/guides/view-logs). This works even if [build on save](/zls/guides/build-on-save/) is not enabled.
+
+```=html
+<details style="width: 600px;margin: 0 auto;">
+    <summary style="text-align: center"><strong>Show Example</strong></summary>
+    <figure>
+        <picture>
+            <source srcset="/0.15.0-nvim-build-system-diagnostics-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="/0.15.0-nvim-build-system-diagnostics.png" style="aspect-ratio: 41 / 25;">
+        </picture>
+        <figcaption>
+            <p>Diagnostics in a <code>build.zig</code> file (Neovim with <a href="https://github.com/folke/trouble.nvim">folke/trouble.nvim</a>)</p>
+        </figcaption>
+    </figure>
+</details>
+```
+
+#### mark diagnostics about unused variables as "unnecessary" ([#2387](https://github.com/zigtools/zls/pull/2387))
+
+Any diagnostics that come from [unused variables](https://github.com/ziglang/zig/issues/335) will now be marked as "unnecessary" over the LSP protocol. This informs the editor that the diagnostic is caused by unused or unnecessary code which may be used to show the diagnostic in a different style.
+
+```=html
+<details style="width: 600px;margin: 0 auto;">
+    <summary style="text-align: center"><strong>Show Example</strong></summary>
+    <figure>
+        <picture>
+            <source srcset="/0.15.0-nvim-highlight-unused-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="/0.15.0-nvim-highlight-unused.png" style="aspect-ratio: 8 / 5;">
+        </picture>
+        <figcaption>
+            <p>Highlighting of unused variables (Neovim with <a href="https://github.com/folke/tokyonight.nvim">folke/tokyonight.nvim</a>)</p>
+            <p>The squiggly line is gone and the variable is faded out instead.</p>
+        </figcaption>
+    </figure>
+</details>
+```
+
+### Semantic Tokens
+
+#### add token modifier for mutable declarations ([#2244](https://github.com/zigtools/zls/pull/2244))
+
+Declarations that are `var` as opposed to `const` will now get a non-standard LSP token modifier called "mutable". Depending on the theme being used, this may affect how they are displayed.
+
+```=html
+<details style="width: 600px;margin: 0 auto;">
+    <summary style="text-align: center"><strong>Show Example</strong></summary>
+    <figure>
+        <picture>
+            <source srcset="/0.15.0-nvim-highlight-mutable-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="/0.15.0-nvim-highlight-mutable.png" style="aspect-ratio: 2 / 1;">
+        </picture>
+        <figcaption>
+            <p>Highlighting of mutable declarations (Neovim with <a href="https://github.com/folke/tokyonight.nvim">folke/tokyonight.nvim</a>)</p>
+        </figcaption>
+    </figure>
+    <p>Tokyonight is unaffected by default so this highlight has been configured manually. Notice how "variable" is rendered in <i>italic</i>.</p>
+</details>
+```
+
+### Code Analysis
+
+Improvements to code analysis are not typically included in the release notes, since each release contains numerous minor changes that are difficult to summarize individually. However, it should be mentioned that this release stands out for containing a greater number of contributions to code analysis than usual. Special thanks goes to FnControlOption who has contributed the majority of [code analysis related improvements](https://github.com/zigtools/zls/pulls?q=is%3Apr+is%3Amerged+author%3AFnControlOption) in this release.
+
+#### add token modifier for variables with static lifetime ([#2260](https://github.com/zigtools/zls/pull/2260))
+
+Variables with static lifetime will now get the standard LSP token modifier called "static". Depending on the theme being, this may affect how they are displayed.
+
+```=html
+<details style="width: 500px;margin: 0 auto;">
+    <summary style="text-align: center"><strong>Show Example</strong></summary>
+    <figure>
+        <picture>
+            <source srcset="/0.15.0-nvim-highlight-static-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="/0.15.0-nvim-highlight-static.png" style="aspect-ratio: 1 / 1;">
+        </picture>
+        <figcaption>
+            <p>Special highlight of static variables<br>(Neovim with <a href="https://github.com/folke/tokyonight.nvim">folke/tokyonight.nvim</a>)</p>
+        </figcaption>
+    </figure>
+</details>
+```
+
+#### add token tag for escape sequences ([#2243](https://github.com/zigtools/zls/pull/2243))
+
+In some editors, such as Neovim, escape sequences in string literals would lose their highlighting when using LSP-based semantic highlighting instead of syntax-based highlighting. To address this, the server now emits a non-standard `escapeSequence` token tag if possible.
+
+### support for organizing imports at the bottom of a file ([#2391](https://github.com/zigtools/zls/pull/2391))
+
+The `source.organizeImports` will move all imports to the bottom of the file if at least one of them is already located there:
+
+```zig
+const std = @import("std");
+const print = std.debug.print;
+
+pub fn main() !void {
+    print("Hello World\n", .{});
+}
+
+const builtin = @import("builtin");
+```
+
+→
+
+```zig
+pub fn main() !void {
+    print("Hello World\n", .{});
+}
+
+const std = @import("std");
+const print = std.debug.print;
+const builtin = @import("builtin");
+```
+
+### watch for changes in unopened files ([#2238](https://github.com/zigtools/zls/pull/2238))
+
+The language server now registers for the `workspace/didChangeWatchedFiles` LSP notification to track modifications to files that are not directly opened in the editor. Without this mechanism, edits made by external programs (such as Git) could cause the server’s view of the files to become out of sync, potentially leading to incorrect results.
+
+### highlight matching control flow keywords ([#2323](https://github.com/zigtools/zls/pull/2323))
+
+Document highlight and references request on `while`, `for` or `switch` keywords will show all `break` or `continue` keywords that reference them. A request on `break` or `continue` will have the opposite response.
+
+```=html
+<details style="width: 600px;margin: 0 auto;">
+    <summary style="text-align: center"><strong>Show Example</strong></summary>
+    <figure>
+        <picture>
+            <source srcset="/0.15.0-nvim-highlight-control-flow-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="/0.15.0-nvim-highlight-control-flow.png" style="aspect-ratio: 1 / 1;">
+        </picture>
+        <figcaption>
+            <p>Highlighting of control flow statements (Neovim with <a href="https://github.com/folke/tokyonight.nvim">folke/tokyonight.nvim</a>)</p>
+            <p>Holding the cursor on the outer <code>for</code> will highlight the referenced <code>break</code> and <code>continue</code> keywords in <b>bold</b>. </p>
+        </figcaption>
+    </figure>
+    <p>This behaviour must be manually in Neovim. See <a href="https://neovim.io/doc/user/lsp.html#lsp-highlight">document highlighting</a></p>
+</details>
+```
+
+### improved webassembly support ([#2278](https://github.com/zigtools/zls/pull/2278), [#2328](https://github.com/zigtools/zls/pull/2328))
+
+Even though a `wasm32-wasi` builds has been available since the 0.11.0 release, running in webassembly needed further care to be usable in practice due how restrictive this target can be compared to others. Over time we have improve webassembly support thanks to the testing in the [Zig Playground](https://playground.zigtools.org/). Further improvements to the playground are planned, alongside ongoing work to make ZLS usable in [VS Code as a browser extension](https://github.com/ziglang/vscode-zig/issues/223).
+
+## Contributors
+
+Here is a list of everyone who has made at least one contribution to this release of ZLS:
+
+- Techatrix
+- FnControlOption
+- xdBronch
+- Lee Cannon
+- Will Lillis
+- mochalins
+- Kurt
+- Lucas Santos
+- Carmen
+- Evan Elias Young
+- Gabriel Borrelli
+- Gabriel Ford
+- Joey Chan
+- Jørgen Kristensen
+- LN Liberda
+- Marty Field
+- Seiichi Uchida
+- The-Emperor10
+- Tristan Pemble
+- darkdarcool
+- dbger
+- futsuuu
+
+## Sponsors
+
+We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
+
+```=html
+<figure>
+    <a href="https://opencollective.com/zigtools#category-CONTRIBUTE">
+        <img src="https://opencollective.com/zigtools/backers.svg?limit=1000" alt="OpenCollective Backers">
+    </a>
+</figure>
+```
+
+**Full Changelog**: [0.14.0...0.15.0](https://github.com/zigtools/zls/compare/0.14.0...0.15.0)
+
+## Release Artifacts
+
+>## [Recommendation]($block.attrs('note'))
+>
+> The operating system and cpu archtecture in the filename have been swapped to match the equivalent change that happened in Zig's tarballs. `armv7a` also has been renamed to `arm` for the same reason.
+
+All files are signed with [minisign](https://jedisct1.github.io/minisign/) using this public key:
+
+```
+RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex
+```
+
+| OS      | Arch        | Filename                                                                                        | Signature                                                                          | Size       |
+| ------- | ----------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------- |
+| Windows | x86_64      | [zls-windows-x86_64.zip      ](https://builds.zigtools.org/zls-x86_64-windows-0.15.0.zip)       | [minisig](https://builds.zigtools.org/zls-x86_64-windows-0.15.0.zip.minisig)       | 4.25 MiB   |
+| Windows | aarch64     | [zls-windows-aarch64.zip     ](https://builds.zigtools.org/zls-aarch64-windows-0.15.0.zip)      | [minisig](https://builds.zigtools.org/zls-aarch64-windows-0.15.0.zip.minisig)      | 4.04 MiB   |
+| Windows | x86         | [zls-windows-x86.zip         ](https://builds.zigtools.org/zls-x86-windows-0.15.0.zip)          | [minisig](https://builds.zigtools.org/zls-x86-windows-0.15.0.zip.minisig)          | 4.3 MiB    |
+| macOS   | x86_64      | [zls-macos-x86_64.tar.xz     ](https://builds.zigtools.org/zls-x86_64-macos-0.15.0.tar.xz)      | [minisig](https://builds.zigtools.org/zls-x86_64-macos-0.15.0.tar.xz.minisig)      | 1.11 MiB   |
+| macOS   | aarch64     | [zls-macos-aarch64.tar.xz    ](https://builds.zigtools.org/zls-aarch64-macos-0.15.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-aarch64-macos-0.15.0.tar.xz.minisig)     | 971.43 KiB |
+| Linux   | x86_64      | [zls-linux-x86_64.tar.xz     ](https://builds.zigtools.org/zls-x86_64-linux-0.15.0.tar.xz)      | [minisig](https://builds.zigtools.org/zls-x86_64-linux-0.15.0.tar.xz.minisig)      | 3.6 MiB    |
+| Linux   | aarch64     | [zls-linux-aarch64.tar.xz    ](https://builds.zigtools.org/zls-aarch64-linux-0.15.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-aarch64-linux-0.15.0.tar.xz.minisig)     | 3.38 MiB   |
+| Linux   | arm         | [zls-linux-arm.tar.xz        ](https://builds.zigtools.org/zls-arm-linux-0.15.0.tar.xz)         | [minisig](https://builds.zigtools.org/zls-arm-linux-0.15.0.tar.xz.minisig)         | 3.5 MiB    |
+| Linux   | riscv64     | [zls-linux-riscv64.tar.xz    ](https://builds.zigtools.org/zls-riscv64-linux-0.15.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-riscv64-linux-0.15.0.tar.xz.minisig)     | 4.22 MiB   |
+| Linux   | powerpc64le | [zls-linux-powerpc64le.tar.xz](https://builds.zigtools.org/zls-powerpc64le-linux-0.15.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-powerpc64le-linux-0.15.0.tar.xz.minisig) | 3.47 MiB   |
+| Linux   | x86         | [zls-linux-x86.tar.xz        ](https://builds.zigtools.org/zls-x86-linux-0.15.0.tar.xz)         | [minisig](https://builds.zigtools.org/zls-x86-linux-0.15.0.tar.xz.minisig)         | 3.57 MiB   |
+| Linux   | loongarch64 | [zls-linux-loongarch64.tar.xz](https://builds.zigtools.org/zls-loongarch64-linux-0.15.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-loongarch64-linux-0.15.0.tar.xz.minisig) | 3.22 MiB   |
+| Linux   | s390x       | [zls-linux-s390x.tar.xz      ](https://builds.zigtools.org/zls-s390x-linux-0.15.0.tar.xz)       | [minisig](https://builds.zigtools.org/zls-s390x-linux-0.15.0.tar.xz.minisig)       | 3.95 MiB   |
+| Wasm    | WASI        | [zls-wasi-wasm32.tar.xz      ](https://builds.zigtools.org/zls-wasm32-wasi-0.15.0.tar.xz)       | [minisig](https://builds.zigtools.org/zls-wasm32-wasi-0.15.0.tar.xz.minisig)       | 2.21 MiB   |
