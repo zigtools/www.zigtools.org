@@ -238,11 +238,11 @@ All files are signed with [minisign](https://jedisct1.github.io/minisign/) using
 RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex
 ```
 
-| OS      | Arch    | Filename                                                                                | Signature                                                                      | Size       |
-| ------- | ------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------- |
-| Windows | x86_64  | [zls-x86_64-windows.zip  ](https://builds.zigtools.org/zls-windows-x86_64-0.10.0.zip)   | [minisig](https://builds.zigtools.org/zls-windows-x86_64-0.10.0.zip.minisig)   | 1.51 MiB   |
-| Windows | x86     | [zls-x86-windows.zip     ](https://builds.zigtools.org/zls-windows-x86-0.10.0.zip)      | [minisig](https://builds.zigtools.org/zls-windows-x86-0.10.0.zip.minisig)      | 1.57 MiB   |
-| macOS   | aarch64 | [zls-aarch64-macos.tar.xz](https://builds.zigtools.org/zls-macos-aarch64-0.10.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-macos-aarch64-0.10.0.tar.xz.minisig) | 369.17 KiB |
-| macOS   | x86_64  | [zls-x86_64-macos.tar.xz ](https://builds.zigtools.org/zls-macos-x86_64-0.10.0.tar.xz)  | [minisig](https://builds.zigtools.org/zls-macos-x86_64-0.10.0.tar.xz.minisig)  | 474.68 KiB |
-| Linux   | x86_64  | [zls-x86_64-linux.tar.xz ](https://builds.zigtools.org/zls-linux-x86_64-0.10.0.tar.xz)  | [minisig](https://builds.zigtools.org/zls-linux-x86_64-0.10.0.tar.xz.minisig)  | 1.11 MiB   |
-| Linux   | x86     | [zls-x86-linux.tar.xz    ](https://builds.zigtools.org/zls-linux-x86-0.10.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-linux-x86-0.10.0.tar.xz.minisig)     | 1.09 MiB   |
+| OS      | Arch    | Filename                                                                                       | Signature                                                                      | Size       |
+| ------- | ------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------- |
+| Windows | x86_64  | [zls-windows-x86_64-0.10.0.zip  ](https://builds.zigtools.org/zls-windows-x86_64-0.10.0.zip)   | [minisig](https://builds.zigtools.org/zls-windows-x86_64-0.10.0.zip.minisig)   | 1.51 MiB   |
+| Windows | x86     | [zls-windows-x86-0.10.0.zip     ](https://builds.zigtools.org/zls-windows-x86-0.10.0.zip)      | [minisig](https://builds.zigtools.org/zls-windows-x86-0.10.0.zip.minisig)      | 1.57 MiB   |
+| macOS   | aarch64 | [zls-macos-aarch64-0.10.0.tar.xz](https://builds.zigtools.org/zls-macos-aarch64-0.10.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-macos-aarch64-0.10.0.tar.xz.minisig) | 369.17 KiB |
+| macOS   | x86_64  | [zls-macos-x86_64-0.10.0.tar.xz ](https://builds.zigtools.org/zls-macos-x86_64-0.10.0.tar.xz)  | [minisig](https://builds.zigtools.org/zls-macos-x86_64-0.10.0.tar.xz.minisig)  | 474.68 KiB |
+| Linux   | x86_64  | [zls-linux-x86_64-0.10.0.tar.xz ](https://builds.zigtools.org/zls-linux-x86_64-0.10.0.tar.xz)  | [minisig](https://builds.zigtools.org/zls-linux-x86_64-0.10.0.tar.xz.minisig)  | 1.11 MiB   |
+| Linux   | x86     | [zls-linux-x86-0.10.0.tar.xz    ](https://builds.zigtools.org/zls-linux-x86-0.10.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-linux-x86-0.10.0.tar.xz.minisig)     | 1.09 MiB   |
