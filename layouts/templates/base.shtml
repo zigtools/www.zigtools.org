@@ -17,6 +17,7 @@
       <nav id="main-nav" class="centered">
         <a href="/">Home</a>
         <a href="/zls/install">ZLS</a>
+        <a href="https://playground.zigtools.org/">Playground</a>
         <a href="https://github.com/sponsors/zigtools">Sponsor</a>
         <a href="https://github.com/zigtools" target="_blank">GitHub</a>
       </nav>
