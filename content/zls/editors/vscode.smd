@@ -32,9 +32,7 @@ With that being said, there are some Zig specific settings that you may wish to 
 
   // All nested settings will only affect Zig files.
   "[zig]": {
-    // The Zig FAQ answers some common questions about Zig's formatter (`zig fmt`)
-    // https://github.com/ziglang/zig/wiki/FAQ
-    //
+    // Formatting with ZLS matches `zig fmt`.
     // "editor.formatOnSave": false,
 
     // "editor.inlayHints.enabled": "off",

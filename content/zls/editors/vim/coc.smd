@@ -21,8 +21,6 @@
     // enable format-on-save from CoC + ZLS
     //
     // Formatting with ZLS matches `zig fmt`.
-    // The Zig FAQ answers some questions about `zig fmt`:
-    // https://github.com/ziglang/zig/wiki/FAQ
     "coc.preferences.formatOnSave": true,
 
     // Show inlay hints in the editor. Inlay hints are short annotations within the code,

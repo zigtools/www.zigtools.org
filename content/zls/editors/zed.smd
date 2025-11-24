@@ -17,8 +17,6 @@ Add the following to your `settings.json`:
   "languages": {
     "Zig": {
       // Formatting with ZLS matches `zig fmt`.
-      // The Zig FAQ answers some questions about `zig fmt`:
-      // https://github.com/ziglang/zig/wiki/FAQ
       "format_on_save": "language_server",
       // Make sure that zls is the primary language server
       "language_servers": ["zls", "..."],

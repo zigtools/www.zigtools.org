@@ -30,8 +30,6 @@
   // Keep in mind that these settings apply to any language and not just Zig.
 
   // Formatting with ZLS matches `zig fmt`.
-  // The Zig FAQ answers some questions about `zig fmt`:
-  // https://github.com/ziglang/zig/wiki/FAQ
   "lsp_format_on_save": true,
   "lsp_code_actions_on_save": {
     // Run code actions that currently supports adding and removing discards.

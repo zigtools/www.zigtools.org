@@ -31,8 +31,6 @@ vim.g.zig_fmt_autosave = 0
 -- enable  format-on-save from nvim-lspconfig + ZLS
 --
 -- Formatting with ZLS matches `zig fmt`.
--- The Zig FAQ answers some questions about `zig fmt`:
--- https://github.com/ziglang/zig/wiki/FAQ
 vim.api.nvim_create_autocmd('BufWritePre',{
   pattern = {"*.zig", "*.zon"},
   callback = function(ev)
@@ -84,8 +82,6 @@ let g:zig_fmt_autosave = 0
 " enable format-on-save from nvim-lspconfig + ZLS
 "
 " Formatting with ZLS matches `zig fmt`.
-" The Zig FAQ answers some questions about `zig fmt`:
-" https://github.com/ziglang/zig/wiki/FAQ
 autocmd BufWritePre *.zig,*.zon lua vim.lsp.buf.format()
 
 :lua << EOF
