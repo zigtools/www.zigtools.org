@@ -28,7 +28,7 @@ With that being said, there are some Zig specific settings that you may wish to 
   //
   // Further information about build-on save:
   // https://zigtools.org/zls/guides/build-on-save/
-  // "zig.zls.enableBuildOnSave": true,
+  // "zig.buildOnSaveProvider": "zls",
 
   // All nested settings will only affect Zig files.
   "[zig]": {
