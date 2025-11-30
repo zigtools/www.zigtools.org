@@ -1,31 +1,25 @@
 <extend template="base.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head">
-  <style>
-    h1 {
-      font-size: 3.25rem;
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    h2 {
-      margin-top: 1.5rem;
-      margin-bottom: 0.25rem;
-    }
-
-    li + li {
-      margin-top: 0.6rem;
-    }
-  </style>
+	<style>
+		h1 {
+			font-size: 3.25rem;
+			margin-top: 1rem;
+			margin-bottom: 0.5rem;
+		}
+		
+		h2 {
+			margin-top: 1.5rem;
+			margin-bottom: 0.25rem;
+		}
+	</style>
 </head>
-<header id="header">
-  <h1>Zigtools</h1>
-  <p class="centered">We make free and open-source tools
-    <br>
-    for the
-    <i><a href="https://ziglang.org/">@ziglang</a></i>
-    community.</p>
-</header>
 <div id="content">
-  <main id="page" :html="$page.content()"></main>
+	<h1>Zigtools</h1>
+	<p class="centered">We make free and open-source tools
+		<br>
+		for the
+		<i><a href="https://ziglang.org/">@ziglang</a></i>
+		community.</p>
+	<main id="page" :html="$page.content()"></main>
 </div>

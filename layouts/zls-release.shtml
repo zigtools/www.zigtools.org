@@ -1,66 +1,64 @@
 <extend template="base.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head">
-  <style>
-    @media (prefers-color-scheme: dark) {
-      figure > img {
-        border: 1px solid #333;
-      }
-    }
-
-    h2,
-    h3,
-    h4 {
-      border-bottom: 1px dashed var(--border-color);
-    }
-
-    #footer {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 3rem;
-      padding: 0.25rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    #footer a {
-      text-decoration: none;
-      color: inherit;
-      padding: 0.25rem;
-    }
-
-    #footer .title {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-  </style>
+	<style>
+		@media (prefers-color-scheme: dark) {
+			figure > img {
+				border: 1px solid #333;
+			}
+		}
+		
+		h2,
+		h3,
+		h4 {
+			border-bottom: 1px dashed var(--border-color);
+		}
+		
+		#footer {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 3rem;
+			padding: 0.25rem;
+			border-top: 1px solid var(--border-color);
+		}
+		
+		#footer a {
+			text-decoration: none;
+			color: inherit;
+			padding: 0.25rem;
+		}
+		
+		#footer .title {
+			font-weight: bold;
+			text-decoration: underline;
+		}
+	</style>
 </head>
-<header id="header">
-  <!-- TODO add a direct link to the GitHub Release -->
-  <nav class="release-nav centered">
-    <a href="https://github.com/zigtools/zls/releases">GitHub Releases</a>
-    <a href="/zls/install/index.html">Installation Guide</a>
-    <a href="https://discord.gg/Jp4DHkqkYs">ZLS Discord</a>
-  </nav>
-  <h1 class="title centered" :text="$page.title"></h1>
-</header>
 <div id="content">
-  <main id="page" :html="$page.content()"></main>
-  <nav id="footer">
-    <ctx :if="$page.prevPage?()">
-      <a href="$if.link()" style="margin-right: auto;">
-        <p>
-          ←
-          <span class="title" :text="$if.title"></span>
-        </p>
-      </a>
-    </ctx>
-    <ctx :if="$page.nextPage?()">
-      <a href="$if.link()" style="margin-left: auto; text-align: right;">
-        <p>
-          <span class="title" :text="$if.title"></span>
-          →
-        </p>
-      </a>
-    </ctx>
-  </nav>
+	<!-- TODO add a direct link to the GitHub Release -->
+	<nav class="release-nav centered">
+		<a href="https://github.com/zigtools/zls/releases">GitHub Releases</a>
+		<a href="/zls/install/index.html">Installation Guide</a>
+		<a href="https://discord.gg/Jp4DHkqkYs">ZLS Discord</a>
+	</nav>
+	<h1 class="title centered" :text="$page.title"></h1>
+	<main id="page" :html="$page.content()"></main>
+	<nav id="footer">
+		<ctx :if="$page.prevPage?()">
+			<a href="$if.link()" style="margin-right: auto;">
+				<p>
+					←
+					<span class="title" :text="$if.title"></span>
+				</p>
+			</a>
+		</ctx>
+		<ctx :if="$page.nextPage?()">
+			<a href="$if.link()" style="margin-left: auto; text-align: right;">
+				<p>
+					<span class="title" :text="$if.title"></span>
+					→
+				</p>
+			</a>
+		</ctx>
+	</nav>
 </div>

@@ -1,182 +1,177 @@
 <extend template="base.shtml">
 <title id="title">
-  <super>
+	<super>
 </title>
 <head id="head">
-  <style>
-    #content {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      max-width: inherit;
-      width: min(100%, 1200px);
-      margin-top: 50px;
-    }
-
-    #main {
-      flex-grow: 1;
-    }
-
-    #main > h1 {
-      margin-top: 0;
-    }
-
-    #main-header {
-      flex-direction: row;
-      gap: 1rem;
-      margin: 0.5rem 0px;
-    }
-
-    #main-header p {
-      font-size: smaller;
-      text-align: center;
-      padding: 0.5rem;
-      border-radius: 0.8rem;
-      border: 1px dashed var(--border-color);
-    }
-
-    #sidebar {
-      flex: 0 0 15rem;
-    }
-
-    #sidebar summary {
-      border-top: 1px solid var(--border-color);
-      padding: 0.5rem 0.5rem;
-      font-weight: bold;
-      cursor: default;
-    }
-
-    #sidebar ul {
-      list-style: none;
-      padding-left: 0.25rem;
-      margin: 0 0 0.5rem 0.75rem;
-      border-left: 1px solid var(--border-color);
-    }
-
-    #sidebar a {
-      display: block;
-      padding: 0.5rem;
-      color: inherit;
-    }
-
-    #sidebar .selected {
-      text-decoration: underline;
-    }
-
-    #sidebar a:hover,
-    #sidebar details > summary:hover  {
-      background-color: var(--tertiary-background-color);
-    }
-
-    #sidebar-content {
-      position: sticky;
-      top: 40px;
-      max-height: calc(100vh - 40px);
-      overflow-y: auto;
-    }
-
-    #footer {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 3rem;
-      padding: 0.25rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    #footer a {
-      text-decoration: none;
-      color: inherit;
-      padding: 0.25rem;
-    }
-
-    #footer .title {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 1000px) {
-      #content {
-        flex-direction: column-reverse;
-      }
-    }
-  </style>
-  <super>
+	<style>
+		#content {
+			display: flex;
+			flex-direction: row;
+			gap: 1rem;
+			max-width: inherit;
+			width: min(100%, 1200px);
+			margin-top: 50px;
+		}
+		
+		#main {
+			flex-grow: 1;
+		}
+		
+		#main > h1 {
+			margin-top: 0;
+		}
+		
+		#main-header {
+			flex-direction: row;
+			gap: 1rem;
+			margin: 0.5rem 0px;
+		}
+		
+		#main-header p {
+			font-size: smaller;
+			text-align: center;
+			padding: 0.5rem;
+			border-radius: 0.8rem;
+			border: 1px dashed var(--border-color);
+		}
+		
+		#sidebar {
+			flex: 0 0 15rem;
+		}
+		
+		#sidebar summary {
+			border-top: 1px solid var(--border-color);
+			padding: 0.5rem 0.5rem;
+			font-weight: bold;
+			cursor: default;
+		}
+		
+		#sidebar ul {
+			list-style: none;
+			padding-left: 0.25rem;
+			margin: 0 0 0.5rem 0.75rem;
+			border-left: 1px solid var(--border-color);
+		}
+		
+		#sidebar a {
+			display: block;
+			padding: 0.5rem;
+			color: inherit;
+		}
+		
+		#sidebar .selected {
+			text-decoration: underline;
+		}
+		
+		#sidebar a:hover,
+		#sidebar details > summary:hover  {
+			background-color: var(--tertiary-background-color);
+		}
+		
+		#sidebar-content {
+			position: sticky;
+			top: 40px;
+			max-height: calc(100vh - 40px);
+			overflow-y: auto;
+		}
+		
+		#footer {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 3rem;
+			padding: 0.25rem;
+			border-top: 1px solid var(--border-color);
+		}
+		
+		#footer a {
+			text-decoration: none;
+			color: inherit;
+			padding: 0.25rem;
+		}
+		
+		#footer .title {
+			font-weight: bold;
+			text-decoration: underline;
+		}
+		
+		@media (max-width: 1000px) {
+			#content {
+				flex-direction: column-reverse;
+			}
+		}
+	</style>
+	<super>
 </head>
-<header id="header"></header>
 <div id="content">
-  <nav id="sidebar">
-    <div id="sidebar-content">
-      <a href="$site.page('zls/install').link()">Install ZLS</a>
-      <details open="">
-        <summary>Editor Configuration</summary>
-        <ul :loop="$site.pages('zls/editors/vscode','zls/editors/sublime-text','zls/editors/jetbrains','zls/editors/helix','zls/editors/zed','zls/editors/vim','zls/editors/emacs','zls/editors/kate')">
-          <li>
-            <a
-              class="$loop.it.isCurrent().then('selected')"
-              href="$loop.it.link()"
-              :text="$loop.it.title"
-            ></a>
-          </li>
-        </ul>
-      </details>
-      <details open="">
-        <summary>Configuration</summary>
-        <ul :loop="$site.pages('zls/configure/in-editor','zls/configure/zls-json','zls/configure/per-build')">
-          <li>
-            <a
-              class="$loop.it.isCurrent().then('selected')"
-              href="$loop.it.link()"
-              :text="$loop.it.title"
-            ></a>
-          </li>
-        </ul>
-      </details>
-      <details open="">
-        <summary>Usage Guides</summary>
-        <ul :loop="$site.pages('zls/guides/build-on-save','zls/guides/view-logs','zls/guides/packaging')">
-          <li>
-            <a
-              class="$loop.it.isCurrent().then('selected')"
-              href="$loop.it.link()"
-              :text="$loop.it.title"
-            ></a>
-          </li>
-        </ul>
-      </details>
-      <details>
-        <summary>Releases</summary>
-        <ul :loop="$site.pages('zls/releases/0.15.0','zls/releases/0.14.0','zls/releases/0.13.0','zls/releases/0.12.0','zls/releases/0.11.0','zls/releases/0.10.0','zls/releases/0.9.0')">
-          <li>
-            <a
-              class="$loop.it.isCurrent().then('selected')"
-              href="$loop.it.link()"
-              :text="$loop.it.title"
-            ></a>
-          </li>
-        </ul>
-      </details>
-    </div>
-  </nav>
-  <div id="main">
-    <h1 :text="$page.title"></h1>
-    <super>
-    <nav id="footer">
-      <ctx :if="$page.prevPage?()">
-        <a href="$if.link()" style="margin-right: auto;">
-          <p>
-            ←
-            <span class="title" :text="$if.title"></span>
-          </p>
-        </a>
-      </ctx>
-      <ctx :if="$page.nextPage?()">
-        <a href="$if.link()" style="margin-left: auto; text-align: right;">
-          <p>
-            <span class="title" :text="$if.title"></span>
-            →
-          </p>
-        </a>
-      </ctx>
-    </nav>
-  </div>
+	<nav id="sidebar">
+		<div id="sidebar-content">
+			<a href="$site.page('zls/install').link()">Install ZLS</a>
+			<details open="">
+				<summary>Editor Configuration</summary>
+				<ul :loop="$site.pages('zls/editors/vscode','zls/editors/sublime-text','zls/editors/jetbrains','zls/editors/helix','zls/editors/zed','zls/editors/vim','zls/editors/emacs','zls/editors/kate')">
+					<li>
+						<a class="$loop.it.isCurrent().then('selected')"
+						   href="$loop.it.link()"
+						   :text="$loop.it.title"
+						></a>
+					</li>
+				</ul>
+			</details>
+			<details open="">
+				<summary>Configuration</summary>
+				<ul :loop="$site.pages('zls/configure/in-editor','zls/configure/zls-json','zls/configure/per-build')">
+					<li>
+						<a class="$loop.it.isCurrent().then('selected')"
+						   href="$loop.it.link()"
+						   :text="$loop.it.title"
+						></a>
+					</li>
+				</ul>
+			</details>
+			<details open="">
+				<summary>Usage Guides</summary>
+				<ul :loop="$site.pages('zls/guides/build-on-save','zls/guides/view-logs','zls/guides/packaging')">
+					<li>
+						<a class="$loop.it.isCurrent().then('selected')"
+						   href="$loop.it.link()"
+						   :text="$loop.it.title"
+						></a>
+					</li>
+				</ul>
+			</details>
+			<details>
+				<summary>Releases</summary>
+				<ul :loop="$site.pages('zls/releases/0.15.0','zls/releases/0.14.0','zls/releases/0.13.0','zls/releases/0.12.0','zls/releases/0.11.0','zls/releases/0.10.0','zls/releases/0.9.0')">
+					<li>
+						<a class="$loop.it.isCurrent().then('selected')"
+						   href="$loop.it.link()"
+						   :text="$loop.it.title"
+						></a>
+					</li>
+				</ul>
+			</details>
+		</div>
+	</nav>
+	<div id="main">
+		<h1 :text="$page.title"></h1>
+		<super>
+		<nav id="footer">
+			<ctx :if="$page.prevPage?()">
+				<a href="$if.link()" style="margin-right: auto;">
+					<p>
+						←
+						<span class="title" :text="$if.title"></span>
+					</p>
+				</a>
+			</ctx>
+			<ctx :if="$page.nextPage?()">
+				<a href="$if.link()" style="margin-left: auto; text-align: right;">
+					<p>
+						<span class="title" :text="$if.title"></span>
+						→
+					</p>
+				</a>
+			</ctx>
+		</nav>
+	</div>
 </div>

@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head id="head">
-    <meta charset="UTF-8">
-    <meta name="description" content="zigtools: We make free and open-source tools for the @ziglang community.">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title id="title">
-      <super>
-      - zigtools
-    </title>
-    <style :html="$site.asset('style.css').bytes()"></style>
-    <super>
-  </head>
-  <body>
-    <header id="header">
-      <nav id="main-nav" class="centered">
-        <a href="/">Home</a>
-        <a href="/zls/install">ZLS</a>
-        <a href="https://playground.zigtools.org/">Playground</a>
-        <a href="https://github.com/sponsors/zigtools">Sponsor</a>
-        <a href="https://github.com/zigtools" target="_blank">GitHub</a>
-      </nav>
-      <super>
-    </header>
-    <div id="content">
-      <super>
-    </div>
-    <footer>
-      <p>This
-        <a href="https://github.com/zigtools/www.zigtools.org">Website</a>
-        was made with
-        <a href="https://zine-ssg.io">Zine</a></p>
-      <!-- by someone who has no clue about web design -->
-    </footer>
-  </body>
+	<head id="head">
+		<meta charset="UTF-8">
+		<meta name="description" content="zigtools: We make free and open-source tools for the @ziglang community.">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title id="title">
+			<super>
+			- zigtools
+		</title>
+		<style :html="$site.asset('style.css').bytes()"></style>
+		<super>
+	</head>
+	<body>
+		<nav id="main-nav" class="centered">
+			<a href="/">Home</a>
+			<a href="/zls/install">ZLS</a>
+			<a href="https://playground.zigtools.org/">Playground</a>
+			<a href="https://github.com/sponsors/zigtools">Sponsor</a>
+			<a href="https://github.com/zigtools" target="_blank">GitHub</a>
+			<a href="/blog">Blog</a>
+		</nav>
+		<div id="content">
+			<super>
+		</div>
+		<footer>
+			<p>This
+				<a href="https://github.com/zigtools/www.zigtools.org">Website</a>
+				was made with
+				<a href="https://zine-ssg.io">Zine</a></p>
+			<!-- by someone who has no clue about web design -->
+		</footer>
+	</body>
 </html>

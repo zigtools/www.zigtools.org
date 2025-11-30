@@ -1,0 +1,14 @@
+---
+.title = "Blog",
+.date = @date("2020-07-06T00:00:00"),
+.author = "Sample Author",
+.layout = "blog.shtml",
+.alternatives = [{ 
+    .name = "rss",
+    .layout = "blog.xml", 
+    .output = "index.xml",
+}],
+.draft = false,
+--- 
+
+This blog section is also available as an [RSS feed]($link.alternative('rss')).

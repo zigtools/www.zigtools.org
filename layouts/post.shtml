@@ -1,0 +1,50 @@
+<extend template="base.shtml">
+<title id="title" :text="$page.title"></title>
+<head id="head">
+	<style>
+		#prev-next {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			margin-top: 40px;
+		}
+		
+		figure {
+			align-self: center;
+			text-align: center;
+			font-style: italic;
+		}
+		
+		.post {
+			display:flex;
+			flex-direction: column;
+		}
+		
+		h1 {
+			text-align: left;
+			margin-bottom: 0;
+		}
+		
+		h2 {
+			margin-bottom: 0.25rem;
+		}
+	</style>
+</head>
+<div id="content">
+	<h1 class="title" :text="$page.title"></h1>
+	<div class="post" :html="$page.content()"></div>
+	<div id="prev-next">
+		<div :if="$page.prevPage?()">
+			<a href="$if.link()">
+				←
+				<span :text="$if.title"></span>
+			</a>
+		</div>
+		<div :if="$page.nextPage?()">
+			<a href="$if.link()">
+				<span :text="$if.title"></span>
+				→
+			</a>
+		</div>
+	</div>
+</div>

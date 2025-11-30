@@ -2,5 +2,5 @@
 <title id="title" :text="$page.title"></title>
 <head id="head"></head>
 <div id="main">
-  <main :html="$page.content()"></main>
+	<main :html="$page.content()"></main>
 </div>

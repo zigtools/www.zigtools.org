@@ -1,159 +1,159 @@
 <extend template="with-zls-docs.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head">
-  <link rel="dns-prefetch" href="https://releases.zigtools.org/">
-  <style>
-    .banner {
-      display: flex;
-      width: fit-content;
-      text-align: center;
-      gap: 1rem;
-      background-color: var(--secondary-background-color);
-      border: 0.2rem solid;
-      padding: 0 1rem;
-      margin: 0.5rem auto;
-    }
-
-    .banner > * {
-      display: flex;
-      flex-direction: column;
-      align-self: center;
-    }
-
-    .banner img {
-      height: 3.5rem;
-      aspect-ratio: 25 / 29;
-    }
-
-    .vscode-banner {
-      border-color: rgb(0, 120, 212);
-      font-size: smaller;
-    }
-
-    .noscript-banner {
-      border-color: rgb(200, 0, 0);
-    }
-
-    #prebuilt-binary-result {
-      display: block;
-      overflow: auto;
-    }
-
-    #prebuilt-binary-result pre {
-      font-size: larger;
-    }
-
-    #prebuilt-binary-table th {
-      padding: 0.1rem 0.3rem;
-    }
-
-    #prebuilt-binary-table td {
-      padding: 0.5rem 0.3rem;
-    }
-
-    #zig-version-error {
-      color: red;
-      font-size: 1.1rem;
-    }
-
-    #zig-version-error.active {
-      padding: 0.25rem 1rem;
-    }
-
-    form {
-      padding: 1.5rem 0;
-    }
-
-    form > * {
-      display: flex;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .form-input-container {
-      flex-direction: column;
-    }
-
-    .form-input-container input {
-      outline: none;
-      text-align: center;
-      font-size: xx-large;
-      border-width: 0;
-      border-bottom-width: 3px;
-
-      background-color: transparent;
-      color: #000;
-      border-color: var(--zig-orange);
-    }
-
-    .form-input-container input.invalid {
-      border-color: red;
-    }
-
-    .form-button-container {
-      margin-top: 0.5rem;
-    }
-
-    .form-button-container button {
-      flex: 1 1 0;
-      padding: 0.75rem;
-      border: 1px solid;
-      border-color: #666;
-      font-family: inherit;
-      font-size: large;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .form-input-container input {
-        padding-bottom: 0.25rem;
-        color: white;
-      }
-      .form-button-container button {
-        color: white;
-        background-color: rgb(255, 255, 255, 3%);
-      }
-      .form-button-container button:hover {
-        background-color: rgb(255, 255, 255, 10%);
-      }
-    }
-  </style>
+	<link rel="dns-prefetch" href="https://releases.zigtools.org/">
+	<style>
+		.banner {
+			display: flex;
+			width: fit-content;
+			text-align: center;
+			gap: 1rem;
+			background-color: var(--secondary-background-color);
+			border: 0.2rem solid;
+			padding: 0 1rem;
+			margin: 0.5rem auto;
+		}
+		
+		.banner > * {
+			display: flex;
+			flex-direction: column;
+			align-self: center;
+		}
+		
+		.banner img {
+			height: 3.5rem;
+			aspect-ratio: 25 / 29;
+		}
+		
+		.vscode-banner {
+			border-color: rgb(0, 120, 212);
+			font-size: smaller;
+		}
+		
+		.noscript-banner {
+			border-color: rgb(200, 0, 0);
+		}
+		
+		#prebuilt-binary-result {
+			display: block;
+			overflow: auto;
+		}
+		
+		#prebuilt-binary-result pre {
+			font-size: larger;
+		}
+		
+		#prebuilt-binary-table th {
+			padding: 0.1rem 0.3rem;
+		}
+		
+		#prebuilt-binary-table td {
+			padding: 0.5rem 0.3rem;
+		}
+		
+		#zig-version-error {
+			color: red;
+			font-size: 1.1rem;
+		}
+		
+		#zig-version-error.active {
+			padding: 0.25rem 1rem;
+		}
+		
+		form {
+			padding: 1.5rem 0;
+		}
+		
+		form > * {
+			display: flex;
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.form-input-container {
+			flex-direction: column;
+		}
+		
+		.form-input-container input {
+			outline: none;
+			text-align: center;
+			font-size: xx-large;
+			border-width: 0;
+			border-bottom-width: 3px;
+			
+			background-color: transparent;
+			color: #000;
+			border-color: var(--zig-orange);
+		}
+		
+		.form-input-container input.invalid {
+			border-color: red;
+		}
+		
+		.form-button-container {
+			margin-top: 0.5rem;
+		}
+		
+		.form-button-container button {
+			flex: 1 1 0;
+			padding: 0.75rem;
+			border: 1px solid;
+			border-color: #666;
+			font-family: inherit;
+			font-size: large;
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			.form-input-container input {
+				padding-bottom: 0.25rem;
+				color: white;
+			}
+			.form-button-container button {
+				color: white;
+				background-color: rgb(255, 255, 255, 3%);
+			}
+			.form-button-container button:hover {
+				background-color: rgb(255, 255, 255, 10%);
+			}
+		}
+	</style>
 </head>
 <div id="main">
-  <noscript>
-    <div class="banner noscript-banner">
-      <p>The install tool requires JavaScript to be enabled in your browser!</p>
-    </div>
-  </noscript>
-  <div class="banner vscode-banner">
-    <div>
-      <img src="$site.asset('vscode.svg').link()" alt="Visual Studio Code Icon">
-    </div>
-    <div>
-      <ctx :html="$page.contentSection('vscode-banner')"></ctx>
-    </div>
-  </div>
-  <form name="ZLS Version Selection" aria-label="ZLS Version Selection">
-    <div class="form-input-container">
-      <input title="the Zig version you are using" type="text" id="zig-version" name="zig_version" placeholder="Enter your Zig Version" required>
-      <span id="zig-version-error" aria-live="polite"></span>
-    </div>
-    <div class="form-button-container">
-      <button title="manually build ZLS from source" id="button-from-source" class="install-button" type="submit" name="compatibility" value="full">
-        Build From Source
-      </button>
-      <button title="download a prebuilt binary of ZLS" id="button-binary" class="install-button" type="submit" name="compatibility" value="only-runtime">
-        Prebuilt Binary
-      </button>
-    </div>
-  </form>
-  <div id="build-from-source-result" style="display: none;">
-    <ctx :html="$page.contentSection('build-from-source')"></ctx>
-  </div>
-  <div id="prebuilt-binary-result" style="display: none;">
-    <ctx :html="$page.contentSection('install-prebuilt-binary')"></ctx>
-  </div>
-  <ctx :html="$page.contentSection('zig-zls-version-compatibility')"></ctx>
-  <ctx :html="$page.contentSection('next-steps')"></ctx>
-  <script :html="$site.asset('install.js').bytes()"></script>
+	<noscript>
+		<div class="banner noscript-banner">
+		<p>The install tool requires JavaScript to be enabled in your browser!</p>
+		</div>
+	</noscript>
+	<div class="banner vscode-banner">
+		<div>
+			<img src="$site.asset('vscode.svg').link()" alt="Visual Studio Code Icon">
+		</div>
+		<div>
+			<ctx :html="$page.contentSection('vscode-banner')"></ctx>
+		</div>
+	</div>
+	<form name="ZLS Version Selection" aria-label="ZLS Version Selection">
+		<div class="form-input-container">
+			<input title="the Zig version you are using" type="text" id="zig-version" name="zig_version" placeholder="Enter your Zig Version" required>
+			<span id="zig-version-error" aria-live="polite"></span>
+		</div>
+		<div class="form-button-container">
+			<button title="manually build ZLS from source" id="button-from-source" class="install-button" type="submit" name="compatibility" value="full">
+				Build From Source
+			</button>
+			<button title="download a prebuilt binary of ZLS" id="button-binary" class="install-button" type="submit" name="compatibility" value="only-runtime">
+				Prebuilt Binary
+			</button>
+		</div>
+	</form>
+	<div id="build-from-source-result" style="display: none;">
+		<ctx :html="$page.contentSection('build-from-source')"></ctx>
+	</div>
+	<div id="prebuilt-binary-result" style="display: none;">
+		<ctx :html="$page.contentSection('install-prebuilt-binary')"></ctx>
+	</div>
+	<ctx :html="$page.contentSection('zig-zls-version-compatibility')"></ctx>
+	<ctx :html="$page.contentSection('next-steps')"></ctx>
+	<script :html="$site.asset('install.js').bytes()"></script>
 </div>

@@ -1,8 +1,3 @@
-header {
-  display: flex;
-  flex-direction: column;
-}
-
 #main-nav, .release-nav {
   display: flex;
   justify-content: center;
@@ -118,6 +113,10 @@ p {
   margin-bottom: 0.5rem;
 }
 
+p, li {
+  line-height: 1.5;
+}
+
 p code {
   font-weight: bold;
 }
@@ -211,6 +210,10 @@ figure figcaption {
 
 ul {
   padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
 }
 
 /* Classes */
