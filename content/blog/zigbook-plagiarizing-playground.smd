@@ -51,7 +51,7 @@ We archived the WASM files for your convenience, courtesy of the great Internet 
 
 We proceeded to look at the JavaScript code, which we quickly determined was similarly copied, but with LLM distortions,
 likely to prevent the code from being completely identical. Still, certain sections were copied one-to-one,
-like the JavaScript worker data-passing structure and logging ([original ZLS playground code](https://github.com/zigtools/playground/blob/main/src/workers/runner.ts#L12-L41), [plagiarized Zigbook code](https://archive.ph/4LZ2X)).
+like the JavaScript worker data-passing structure and logging ([original ZLS playground code](https://github.com/zigtools/playground/blob/0ae8aa03fa38e8ce38e95f57cccfcf9aa4db610a/src/workers/runner.ts#L12-L41), [plagiarized Zigbook code](https://archive.ph/4LZ2X)).
 
 The following code from both files is identical:
 
