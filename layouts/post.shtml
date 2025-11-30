@@ -1,6 +1,10 @@
 <extend template="base.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head">
+	<meta property="og:title" content="$page.title">
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="Zigtools">
+	<meta property="article:author" content="$page.author">
 	<style>
 		#prev-next {
 			display: flex;
