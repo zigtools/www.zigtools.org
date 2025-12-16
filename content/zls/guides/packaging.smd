@@ -32,30 +32,31 @@ If building ZLS without access to Git metadata (e.g., from a shallow clone or ta
 
 ## Dependency fetching
 
-ZLS uses the Zig's builtin package manager to fetch dependencies and compile them from source. By default, Zig stores dependencies in the global cache directory at `$(zig env | jq -r .global_cache_dir)/p`, where each dependency is uniquely identified by a hash of its content.
+ZLS uses Zig's builtin package manager to fetch dependencies and compile them from source. By default, Zig automatically downloads dependencies and stores them in a global cache directory. The global cache directory can be found by running `zig env` and inspecting the `global_cache_dir` field. Packages are stored in the `p` subdirectory.
 
-The content after building ZLS may look similar to this:
-
-```bash
-$ tree $(zig env | jq -r .global_cache_dir)/p
-```
+Below is an example of how the package directory may look after building ZLS:
 
 ```
 /home/me/.cache/zig/p
-├── N-V-__8AABhrAQAQLLLGadghhPsdxTgBk9N9aLVOjXW3ay0V
+├── diffz-0.0.1-G2tlIQrOAQCfH15jdyaLyrMgV8eGPouFhkCeYFTmJaLk
 │   ├── build.zig
+│   ├── build.zig.zon
 │   ├── DiffMatchPatch.zig
 │   └── ...
-├── known_folders-0.0.0-Fy-PJtLDAADGDOwYwMkVydMSTp_aN-nfjCZw6qPQ2ECL
+├── known_folders-0.0.0-Fy-PJkfRAAAVdptXWXBspIIC7EkVgLgWozU5zIk5Zgcy
 │   ├── build.zig
 │   ├── build.zig.zon
 │   ├── known-folders.zig
 │   └── ...
-└── lsp_codegen-0.1.0-CMjjo0ZXCQB-rAhPYrlfzzpU0u0u2MeGvUucZ-_g32eg
+└── lsp_kit-0.1.0-bi_PL04yCgAxLsF0hH2a5sZKT84MGQaKXouw2jvCE8Nl
     ├── build.zig
     ├── build.zig.zon
     ├── src
     └── ...
 ```
 
-If you need to fetch dependencies in a separate phase (e.g. during the configure phase), use `--system [pkgdir]` to disable automatic package fetching and manually specify the directory containing the fetched dependencies. Dependency hashes and URLs can be found in the `build.zig.zon` file.
+Dependencies are listed in the `build.zig.zon` file, where `url` specifies the canonical source and `hash` is used to pin and verify the package contents. Be aware that there may be additional transitive dependencies that are not listed in the `build.zig.zon` of the root project.
+
+To support workflows in which dependency fetching is performed separately from the build process, the `--system [pkgdir]` option disables automatic package fetching and allows dependencies to be supplied from a pre-fetched package directory. Downstream vendors may choose their preferred method for fetching the required packages (for example, `zig fetch`, `git clone`, or `curl source.tar.gz`), provided that the resulting package contents match the specified hash.
+
+Refer to `zig fetch` for instructions on acquiring packages and computing or verifying their hashes.
