@@ -53,6 +53,10 @@
 			border-left: 1px solid var(--border-color);
 		}
 		
+		#sidebar li {
+			margin: 0;
+		}
+		
 		#sidebar a {
 			display: block;
 			padding: 0.5rem;
