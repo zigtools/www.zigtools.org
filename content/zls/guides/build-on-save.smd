@@ -67,7 +67,7 @@ Once you're done with this, restart your editor (or at least ZLS), **save your f
 
 ### Customize build arguments
 
-By default, ZLS will run the equivalent of the following command:
+By default, ZLS will try to run the equivalent of the following command:
 
 ```
 zig build check --watch
@@ -82,6 +82,23 @@ To further customize the build arguments, the `build_on_save_args` config option
 - Set additional build system flags: `"build_on_save_args": ["-j4"]`
 
 Run `zig build --help` to find out what build steps and build options are available in your project. 
+
+### Incremental Compilation (experimental)
+
+As of [Zig 0.15.x](https://ziglang.org/download/0.15.1/release-notes.html#toc-Incremental-Compilation), incremental compilation is still under active development:
+
+> Zig 0.15.x makes further progress on the work-in-progress Incremental Compilation functionality, which allows the compiler to perform very fast rebuilds by only re-compiling code which has changed. Various bugs have been fixed, particularly relating to changing file imports.
+>
+> This feature is still experimental—it has known bugs and can lead to miscompilations or incorrect compile errors. However, it is now stable enough to be used reliably in combination with `-fno-emit-bin`.
+
+Because the previously mentioned "check" step only reports compile errors without emitting code, it integrates well with incremental compilation:
+
+To try it out:
+  - Ensure that your project defines a "check" step
+  - Do **not** enable the `enable_build_on_save` config option
+  - Set `"build_on_save_args": ["-fincremental"]`
+
+Restart ZLS and review the [log output](/zls/guides/view-logs) to ensure there are no errors and that the config options were applied correctly. At this point, compile errors should appear *almost* instantly as you make changes.
 
 ## Special Thanks
 
