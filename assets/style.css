@@ -223,7 +223,7 @@ li {
   text-align: center;
 }
 
-.block {
+blockquote, .block {
   border-left: 0.3rem solid;
   padding: 0.25rem 1rem;
   margin: 0.75rem 0;
@@ -240,6 +240,10 @@ li {
   margin: 0  0.25rem !important;
   text-align: left;
   border-bottom: 1px dashed var(--border-color);
+}
+
+blockquote {
+  border-color: #80808050;
 }
 
 .note {
