@@ -1,9 +1,12 @@
 ---
 {
-    .title = "nvim-lspconfig",
+    .title = "Neovim",
     .date = @date("2020-04-06T01:00:00"),
     .author = "Sample Author",
     .layout = "zls-docs.shtml",
+    .aliases = [
+        "nvim-lspconfig.html" 
+    ],
 }  
 ---
 
@@ -11,7 +14,7 @@
 >
 >The [mason](https://github.com/williamboman/mason.nvim) package manager can only install the latest tagged release of ZLS which should **not** be used with Zig nightly/master.
 
-The following two configs **only** contain the necessary Zig specific configuration. Please refer to [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) on how to setup everything else like [keybindings](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#suggested-configuration) or [autocompletion](https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion).
+The following config **only** contains the necessary Zig specific configuration. Please refer to the [Neovim LSP docs](https://neovim.io/doc/user/lsp.html) on how to use various LSP features.
 
 Install the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager.
 
@@ -20,15 +23,14 @@ local vim = vim
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
-  Plug('neovim/nvim-lspconfig') -- https://github.com/neovim/nvim-lspconfig
-  Plug('ziglang/zig.vim')       -- https://github.com/ziglang/zig.vim
+  Plug('https://codeberg.org/ziglang/zig.vim')
 vim.call('plug#end')
 
 -- don't show parse errors in a separate window
 vim.g.zig_fmt_parse_errors = 0
 -- disable format-on-save from `ziglang/zig.vim`
 vim.g.zig_fmt_autosave = 0
--- enable  format-on-save from nvim-lspconfig + ZLS
+-- enable  format-on-save from vim.lsp + ZLS
 --
 -- Formatting with ZLS matches `zig fmt`.
 vim.api.nvim_create_autocmd('BufWritePre',{
@@ -38,12 +40,11 @@ vim.api.nvim_create_autocmd('BufWritePre',{
   end
 })
 
-local lspconfig = require('lspconfig')
-lspconfig.zls.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
-
-  -- omit the following line if `zls` is in your PATH
+vim.lsp.config['zls'] = {
+  -- Set to 'zls' if `zls` is in your PATH
   cmd = { '/path/to/zls_executable' },
+  filetypes = { 'zig' },
+  root_markers = { 'build.zig' },
   -- There are two ways to set config options:
   --   - edit your `zls.json` that applies to any editor that uses ZLS
   --   - set in-editor config options with the `settings` field below.
@@ -58,59 +59,12 @@ lspconfig.zls.setup {
       -- https://zigtools.org/zls/guides/build-on-save/
       -- enable_build_on_save = true,
 
-      -- Neovim already provides basic syntax highlighting
-      semantic_tokens = "partial",
-
       -- omit the following line if `zig` is in your PATH
       zig_exe_path = '/path/to/zig_executable'
     }
-  }
+  },
 }
-```
-
-```vim
-call plug#begin('~/.config/nvim/plugged')
-  Plug 'neovim/nvim-lspconfig' " https://github.com/neovim/nvim-lspconfig
-  Plug 'ziglang/zig.vim'       " https://github.com/ziglang/zig.vim
-call plug#end()
-
-" don't show parse errors in a separate window
-let g:zig_fmt_parse_errors = 0
-" disable format-on-save from `ziglang/zig.vim`
-let g:zig_fmt_autosave = 0
-
-" enable format-on-save from nvim-lspconfig + ZLS
-"
-" Formatting with ZLS matches `zig fmt`.
-autocmd BufWritePre *.zig,*.zon lua vim.lsp.buf.format()
-
-:lua << EOF
-  local lspconfig = require('lspconfig')
-  lspconfig.zls.setup {
-    -- Server-specific settings. See `:help lspconfig-setup`
-
-    -- omit the following line if `zls` is in your PATH
-    cmd = { '/path/to/zls_executable' },
-    -- There are two ways to set config options:
-    --   - edit your `zls.json` that applies to any editor that uses ZLS
-    --   - set in-editor config options with the `settings` field below.
-    --
-    -- Further information on how to configure ZLS:
-    -- https://zigtools.org/zls/configure/
-    settings = {
-      zls = {
-        -- Whether to enable build-on-save diagnostics
-        --
-        -- Further information about build-on save:
-        -- https://zigtools.org/zls/guides/build-on-save/
-        -- enable_build_on_save = true,
-
-        -- omit the following line if `zig` is in your PATH
-        zig_exe_path = '/path/to/zig_executable'
-      }
-    }
-  }
-EOF
+vim.lsp.enable('zls')
 ```
 
 ## Health Check
@@ -139,13 +93,6 @@ vim.api.nvim_create_autocmd('BufWritePre',{
 })
 ```
 
-```vim
-autocmd BufWritePre *.zig,*.zon lua vim.lsp.buf.code_action({
-  context = { only = { "source.fixAll" } },
-  apply = true,
-})
-```
-
 ### source.organizeImports
 
 ```lua
@@ -157,13 +104,6 @@ vim.api.nvim_create_autocmd('BufWritePre',{
       apply = true,
     })
   end
-})
-```
-
-```vim
-autocmd BufWritePre *.zig,*.zon lua vim.lsp.buf.code_action({
-  context = { only = { "source.organizeImports" } },
-  apply = true,
 })
 ```
 

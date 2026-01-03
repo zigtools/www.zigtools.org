@@ -18,7 +18,7 @@ In-Editor Config (a.k.a workspace configuration) will integrate with the config 
 | [ZigBrains for JetBrains](/zls/editors/jetbrains)             | Limited\*  |
 | [Helix](/zls/editors/helix)                                   | Yes        |
 | [Zed](/zls/editors/zed)                                       | Yes        |
-| [Neovim with nvim-lspconfig](/zls/editors/vim/nvim-lspconfig) | Yes        |
+| [Neovim](/zls/editors/vim/nvim)                               | Yes        |
 | [Vim/Neovim with CoC](/zls/editors/vim/coc)                   | Yes        |
 | [Vim/Neovim with YCM](/zls/editors/vim/ycm)                   | Yes        |
 | [Emacs with eglot](/zls/editors/emacs)                        | Yes        |

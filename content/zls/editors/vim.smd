@@ -9,7 +9,7 @@
 
 The following LSP plugins are documented:
 
-- [nvim-lspconfig](/zls/editors/vim/nvim-lspconfig) (recommended for Neovim users)
+- [Neovim](/zls/editors/vim/nvim)
 - [CoC](/zls/editors/vim/coc)
 - [YouCompleteMe](/zls/editors/vim/ycm)
 
