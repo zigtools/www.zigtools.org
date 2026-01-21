@@ -16,10 +16,6 @@ Add the following to your `settings.json`:
 {
   "languages": {
     "Zig": {
-      // Formatting with ZLS matches `zig fmt`.
-      "format_on_save": "language_server",
-      // Make sure that zls is the primary language server
-      "language_servers": ["zls", "..."],
       "code_actions_on_format": {
         // Run code actions that currently supports adding and removing discards.
         // "source.fixAll": true,
