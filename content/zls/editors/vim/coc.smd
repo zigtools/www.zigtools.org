@@ -81,8 +81,8 @@ let g:zig_fmt_autosave = 0
 
 ```lua
 -- init.lua (Neovim only)
-vim.api.nvim_create_autocmd('BufWritePre',{
-  pattern = {"*.zig", "*.zon"},
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { "*.zig", "*.zon" },
   command = "call CocActionAsync('fixAll')"
 })
 ```
@@ -95,8 +95,8 @@ autocmd BufWritePre *.zig,*.zon call CocActionAsync('fixAll')
 
 ```lua
 -- init.lua (Neovim only)
-vim.api.nvim_create_autocmd('BufWritePre',{
-  pattern = {"*.zig", "*.zon"},
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { "*.zig", "*.zon" },
   command = "call CocActionAsync('organizeImport')"
 })
 ```

@@ -33,8 +33,8 @@ vim.g.zig_fmt_autosave = 0
 -- enable  format-on-save from vim.lsp + ZLS
 --
 -- Formatting with ZLS matches `zig fmt`.
-vim.api.nvim_create_autocmd('BufWritePre',{
-  pattern = {"*.zig", "*.zon"},
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { "*.zig", "*.zon" },
   callback = function(ev)
     vim.lsp.buf.format()
   end
@@ -82,8 +82,8 @@ For more information on the health check, refer to [Health check](https://neovim
 ### source.fixAll
 
 ```lua
-vim.api.nvim_create_autocmd('BufWritePre',{
-  pattern = {"*.zig", "*.zon"},
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { "*.zig", "*.zon" },
   callback = function(ev)
     vim.lsp.buf.code_action({
       context = { only = { "source.fixAll" } },
@@ -96,8 +96,8 @@ vim.api.nvim_create_autocmd('BufWritePre',{
 ### source.organizeImports
 
 ```lua
-vim.api.nvim_create_autocmd('BufWritePre',{
-  pattern = {"*.zig", "*.zon"},
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { "*.zig", "*.zon" },
   callback = function(ev)
     vim.lsp.buf.code_action({
       context = { only = { "source.organizeImports" } },
