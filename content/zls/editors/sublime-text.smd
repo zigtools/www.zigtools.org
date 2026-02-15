@@ -40,7 +40,7 @@
   },
   // Show inlay hints in the editor. Inlay hints are short annotations within the code,
   // which show variable types or parameter names.
-  "show_inlay_hints": true,
+  // "show_inlay_hints": true,
   "semantic_highlighting": true,
 
   "clients": {
