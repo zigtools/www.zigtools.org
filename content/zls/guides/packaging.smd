@@ -32,27 +32,38 @@ If building ZLS without access to Git metadata (e.g., from a shallow clone or ta
 
 ## Dependency fetching
 
-ZLS uses Zig's builtin package manager to fetch dependencies and compile them from source. By default, Zig automatically downloads dependencies and stores them in a global cache directory. The global cache directory can be found by running `zig env` and inspecting the `global_cache_dir` field. Packages are stored in the `p` subdirectory.
+>## [Info]($block.attrs('note'))
+>
+> This section describes behavior specific to Zig master (nightly). Previous versions, such as Zig 0.15.x, behave differently.
+
+ZLS uses Zig's builtin package manager to fetch dependencies and compile them from source. By default, Zig automatically downloads dependencies and stores them in a local 
+`zig-pkg` directory.
 
 Below is an example of how the package directory may look after building ZLS:
 
 ```
-/home/me/.cache/zig/p
-├── diffz-0.0.1-G2tlIQrOAQCfH15jdyaLyrMgV8eGPouFhkCeYFTmJaLk
-│   ├── build.zig
-│   ├── build.zig.zon
-│   ├── DiffMatchPatch.zig
-│   └── ...
-├── known_folders-0.0.0-Fy-PJkfRAAAVdptXWXBspIIC7EkVgLgWozU5zIk5Zgcy
-│   ├── build.zig
-│   ├── build.zig.zon
-│   ├── known-folders.zig
-│   └── ...
-└── lsp_kit-0.1.0-bi_PL04yCgAxLsF0hH2a5sZKT84MGQaKXouw2jvCE8Nl
-    ├── build.zig
-    ├── build.zig.zon
-    ├── src
-    └── ...
+.
+├── build.zig
+├── build.zig.zon
+├── LICENSE
+├── README.md
+├── src
+└── zig-pkg
+    ├── diffz-0.0.1-G2tlIYrNAQAQx3cuIp7EVs0xvxbv9DCPf4YuHmvubsrZ
+    │   ├── build.zig
+    │   ├── build.zig.zon
+    │   ├── DiffMatchPatch.zig
+    │   └── ...
+    ├── known_folders-0.0.0-Fy-PJiXKAACLbIUjxVqJRTSLc6HNnMkCSBnC5LW0Lx_v
+    │   ├── build.zig
+    │   ├── build.zig.zon
+    │   ├── known-folders.zig
+    │   └── ...
+    └── lsp_kit-0.1.0-bi_PLw8zDABvCWe2rD4Aqb9gx0sRXBKO0a7M0vg3AbR3
+        ├── build.zig
+        ├── build.zig.zon
+        ├── src
+        └── ...
 ```
 
 Dependencies are listed in the `build.zig.zon` file, where `url` specifies the canonical source and `hash` is used to pin and verify the package contents. Be aware that there may be additional transitive dependencies that are not listed in the `build.zig.zon` of the root project.
