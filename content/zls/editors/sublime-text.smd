@@ -7,7 +7,7 @@
 }  
 ---
 
-1. install the [LSP](https://github.com/sublimelsp/LSP) and [sublime-zig-language](https://github.com/ziglang/sublime-zig-language) package ([Package Control Usage](https://packagecontrol.io/docs/usage))
+1. install the [LSP](https://github.com/sublimelsp/LSP) and [sublime-zig-language](https://codeberg.org/ziglang/sublime-zig-language) package ([Package Control: Usage](https://docs.sublimetext.io/guide/package-control/usage.html))
 2. place the following snippet in the `LSP.sublime-settings` (Preferences -> Package Settings -> LSP -> Settings)
 3. place the following snippet in the `Zig.sublime-settings` (Preferences -> Package Settings -> Zig -> Settings)
 
