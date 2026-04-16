@@ -1,0 +1,177 @@
+---
+{
+    .title = "ZLS 0.16.0",
+    .date = @date("2026-04-16T19:44:48Z"),
+    .author = "Techatrix",
+    .layout = "zls-release.shtml",
+} 
+---
+
+## Feature improvements 
+
+### Workspace Symbols ([#2339](https://github.com/zigtools/zls/pull/2339))
+
+The `workspace/symbol` request has been implemented. It provides an editor with a project-wide list of all symbols that match a query string.
+
+```=html
+<details style="width: 600px;margin: 0 auto;">
+    <summary style="text-align: center"><strong>Show Example</strong></summary>
+    <figure>
+        <picture>
+            <source srcset="/0.16.0-zed-workspace-symbols-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="/0.16.0-zed-workspace-symbols.png" style="aspect-ratio: 41 / 25;">
+        </picture>
+        <figcaption>
+            <p>Workspace symbol search for "iter" in the ZLS codebase.</p>
+        </figcaption>
+    </figure>
+</details>
+```
+
+The query search is case-insensitive and ignores underscore characters to avoid missing results from spelling differences between `snake_case` and `camelCase`. To implement workspace symbols and improve cross-file symbol references (explained further below), all files within workspace folders are loaded during startup. The `.zig-cache` and `zig-pkg` subdirectories are excluded from this.
+
+The impact on memory usage has been tested with Zig and ZLS codebases to ensure that ZLS doesn't use unreasonable amounts of memory.
+
+| Codebase     | After startup | After requesting workspace symbols |
+| ------------ | ------------- | ---------------------------------- |
+| ZLS          |  11.8 MiB     |  17.4 MiB                          |
+| Zig compiler | 234.0 MiB     | 338.8 MiB                          |
+
+The extra resource cost for workspace symbols will only apply once they have been requested. 
+
+### Reliable symbol references across files ([#2608](https://github.com/zigtools/zls/pull/2608))
+
+This is about the feature that implements editor functionally like "Find All References" or "Rename Symbol".
+
+The implementation of symbol references was [fundamentally broken](https://github.com/zigtools/zls/issues/1071) with regards to how it dealt with references across files. It has been reworked completely to more reliably find all references within files of the same build system module. In the future, this can handle additional cases like references [across modules](https://github.com/zigtools/zls/issues/2613) or [within the standard library](https://github.com/zigtools/zls/issues/2613).
+
+### Accurate module `@import` resolution ([#2510](https://github.com/zigtools/zls/pull/2510))
+
+To resolve module `@import`s and other build system dependant features, a custom build runner extracts the releveant information out of a `build.zig`. This data would however previously merge the entire build graph into one single module and compilation unit. This can easily lead to incorrect results in any non trivial project that contains multiple modules so it has been reworked to keep track of each individual module so that analysis can differentiate between them just like how the compiler does it.
+
+Some examples of what has been improved:
+
+  - auto complete for `@import` will only show the modules that have been directly added to the module that the current file belongs to
+  - `@import("some_name")` will resolve the correct module if there are multiple modules that have imported different modules with "some_name" as their name.
+  - `@import("root")` now actually figures out in which compilation units a given file is in.
+
+### Folding Ranges for `@import()`s ([#2514](https://github.com/zigtools/zls/pull/2514))
+
+A sequence of three or more `@import()` declarations will get a folding range to be collapsed. Depending on the editor, folding ranges for imports can be collapsed by default.
+
+### Completions
+
+- completions on branching types will be merged instead of showing duplicate items ([#2638](https://github.com/zigtools/zls/pull/2638))
+- switch on errors will complete based on the actual error set ([#2619](https://github.com/zigtools/zls/pull/2619))
+- Declarations that are marked as "Deprecated" are sorted towards the end ([#2623](https://github.com/zigtools/zls/pull/2623))
+- Fields with default are sorted towards the end ([#2636](https://github.com/zigtools/zls/pull/2636))
+
+### Go to definition on container type jump to `@This()` alias ([#2582](https://github.com/zigtools/zls/pull/2582))
+
+```zig
+const Foo = struct {
+    //^^^ Go to Definition here
+    const Me = @This();
+    //    ^^ will jump there
+}
+```
+
+This is related to an [open proposal](https://codeberg.org/ziglang/zig/issues/30132) about using `@This()` aliases for documentation.
+
+### Compile log output in build on save diagnostics ([#2493](https://github.com/zigtools/zls/pull/2493))
+
+The output of `@compileLog` statements that were collected during build on save will now be provided through diagnostics.
+
+```=html
+<details style="width: 600px;margin: 0 auto;">
+    <summary style="text-align: center"><strong>Show Example</strong></summary>
+    <figure>
+        <picture>
+            <source srcset="/0.16.0-zed-compile-log-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="/0.16.0-zed-compile-log.png" style="aspect-ratio: 41 / 25;">
+        </picture>
+    </figure>
+</details>
+```
+
+### Expand branching types in hover popup ([#2349](https://github.com/zigtools/zls/pull/2349))
+
+Types that resolve differently based on comptime control flow will show all possibilities in the hover popup.
+
+```=html
+<details style="width: 600px;margin: 0 auto;">
+    <summary style="text-align: center"><strong>Show Example</strong></summary>
+    <figure>
+        <picture>
+            <source srcset="/0.16.0-zed-branching-types-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="/0.16.0-zed-branching-types.png" style="aspect-ratio: 41 / 25;">
+        </picture>
+        <figcaption>
+            <p>Hover popup on a variable of type <code>std.Io.Evented</code>.</p>
+        </figcaption>
+    </figure>
+</details>
+```
+
+## Contributors
+
+Here is a list of everyone who has made at least one contribution to this release of ZLS:
+
+- Techatrix
+- FnControlOption
+- Johan Persson
+- xdBronch
+- llogick
+- Carmen
+- Leon Lombar
+- Nikita Belov
+- andrewkraevskii
+- Ataias Pereira Reis
+- Iisakki Rotko
+- Luna Schwalbe
+- Nico Elbers
+- Sachin Beniwal
+- Sungbae Jeong
+- SuperAuguste
+- Vivek Singh
+- eshom
+- psznm
+
+## Sponsors
+
+We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
+
+```=html
+<figure>
+    <a href="https://opencollective.com/zigtools#category-CONTRIBUTE">
+        <img src="https://opencollective.com/zigtools/backers.svg?limit=1000" alt="OpenCollective Backers">
+    </a>
+</figure>
+```
+
+**Full Changelog**: [0.15.0...0.16.0](https://github.com/zigtools/zls/compare/0.15.0...0.16.0)
+
+## Release Artifacts
+
+All files are signed with [minisign](https://jedisct1.github.io/minisign/) using this public key:
+
+```
+RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex
+```
+
+| OS      | Arch        | Filename                                                                                               | Signature                                                                          | Size       |
+| ------- | ----------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- | ---------- |
+| Windows | x86_64      | [zls-x86_64-windows-0.16.0.zip      ](https://builds.zigtools.org/zls-x86_64-windows-0.16.0.zip)       | [minisig](https://builds.zigtools.org/zls-x86_64-windows-0.16.0.zip.minisig)       | 4.58 MiB   |
+| Windows | aarch64     | [zls-aarch64-windows-0.16.0.zip     ](https://builds.zigtools.org/zls-aarch64-windows-0.16.0.zip)      | [minisig](https://builds.zigtools.org/zls-aarch64-windows-0.16.0.zip.minisig)      | 4.35 MiB   |
+| Windows | x86         | [zls-x86-windows-0.16.0.zip         ](https://builds.zigtools.org/zls-x86-windows-0.16.0.zip)          | [minisig](https://builds.zigtools.org/zls-x86-windows-0.16.0.zip.minisig)          | 4.69 MiB   |
+| macOS   | x86_64      | [zls-x86_64-macos-0.16.0.tar.xz     ](https://builds.zigtools.org/zls-x86_64-macos-0.16.0.tar.xz)      | [minisig](https://builds.zigtools.org/zls-x86_64-macos-0.16.0.tar.xz.minisig)      | 1.19 MiB   |
+| macOS   | aarch64     | [zls-aarch64-macos-0.16.0.tar.xz    ](https://builds.zigtools.org/zls-aarch64-macos-0.16.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-aarch64-macos-0.16.0.tar.xz.minisig)     | 1.03 MiB   |
+| Linux   | x86_64      | [zls-x86_64-linux-0.16.0.tar.xz     ](https://builds.zigtools.org/zls-x86_64-linux-0.16.0.tar.xz)      | [minisig](https://builds.zigtools.org/zls-x86_64-linux-0.16.0.tar.xz.minisig)      | 3.83 MiB   |
+| Linux   | aarch64     | [zls-aarch64-linux-0.16.0.tar.xz    ](https://builds.zigtools.org/zls-aarch64-linux-0.16.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-aarch64-linux-0.16.0.tar.xz.minisig)     | 3.64 MiB   |
+| Linux   | arm         | [zls-arm-linux-0.16.0.tar.xz        ](https://builds.zigtools.org/zls-arm-linux-0.16.0.tar.xz)         | [minisig](https://builds.zigtools.org/zls-arm-linux-0.16.0.tar.xz.minisig)         | 3.75 MiB   |
+| Linux   | riscv64     | [zls-riscv64-linux-0.16.0.tar.xz    ](https://builds.zigtools.org/zls-riscv64-linux-0.16.0.tar.xz)     | [minisig](https://builds.zigtools.org/zls-riscv64-linux-0.16.0.tar.xz.minisig)     | 4.58 MiB   |
+| Linux   | powerpc64le | [zls-powerpc64le-linux-0.16.0.tar.xz](https://builds.zigtools.org/zls-powerpc64le-linux-0.16.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-powerpc64le-linux-0.16.0.tar.xz.minisig) | 3.72 MiB   |
+| Linux   | x86         | [zls-x86-linux-0.16.0.tar.xz        ](https://builds.zigtools.org/zls-x86-linux-0.16.0.tar.xz)         | [minisig](https://builds.zigtools.org/zls-x86-linux-0.16.0.tar.xz.minisig)         | 3.87 MiB   |
+| Linux   | loongarch64 | [zls-loongarch64-linux-0.16.0.tar.xz](https://builds.zigtools.org/zls-loongarch64-linux-0.16.0.tar.xz) | [minisig](https://builds.zigtools.org/zls-loongarch64-linux-0.16.0.tar.xz.minisig) | 3.54 MiB   |
+| Linux   | s390x       | [zls-s390x-linux-0.16.0.tar.xz      ](https://builds.zigtools.org/zls-s390x-linux-0.16.0.tar.xz)       | [minisig](https://builds.zigtools.org/zls-s390x-linux-0.16.0.tar.xz.minisig)       | 4.1 MiB    |
+| WASI    | wasm32      | [zls-wasm32-wasi-0.16.0.tar.xz      ](https://builds.zigtools.org/zls-wasm32-wasi-0.16.0.tar.xz)       | [minisig](https://builds.zigtools.org/zls-wasm32-wasi-0.16.0.tar.xz.minisig)       | 2.38 MiB   |

@@ -19,5 +19,11 @@ Site {
         "0.15.0-nvim-highlight-static-dark.png",
         "0.15.0-nvim-highlight-unused.png",
         "0.15.0-nvim-highlight-unused-dark.png",
+        "0.16.0-zed-branching-types-dark.png",
+        "0.16.0-zed-branching-types.png",
+        "0.16.0-zed-compile-log-dark.png",
+        "0.16.0-zed-compile-log.png",
+        "0.16.0-zed-workspace-symbols-dark.png",
+        "0.16.0-zed-workspace-symbols.png",
     ],
 }
