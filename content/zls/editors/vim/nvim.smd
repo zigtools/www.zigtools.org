@@ -16,15 +16,14 @@
 
 The following config **only** contains the necessary Zig specific configuration. Please refer to the [Neovim LSP docs](https://neovim.io/doc/user/lsp.html) on how to use various LSP features.
 
-Install the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager.
-
 ```lua
 local vim = vim
-local Plug = vim.fn['plug#']
 
-vim.call('plug#begin')
-  Plug('https://codeberg.org/ziglang/zig.vim')
-vim.call('plug#end')
+-- Install `ziglang/zig.vim` using the built-in plugin manager (Neovim 0.12.0+)
+-- A tool like `vim-plug` or `lazy.nvim` can also be used instead.
+vim.pack.add({
+  'https://codeberg.org/ziglang/zig.vim',
+})
 
 -- don't show parse errors in a separate window
 vim.g.zig_fmt_parse_errors = 0
