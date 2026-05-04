@@ -33,7 +33,7 @@ Place the following snippet in the `LSP.sublime-settings`. (Preferences -> Packa
 
   // Formatting with ZLS matches `zig fmt`.
   "lsp_format_on_save": true,
-  "lsp_code_actions_on_save": {
+  "lsp_code_actions_on_format": {
     // Run code actions that currently supports adding and removing discards.
     // "source.fixAll": true,
 
