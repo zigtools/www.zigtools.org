@@ -7,14 +7,13 @@
 }  
 ---
 
-1. install the [LSP](https://github.com/sublimelsp/LSP) and [sublime-zig-language](https://codeberg.org/ziglang/sublime-zig-language) package ([Package Control: Usage](https://docs.sublimetext.io/guide/package-control/usage.html))
-2. place the following snippet in the `LSP.sublime-settings` (Preferences -> Package Settings -> LSP -> Settings)
-3. place the following snippet in the `Zig.sublime-settings` (Preferences -> Package Settings -> Zig -> Settings)
+Install the [LSP](https://github.com/sublimelsp/LSP) and [sublime-zig-language](https://codeberg.org/ziglang/sublime-zig-language) package ([Package Control: Usage](https://docs.sublimetext.io/guide/package-control/usage.html))
 
-[]($section.id('zig-sublime-settings'))
+## `Zig.sublime-settings`
+
+Place the following snippet in the `Zig.sublime-settings`. (Preferences -> Package Settings -> Zig -> Settings)
 
 ```json
-// Zig.sublime-settings
 {
   // ZLS will run format on save
   "zig.fmt.on_save": false,
@@ -23,8 +22,11 @@
 }
 ```
 
+## `LSP.sublime-settings`
+
+Place the following snippet in the `LSP.sublime-settings`. (Preferences -> Package Settings -> LSP -> Settings)
+
 ```json
-// LSP.sublime-settings
 {
   // General settings
   // Keep in mind that these settings apply to any language and not just Zig.
@@ -42,30 +44,40 @@
   // which show variable types or parameter names.
   // "show_inlay_hints": true,
   "semantic_highlighting": true,
+}
+```
 
-  "clients": {
-    "zls": {
-      "enabled": true,
-      // Set to "zls" if `zls` is in your PATH
-      "command": ["/path/to/zls_executable"],
-      "selector": "source.zig",
-      // There are two ways to set config options:
-      //   - edit your `zls.json` that applies to any editor that uses ZLS
-      //   - set in-editor config options with the `settings` field below.
-      //
-      // Further information on how to configure ZLS:
-      // https://zigtools.org/zls/configure/
-      "settings": {
-        "zls": {
-          // Whether to enable build-on-save diagnostics
-          //
-          // Further information about build-on save:
-          // https://zigtools.org/zls/guides/build-on-save/
-          // "enable_build_on_save": true,
+## `LanguageServers.sublime-settings`
 
-          // omit the following line if `zig` is in your PATH
-          "zig_exe_path": "/path/to/zig_executable"
-        },
+>## []($block.attrs('note'))
+>
+> Ensure to have the latest version of the `LSP` plugin installed. This separate configuration file has been added in [4070-2.10.0](https://github.com/sublimelsp/LSP/releases/tag/4070-2.10.0).
+
+Place the following snippet in the `LanguageServers.sublime-settings`. (Preferences -> Package Settings -> LSP -> Server Configurations)
+
+```json
+{
+  "zls": {
+    "enabled": true,
+    // Set to "zls" if `zls` is in your PATH
+    "command": ["/path/to/zls_executable"],
+    "selector": "source.zig",
+    // There are two ways to set config options:
+    //   - edit your `zls.json` that applies to any editor that uses ZLS
+    //   - set in-editor config options with the `settings` field below.
+    //
+    // Further information on how to configure ZLS:
+    // https://zigtools.org/zls/configure/
+    "settings": {
+      "zls": {
+        // Whether to enable build-on-save diagnostics
+        //
+        // Further information about build-on save:
+        // https://zigtools.org/zls/guides/build-on-save/
+        // "enable_build_on_save": true,
+
+        // omit the following line if `zig` is in your PATH
+        "zig_exe_path": "/path/to/zig_executable"
       }
     }
   }
