@@ -110,6 +110,7 @@
 	<nav id="sidebar">
 		<div id="sidebar-content">
 			<a href="$site.page('zls/install').link()">Install ZLS</a>
+			<a href="$site.page('zls/releases').link()">Releases</a>
 			<details open="">
 				<summary>Editor Configuration</summary>
 				<ul :loop="$site.pages('zls/editors/vscode','zls/editors/sublime-text','zls/editors/jetbrains','zls/editors/helix','zls/editors/zed','zls/editors/vim','zls/editors/emacs','zls/editors/kate')">
@@ -135,17 +136,6 @@
 			<details open="">
 				<summary>Usage Guides</summary>
 				<ul :loop="$site.pages('zls/guides/build-on-save','zls/guides/view-logs','zls/guides/packaging')">
-					<li>
-						<a class="$loop.it.isCurrent().then('selected')"
-						   href="$loop.it.link()"
-						   :text="$loop.it.title"
-						></a>
-					</li>
-				</ul>
-			</details>
-			<details>
-				<summary>Releases</summary>
-				<ul :loop="$site.pages('zls/releases/0.16.0','zls/releases/0.15.0','zls/releases/0.14.0','zls/releases/0.13.0','zls/releases/0.12.0','zls/releases/0.11.0','zls/releases/0.10.0','zls/releases/0.9.0')">
 					<li>
 						<a class="$loop.it.isCurrent().then('selected')"
 						   href="$loop.it.link()"
