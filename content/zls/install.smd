@@ -50,6 +50,8 @@ If you decide to install Zig or ZLS through a different method (e.g. package man
 - A tagged release of Zig should be used with the same tagged release of ZLS (and vice versa). 
 - A nightly build of Zig should be used with a nightly build of ZLS (and vice versa).
 
+The patch version (the `Y` in `0.X.Y`) of Zig and ZLS does not need to match exactly. It's is recommended to always install the latest patch version that are available for Zig and ZLS.
+
 The install tool above will automatically resolve compatible Zig and ZLS versions.
 
 []($section.id('next-steps'))
