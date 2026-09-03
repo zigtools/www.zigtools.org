@@ -56,7 +56,7 @@ Similar to hovering over a number literal, you can now hover over a character li
 <figure>
     <picture style="display: flex;flex-direction: column;align-items: center;">
         <source srcset="/0.14.0-hover-over-character-literal-dark.png" media="(prefers-color-scheme: dark)">
-        <img src="/0.14.0-hover-over-character-literal.png" alt="" width="450px" style="aspect-ratio: 600 / 500;">
+        <img src="/0.14.0-hover-over-character-literal.png" alt="" width="450" style="aspect-ratio: 600 / 500;">
     </picture>
     <figcaption>hovering over a character literal</figcaption>
 </figure>
