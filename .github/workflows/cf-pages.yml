@@ -7,10 +7,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v6
 
       - name: Setup Zine
         uses: kristoff-it/setup-zine@v1
@@ -19,11 +20,10 @@ jobs:
         run: zine release
 
       - name: Deploy
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: zigtools-website
-          directory: ./public
+          command: pages deploy ./public --project-name=zigtools-website
           # Optional: Used for adding GitHub deployments support
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
