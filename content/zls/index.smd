@@ -1,0 +1,40 @@
+---
+.title = "ZLS language server",
+.date = .date("2020-01-00T00:00:00"),
+.layout = "zls-docs.shtml",
+.custom = {
+    "docs-sidebar": [
+        [
+            "Editor Configuration",
+            [
+                "editors/vscode",
+                "editors/sublime-text",
+                "editors/jetbrains",
+                "editors/helix",
+                "editors/zed",
+                "editors/vim",
+                "editors/emacs",
+                "editors/kate",
+            ],
+        ],
+        [
+            "Configuration",
+            [
+                "configure/in-editor",
+                "configure/zls-json",
+                "configure/per-build",
+            ],
+        ],
+        [
+            "Usage Guides",
+            [
+                "guides/build-on-save",
+                "guides/view-logs",
+                "guides/packaging",
+            ],
+        ],
+    ],
+}
+---
+
+Imagine a fancy start page here (๑'ᵕ'๑)⸝*

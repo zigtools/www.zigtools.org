@@ -1,19 +1,16 @@
 ---
-{
-    .title = "View Logs",
-    .date = @date("2020-08-02T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-} 
+.title = "View Logs",
+.date = .date("2020-08-02T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
->## [Warning]($block.attrs('warning'))
+># [Warning]($block.attrs('warning'))
 >
 >A non-debug build of ZLS will not report debug logs (by default) and stack traces when ZLS crashes.
 >
 >It is recommended to [building from source](https://github.com/zigtools/zls#from-source) without `-Doptimize` to include more verbose log messages.
 
-## zls.log
+# zls.log
 
 Run `zls env` and then look for the `log_file` property:
 
@@ -32,7 +29,7 @@ The logs can then be found in `/home/anon/.cache/zls/zls.log`. You can configure
 
 Please note that ZLS will not empty the file when restarting but always append logs instead. The log file will not contain stack traces when ZLS crashes. Use Editor logs when the stack trace should be included.
 
-## Use Editor logs
+# Use Editor logs
 
 | Code Editor         | Instructions                                  | Notes                                                                                                             |
 | ------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |

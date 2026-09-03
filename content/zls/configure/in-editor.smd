@@ -1,15 +1,12 @@
 ---
-{
-    .title = "In-Editor Config",
-    .date = @date("2020-06-02T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-} 
+.title = "In-Editor Config",
+.date = .date("2020-06-02T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
 In-Editor Config (a.k.a workspace configuration) will integrate with the config system of your editor to configure ZLS on a per-editor basis. Most editors also support per-project configuration.
 
-## Supported Editors
+# Supported Editors
 
 | Editor                                                        | supported? |
 | ------------------------------------------------------------- | ---------- |
@@ -27,7 +24,7 @@ In-Editor Config (a.k.a workspace configuration) will integrate with the config 
 
 \* Only a subset of config options are available.
 
-## Available Config Options
+# Available Config Options
 
 Most editors do not know which config options are available for a language server like ZLS. ZLS provides a [JSON Schema](https://github.com/zigtools/zls/blob/master/schema.json) that can be used to find all available config options.
 

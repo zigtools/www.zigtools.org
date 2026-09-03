@@ -1,10 +1,7 @@
 ---
-{
-    .title = "Conquer of Completion (CoC)",
-    .date = @date("2020-04-06T02:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-}  
+.title = "Conquer of Completion (CoC)",
+.date = .date("2020-04-06T02:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
 1. Install [CoC](https://github.com/neoclide/coc.nvim)
@@ -75,9 +72,9 @@ let g:zig_fmt_parse_errors = 0
 let g:zig_fmt_autosave = 0
 ```
 
-## Code Actions on save
+# Code Actions on save
 
-### source.fixAll
+## source.fixAll
 
 ```lua
 -- init.lua (Neovim only)
@@ -91,7 +88,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 autocmd BufWritePre *.zig,*.zon call CocActionAsync('fixAll')
 ```
 
-### source.organizeImports
+## source.organizeImports
 
 ```lua
 -- init.lua (Neovim only)
@@ -105,7 +102,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 autocmd BufWritePre *.zig,*.zon call CocActionAsync('organizeImport')
 ```
 
-## Per-project config
+# Per-project config
 
 Coc allows setting LSP settings per project via a `.vim/coc-settings.json` file. Use the `:CocLocalConfig` to create and open the settings file in your workspace folder. Run `:h coc-configuration` for more information.
 

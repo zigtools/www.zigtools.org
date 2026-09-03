@@ -1,15 +1,12 @@
 ---
-{
-    .title = "Build-On-Save",
-    .date = @date("2020-08-01T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-} 
+.title = "Build-On-Save",
+.date = .date("2020-08-01T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
 ZLS can be configured to build your project on save. If that results in errors, they will be displayed in your editor like any other diagnostic.
 
-## Configuration
+# Configuration
 
 There are two ways to opt into Build-On-Save:
 
@@ -18,7 +15,7 @@ There are two ways to opt into Build-On-Save:
 
 The first method avoids dealing with config options and can report compile errors quicker.
 
-### Add a "check" step to your build.zig
+## Add a "check" step to your build.zig
 
 This part is more deeply tied to your specific project but the gist is the following: whatever you do to define your main executable or library, you do it again in a new step named check.
 
@@ -65,7 +62,7 @@ The result is that you will get diagnostics pretty fast since you won't have to 
 
 Once you're done with this, restart your editor (or at least ZLS), **save your file with an error in it**, and enjoy your new spiffy diagnostics.
 
-### Customize build arguments
+## Customize build arguments
 
 By default, ZLS will try to run the equivalent of the following command:
 
@@ -83,7 +80,7 @@ To further customize the build arguments, the `build_on_save_args` config option
 
 Run `zig build --help` to find out what build steps and build options are available in your project. 
 
-### Incremental Compilation (experimental)
+## Incremental Compilation (experimental)
 
 As of [Zig 0.15.x](https://ziglang.org/download/0.15.1/release-notes.html#toc-Incremental-Compilation), incremental compilation is still under active development:
 
@@ -100,6 +97,6 @@ To try it out:
 
 Restart ZLS and review the [log output](/zls/guides/view-logs) to ensure there are no errors and that the config options were applied correctly. At this point, compile errors should appear *almost* instantly as you make changes.
 
-## Special Thanks
+# Special Thanks
 
 This Guide is based on the ["Improving Your Zig Language Server Experience"](https://kristoff.it/blog/improving-your-zls-experience/) Blog Post by Loris Cro.

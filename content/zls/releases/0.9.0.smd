@@ -1,15 +1,13 @@
 ---
-{
-    .title = "ZLS 0.9.0",
-    .date = @date("2021-12-23T05:37:28Z"),
-    .author = "SuperAuguste",
-    .layout = "zls-release.shtml",
-} 
+.title = "ZLS 0.9.0",
+.date = .date("2021-12-23T05:37:28Z"),
+.authors = ["SuperAuguste"],
+.layout = "zls-release.shtml",
 ---
 
 zls release that works and compiles for the zig 0.9.0 release! Enjoy <3
 
-## Release Artifacts
+# Release Artifacts
 
 All files are signed with [minisign](https://jedisct1.github.io/minisign/) using this public key:
 

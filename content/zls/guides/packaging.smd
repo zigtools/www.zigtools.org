@@ -1,17 +1,14 @@
 ---
-{
-    .title = "Downstream Packaging",
-    .date = @date("2020-08-04T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-} 
+.title = "Downstream Packaging",
+.date = .date("2020-08-04T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
->## [Info]($block.attrs('note'))
+># [Info]($block.attrs('note'))
 >
 > This Guide is targeted at developers who create downstream packages of ZLS.
 
-## Build Options
+# Build Options
 
 Run `zig build --help` in the root of the ZLS source directory to print usage information.
 
@@ -22,7 +19,7 @@ Here are some of the common build options:
 - `-Dcpu=baseline` (opposite of `-march=native`)
 - `--prefix`
 
-## Resolve version string
+# Resolve version string
 
 When compiling a tagged release of ZLS, the version is hard coded. No further action is needed.
 
@@ -30,7 +27,7 @@ For development builds, the version string is determined by running `git -C . de
 
 If building ZLS without access to Git metadata (e.g., from a shallow clone or tarball), it is recommended to manually specify the version string using the `-Dversion-string` build option.
 
-## Dependency fetching
+# Dependency fetching
 
 >## [Info]($block.attrs('note'))
 >

@@ -1,13 +1,11 @@
 ---
-{
-    .title = "ZLS 0.10.0",
-    .date = @date("2022-11-02T02:21:56Z"),
-    .author = "SuperAuguste",
-    .layout = "zls-release.shtml",
-} 
+.title = "ZLS 0.10.0",
+.date = .date("2022-11-02T02:21:56Z"),
+.authors = ["SuperAuguste"],
+.layout = "zls-release.shtml",
 ---
 
-## What's Changed
+# What's Changed
 
 - add builtin data for 0.9.0 by [@nektro](https://github.com/nektro) in [#443](https://github.com/zigtools/zls/pull/443)
 - update builtin data for zig master by [@nektro](https://github.com/nektro) in [#444](https://github.com/zigtools/zls/pull/444)
@@ -176,7 +174,7 @@
 - fixed jrpc config treating empty strings as non null by [@musi](https://github.com/musi)-musi in [#727](https://github.com/zigtools/zls/pull/727)
 - Readme fix by [@Prince213](https://github.com/Prince213) in [#731](https://github.com/zigtools/zls/pull/731)
 
-## New Contributors
+# New Contributors
 
 - [@nektro](https://github.com/nektro) made their first contribution in [#443](https://github.com/zigtools/zls/pull/443)
 - [@jonpalmisc](https://github.com/jonpalmisc) made their first contribution in [#446](https://github.com/zigtools/zls/pull/446)
@@ -216,7 +214,7 @@
 - [@ktiy](https://github.com/ktiy) made their first contribution in [#710](https://github.com/zigtools/zls/pull/710)
 - [@musi-musi](https://github.com/musi-musi) made their first contribution in [#727](https://github.com/zigtools/zls/pull/727)
 
-## Sponsors
+# Sponsors
 
 We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
 
@@ -230,7 +228,7 @@ We'd like to take a second to thank all our awesome [contributors](https://githu
 
 **Full Changelog**: [0.9.0...0.10.0](https://github.com/zigtools/zls/compare/0.9.0...0.10.0)
 
-## Release Artifacts
+# Release Artifacts
 
 All files are signed with [minisign](https://jedisct1.github.io/minisign/) using this public key:
 

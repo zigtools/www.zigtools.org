@@ -1,19 +1,17 @@
 ---
-{
-    .title = "ZLS 0.14.0",
-    .date = @date("2025-03-06T23:25:53Z"),
-    .author = "Techatrix",
-    .layout = "zls-release.shtml",
-} 
+.title = "ZLS 0.14.0",
+.date = .date("2025-03-06T23:25:53Z"),
+.authors = ["Techatrix"],
+.layout = "zls-release.shtml",
 ---
 
-## New zigtools website
+# New zigtools website
 
 As you may have noticed upon opening this page, a new https://zigtools.org website has been created, providing up-to-date documentation for ZLS. It is highly recommended to check it out, even if you've already set up ZLS previously.
 
-## Feature improvements 
+# Feature improvements 
 
-### Better Build On Save ([#2096](https://github.com/zigtools/zls/pull/2096))
+## Better Build On Save ([#2096](https://github.com/zigtools/zls/pull/2096))
 
 The build-on-save implementation has been completely rewritten to leverage Zig's new [File System Watching](https://ziglang.org/download/0.14.0/release-notes.html#toc-File-System-Watching) feature. When combined with [Incremental Compilation](https://ziglang.org/download/0.14.0/release-notes.html#toc-Incremental-Compilation), which is not yet enabled by default, this allows compile errors to be reported *almost* immediately after each save. For more details, check out to the ZLS [Build-On-Save](https://zigtools.org/zls/guides/build-on-save/) guide.
 
@@ -21,7 +19,7 @@ Here is a showcase where build-on-save runs the equivalent of `zig build check -
 
 [build on save with incremental compilation enabled]($video.asset('build-on-save-demo.mp4').controls(true).loop(true).muted(true))
 
-### `zls env` command ([#1957](https://github.com/zigtools/zls/pull/1957))
+## `zls env` command ([#1957](https://github.com/zigtools/zls/pull/1957))
 
 A new `zls env` command has been added, similar to zig env, serving the same purpose.
 
@@ -40,33 +38,33 @@ Here is an example of how its output may look like:
 
 The exact output can be found in the [`Env`](https://github.com/zigtools/zls/blob/7485feeeda45d1ad09422ae83af73307ab9e6c9e/src/main.zig#L132) struct.
 
-### `zls.log` ([#1957](https://github.com/zigtools/zls/pull/1957))
+## `zls.log` ([#1957](https://github.com/zigtools/zls/pull/1957))
 
 Log messages are now written to a new `zls.log` file. Its content is more readable than some editor internal logs and does not require looking up how each editor manages LSP server logs. For more details, check out the [logging guide](https://zigtools.org/zls/guides/view-logs/).
 
-### configure autofix through editor settings ([#2063](https://github.com/zigtools/zls/pull/2063))
+## configure autofix through editor settings ([#2063](https://github.com/zigtools/zls/pull/2063))
 
 Many editors provide their own settings for code actions on save, often offering a better user experience than relying on the LSP server like ZLS. If you have the "autofix" feature enabled via `enable_autofix`, you'll need to update your editor configuration to enable `source.fixall` code actions instead. For upgrade instructions, check out the [Installation Guide](https://zigtools.org/zls/install/) and navigate to the relevant documentation for your editor.
 
-### hover over character literal ([#1991](https://github.com/zigtools/zls/pull/1991))
+## hover over character literal ([#1991](https://github.com/zigtools/zls/pull/1991))
 
 Similar to hovering over a number literal, you can now hover over a character literal to view its value in various number systems.
 
 ```=html
 <figure>
     <picture style="display: flex;flex-direction: column;align-items: center;">
-        <source srcset="/0.14.0-hover-over-character-literal-dark.png" media="(prefers-color-scheme: dark)">
-        <img src="/0.14.0-hover-over-character-literal.png" alt="" width="450" style="aspect-ratio: 600 / 500;">
+        <source srcset="/static/0.14.0-hover-over-character-literal-dark.png" media="(prefers-color-scheme: dark)">
+        <img src="/static/0.14.0-hover-over-character-literal.png" alt="" width="450" style="aspect-ratio: 600 / 500;">
     </picture>
     <figcaption>hovering over a character literal</figcaption>
 </figure>
 ```
 
-### report zon specific compile errors
+## report zon specific compile errors
 
 Thanks to Zig's new standard library utilities for [ZON Parsing and Serialization](https://ziglang.org/download/0.14.0/release-notes.html#ZON-Parsing-and-Serialization), `.zon` files will now display diagnostic messages for syntactically invalid ZON code.
 
-### Code action to organize imports ([#2051](https://github.com/zigtools/zls/pull/2051))
+## Code action to organize imports ([#2051](https://github.com/zigtools/zls/pull/2051))
 
 A new code action has been added that can organize top-level `@import` and alias declarations.
 
@@ -88,19 +86,19 @@ const offsets = @import("offsets.zig");
 
 This code action can be manually invoked or automatically triggered on save. For more information on how to run this code action on save, check out the [Installation Guide](https://zigtools.org/zls/install/) and navigate to the relevant documentation for your editor. Be aware that not all editors support this feature.
 
-### convert string literal code action ([#2097](https://github.com/zigtools/zls/pull/2097))
+## convert string literal code action ([#2097](https://github.com/zigtools/zls/pull/2097))
 
 New code actions have been added to can convert between multi-line string literals and normal string literals.
 
-### progress report on build system ([#2141](https://github.com/zigtools/zls/pull/2141))
+## progress report on build system ([#2141](https://github.com/zigtools/zls/pull/2141))
 
 ZLS now reports when it is processing a `build.zig` file to extract build system information. This may be shown in the status indicator of your editor if supported.
 
-#### removed `enable_inlay_hints` config option
+### removed `enable_inlay_hints` config option
 
 This feature should be configured through your editor. Refer to the documentation of your editor on how configure this feature.
 
-## Contributors
+# Contributors
 
 Here is a list of everyone who has made at least one contribution to this release of ZLS:
 
@@ -140,7 +138,7 @@ Here is a list of everyone who has made at least one contribution to this releas
 - janis-bhm
 - sphaerophoria
 
-## Sponsors
+# Sponsors
 
 We'd like to take a second to thank all our awesome [contributors](https://github.com/zigtools/zls/graphs/contributors) and donators/backers/sponsors; if you have time or money to spare, consider partaking in either of these options - they help keep ZLS awesome for everyone!
 
@@ -154,7 +152,7 @@ We'd like to take a second to thank all our awesome [contributors](https://githu
 
 **Full Changelog**: [0.13.0...0.14.0](https://github.com/zigtools/zls/compare/0.13.0...0.14.0)
 
-## Release Artifacts
+# Release Artifacts
 
 All files are signed with [minisign](https://jedisct1.github.io/minisign/) using this public key:
 

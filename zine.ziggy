@@ -1,29 +1,15 @@
-Site {
+.zine_version = "0.14.0",
+.site = .simple(.{
     .title = "Zigtools",
     .host_url = "https://zigtools.org",
     .content_dir_path = "content",
     .layouts_dir_path = "layouts",
     .assets_dir_path = "assets",
     .static_assets = [
+        "static",
         "robots.txt",
-        // Used in inlined html
-        "0.14.0-hover-over-character-literal.png",
-        "0.14.0-hover-over-character-literal-dark.png",
-        "0.15.0-nvim-build-system-diagnostics.png",
-        "0.15.0-nvim-build-system-diagnostics-dark.png",
-        "0.15.0-nvim-highlight-control-flow.png",
-        "0.15.0-nvim-highlight-control-flow-dark.png",
-        "0.15.0-nvim-highlight-mutable.png",
-        "0.15.0-nvim-highlight-mutable-dark.png",
-        "0.15.0-nvim-highlight-static.png",
-        "0.15.0-nvim-highlight-static-dark.png",
-        "0.15.0-nvim-highlight-unused.png",
-        "0.15.0-nvim-highlight-unused-dark.png",
-        "0.16.0-zed-branching-types-dark.png",
-        "0.16.0-zed-branching-types.png",
-        "0.16.0-zed-compile-log-dark.png",
-        "0.16.0-zed-compile-log.png",
-        "0.16.0-zed-workspace-symbols-dark.png",
-        "0.16.0-zed-workspace-symbols.png",
     ],
-}
+}),
+.supermd = {
+    "headings_h2": true,
+},
