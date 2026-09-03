@@ -20,7 +20,7 @@ To built ZLS from source, run the following commands:
 <pre><code id="build-from-source-code"></code></pre>
 ```
 
-If you wish to add Zig or ZLS to your `$PATH` please refer to the [Zig Getting Started Guide](https://ziglang.org/learn/getting-started/#direct-download).
+If you wish to add Zig or ZLS to your `$PATH` please refer to the [Zig Getting Started Guide](https://ziglang.org/learn/getting-started/#direct).
 
 []($section.id('install-prebuilt-binary'))
 
