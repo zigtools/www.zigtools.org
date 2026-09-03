@@ -1,15 +1,12 @@
 ---
-{
-    .title = "Sublime Text",
-    .date = @date("2020-04-02T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-}  
+.title = "Sublime Text",
+.date = .date("2020-04-02T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
 Install the [LSP](https://github.com/sublimelsp/LSP) and [sublime-zig-language](https://codeberg.org/ziglang/sublime-zig-language) package ([Package Control: Usage](https://docs.sublimetext.io/guide/package-control/usage.html))
 
-## `Zig.sublime-settings`
+# `Zig.sublime-settings`
 
 Place the following snippet in the `Zig.sublime-settings`. (Preferences -> Package Settings -> Zig -> Settings)
 
@@ -22,7 +19,7 @@ Place the following snippet in the `Zig.sublime-settings`. (Preferences -> Packa
 }
 ```
 
-## `LSP.sublime-settings`
+# `LSP.sublime-settings`
 
 Place the following snippet in the `LSP.sublime-settings`. (Preferences -> Package Settings -> LSP -> Settings)
 
@@ -47,9 +44,9 @@ Place the following snippet in the `LSP.sublime-settings`. (Preferences -> Packa
 }
 ```
 
-## `LanguageServers.sublime-settings`
+# `LanguageServers.sublime-settings`
 
->## []($block.attrs('note'))
+># []($block.attrs('note'))
 >
 > Ensure to have the latest version of the `LSP` plugin installed. This separate configuration file has been added in [4070-2.10.0](https://github.com/sublimelsp/LSP/releases/tag/4070-2.10.0).
 
@@ -84,6 +81,6 @@ Place the following snippet in the `LanguageServers.sublime-settings`. (Preferen
 }
 ```
 
-## Per-project config
+# Per-project config
 
 The Sublime Text LSP plugin allows setting LSP settings per project via a `.sublime-project` file. See [per-project-overrides](https://lsp.sublimetext.io/client_configuration/#per-project-overrides).

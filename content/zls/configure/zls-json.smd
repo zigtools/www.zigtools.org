@@ -1,15 +1,12 @@
 ---
-{
-    .title = "zls.json Config",
-    .date = @date("2020-06-03T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-} 
+.title = "zls.json Config",
+.date = .date("2020-06-03T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
->## [Recommendation]($block.attrs('note'))
+># [Recommendation]($block.attrs('note'))
 >
-> ZLS recommends using [in-editor configuration](in-editor) over a `zls.json` to integrate with the existing config system of your editor.
+> ZLS recommends using [in-editor configuration](/zls/configure/in-editor) over a `zls.json` to integrate with the existing config system of your editor.
 
 You can configure ZLS by creating a `zls.json` configuration file. This config will apply to **all** editors that use ZLS.
 
@@ -25,7 +22,7 @@ Here is an example of how a `zls.json` _could_ look like:
 
 The file must be valid JSON which cannot contain comments or trailing commas.
 
-## Where should the zls.json be created?
+# Where should the zls.json be created?
 
 Running `zls env` will show you where ZLS will look for the `zls.json` file:
 
@@ -55,7 +52,7 @@ After creating the configuration file at `$local_config_dir/zls.json`, `zls env`
 }
 ```
 
-## JSON Schema
+# JSON Schema
 
 ZLS provides a [JSON Schema](https://github.com/zigtools/zls/blob/master/schema.json) for validating the config file and enabling IntelliSense features in editors. Further information about JSON Schemas can be found at https://json-schema.org. 
 

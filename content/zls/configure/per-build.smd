@@ -1,10 +1,7 @@
 ---
-{
-    .title = "Per-Build Config",
-    .date = @date("2020-06-04T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-} 
+.title = "Per-Build Config",
+.date = .date("2020-06-04T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
 The following options can be set on a per-project basis by placing `zls.build.json` in the project root directory next to `build.zig`.
@@ -16,7 +13,7 @@ The following options can be set on a per-project basis by placing `zls.build.js
 
 The file must be valid JSON which cannot contain comments or trailing commas.
 
-#### `BuildOption`
+# `BuildOption`
 
 `BuildOption` is defined as follows:
 
@@ -29,7 +26,7 @@ const BuildOption = struct {
 
 When `value` is present, the option will be passed the same as in `zig build -Dname=value`. When `value` is `null`, the option will be passed as a flag instead as in `zig build -Dflag`.
 
-### Example
+# Example
 
 ```json
 {

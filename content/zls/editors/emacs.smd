@@ -1,13 +1,10 @@
 ---
-{
-    .title = "Emacs",
-    .date = @date("2020-04-07T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-}  
+.title = "Emacs",
+.date = .date("2020-04-07T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
->## [Author's Notice]($block.attrs('warning'))
+># [Author's Notice]($block.attrs('warning'))
 > This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
 
 The following Emacs *Variants* are documented:
@@ -16,11 +13,11 @@ The following Emacs *Variants* are documented:
 - [Doom Emacs](/zls/editors/emacs/doom-emacs)
 - [Spacemacs](/zls/editors/emacs/spacemacs)
 
-## zig-mode
+# zig-mode
 
 The [zig-mode](https://github.com/ziglang/zig-mode) plugin provides syntax highlighting and automatic indentation for Zig. It can be used in combination with lsp-mode or Eglot.
 
-## lsp-mode
+# lsp-mode
 
 If you don't have `zig` or `zls` in your `PATH`, set the following configuration variables:
 
@@ -31,17 +28,17 @@ If you don't have `zig` or `zls` in your `PATH`, set the following configuration
 
 The available configuration are documented [here](https://emacs-lsp.github.io/lsp-mode/page/lsp-zig/).
 
->### [Warning]($block.attrs('warning'))
+>## [Warning]($block.attrs('warning'))
 > Be aware that the configuration options may not match what is available in your installed ZLS version.
 
-### Code Actions
+## Code Actions
 
-#### source.fixAll
+### source.fixAll
 
 Running `source.fixall` code actions is not natively supported by lsp-mode. See [emacs-lsp/lsp-mode#1842](https://github.com/emacs-lsp/lsp-mode/issues/1842)
 
 ZLS can work around this limitation by enabling the `force_autofix` config option.
 
-#### source.organizeImports
+### source.organizeImports
 
 Use `s-l r o` to manually execute the code action.

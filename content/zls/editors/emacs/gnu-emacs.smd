@@ -1,16 +1,13 @@
 ---
-{
-    .title = "GNU Emacs",
-    .date = @date("2020-04-07T01:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-}  
+.title = "GNU Emacs",
+.date = .date("2020-04-07T01:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
 ># [Author's Notice]($block.attrs('warning'))
 > This Documentation is [incomplete](https://github.com/zigtools/www.zigtools.org/issues/1).
 
-## [Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/index.html) 
+# [Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/index.html) 
 
 1. Install [Melpa](https://melpa.org/#/getting-started)
 2. Install [zig mode](https://github.com/ziglang/zig-mode)
@@ -47,9 +44,9 @@ Use `M-x eglot` in a zig-mode buffer to start the server or add a hook:
 (add-hook 'zig-mode-hook 'eglot-ensure)
 ```
 
-### Code Actions
+## Code Actions
 
-#### source.fixAll
+### source.fixAll
 
 Add the following to run `source.fixAll` code action on save:
 
@@ -61,10 +58,10 @@ Add the following to run `source.fixAll` code action on save:
         (eglot-code-actions nil nil "source.fixAll" t)))))
 ```
 
-#### source.organizeImports
+### source.organizeImports
 
 Use `M-x eglot-code-action-organize-imports` to manually execute the code action.
 
-### Per-project config
+## Per-project config
 
 Eglot supports per-project configuration which is documented in the [Advanced server configuration](https://www.gnu.org/software/emacs/manual/html_node/eglot/Advanced-server-configuration.html) docs. 

@@ -1,8 +1,7 @@
 <extend template="base.shtml">
-<title id="title" :text="$page.title"></title>
 <head id="head">
 	<meta property="og:type" content="article">
-	<meta property="article:author" content="$page.author">
+	<meta property="article:author" content="$page.authors.at(0)">
 	<style>
 		#prev-next {
 			display: flex;

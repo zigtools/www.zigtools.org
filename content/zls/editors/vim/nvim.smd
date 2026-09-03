@@ -1,16 +1,11 @@
 ---
-{
-    .title = "Neovim",
-    .date = @date("2020-04-06T01:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-    .aliases = [
-        "nvim-lspconfig.html" 
-    ],
-}  
+.title = "Neovim",
+.date = .date("2020-04-06T01:00:00"),
+.layout = "zls-docs.shtml",
+.aliases = ["nvim-lspconfig.html"],
 ---
 
->## [Warning]($block.attrs('warning'))
+># [Warning]($block.attrs('warning'))
 >
 >The [mason](https://github.com/williamboman/mason.nvim) package manager can only install the latest tagged release of ZLS which should **not** be used with Zig nightly/master.
 
@@ -66,7 +61,7 @@ vim.lsp.config['zls'] = {
 vim.lsp.enable('zls')
 ```
 
-## Health Check
+# Health Check
 
 To make sure that ZLS is set up as expected, open a `.zig` file and run the following health checks:
 
@@ -76,9 +71,9 @@ To make sure that ZLS is set up as expected, open a `.zig` file and run the foll
 
 For more information on the health check, refer to [Health check](https://neovim.io/doc/user/health).
 
-## Code Actions on save
+# Code Actions on save
 
-### source.fixAll
+## source.fixAll
 
 ```lua
 vim.api.nvim_create_autocmd('BufWritePre', {
@@ -92,7 +87,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 ```
 
-### source.organizeImports
+## source.organizeImports
 
 ```lua
 vim.api.nvim_create_autocmd('BufWritePre', {
@@ -106,7 +101,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 ```
 
-## Per-project config
+# Per-project config
 
 Neovim allows setting LSP settings per project via [exrc](https://neovim.io/doc/user/options.html#'exrc').
 

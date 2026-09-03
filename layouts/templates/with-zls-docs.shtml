@@ -1,7 +1,4 @@
 <extend template="base.shtml">
-<title id="title">
-	<super>
-</title>
 <head id="head">
 	<style>
 		#content {
@@ -77,6 +74,7 @@
 			top: 40px;
 			max-height: calc(100vh - 40px);
 			overflow-y: auto;
+			scrollbar-width: thin;
 		}
 		
 		#footer {
@@ -111,39 +109,21 @@
 		<div id="sidebar-content">
 			<a href="$site.page('zls/install').link()">Install ZLS</a>
 			<a href="$site.page('zls/releases').link()">Releases</a>
-			<details open="">
-				<summary>Editor Configuration</summary>
-				<ul :loop="$site.pages('zls/editors/vscode','zls/editors/sublime-text','zls/editors/jetbrains','zls/editors/helix','zls/editors/zed','zls/editors/vim','zls/editors/emacs','zls/editors/kate')">
-					<li>
-						<a class="$loop.it.isCurrent().then('selected')"
-						   href="$loop.it.link()"
-						   :text="$loop.it.title"
-						></a>
-					</li>
-				</ul>
-			</details>
-			<details open="">
-				<summary>Configuration</summary>
-				<ul :loop="$site.pages('zls/configure/in-editor','zls/configure/zls-json','zls/configure/per-build')">
-					<li>
-						<a class="$loop.it.isCurrent().then('selected')"
-						   href="$loop.it.link()"
-						   :text="$loop.it.title"
-						></a>
-					</li>
-				</ul>
-			</details>
-			<details open="">
-				<summary>Usage Guides</summary>
-				<ul :loop="$site.pages('zls/guides/build-on-save','zls/guides/view-logs','zls/guides/packaging')">
-					<li>
-						<a class="$loop.it.isCurrent().then('selected')"
-						   href="$loop.it.link()"
-						   :text="$loop.it.title"
-						></a>
-					</li>
-				</ul>
-			</details>
+			<ctx :loop="$site.page('zls').custom.get('docs-sidebar')">
+				<details open>
+					<summary :text="$loop.it.at(0)"></summary>
+					<ul :loop="$loop.it.at(1)">
+						<ctx item="$site.page('zls', $loop.it)">
+							<li>
+								<a class="$ctx.item.isCurrent().then('selected')"
+								   href="$ctx.item.link()"
+								   :text="$ctx.item.title"
+								></a>
+							</li>
+						</ctx>
+					</ul>
+				</details>
+			</ctx>
 		</div>
 	</nav>
 	<div id="main">

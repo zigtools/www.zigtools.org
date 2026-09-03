@@ -1,10 +1,7 @@
 ---
-{
-    .title = "Helix",
-    .date = @date("2020-04-04T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-}  
+.title = "Helix",
+.date = .date("2020-04-04T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
 If `zls` and `zig` are in your `PATH`, everything should work out of the box.
@@ -42,19 +39,19 @@ hx --health zig
 
 For more information on the health check results refer to [Health check](https://github.com/helix-editor/helix/wiki/Healthcheck).
 
-## Code Actions on save
+# Code Actions on save
 
 Running code actions on save is not supported by Helix. See [helix-editor/helix#1565](https://github.com/helix-editor/helix/issues/1565)
 
-#### source.fixAll
+## source.fixAll
 
 The "apply fixall" code action can be run using the "Apply code action" command (normal: `<space>a`, select: `<space>a`)
 
-#### source.organizeImports
+## source.organizeImports
 
 The "organize @import" code action can be run using the "Apply code action" command (normal: `<space>a`, select: `<space>a`)
 
-## Per-project config
+# Per-project config
 
 Helix allows setting LSP settings per project via a `./helix/config.toml` file. For more information, check the Helix [configuration docs](https://docs.helix-editor.com/configuration.html). 
 

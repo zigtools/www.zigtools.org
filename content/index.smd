@@ -1,13 +1,10 @@
 ---
-{
-    .title = "Home",
-    .date = @date("2020-07-06T00:00:00"),
-    .author = "Sample Author",
-    .layout = "index.shtml",
-}  
+.title = "Home",
+.date = .date("2020-07-06T00:00:00"),
+.layout = "index.shtml",
 ---
 
-## ZLS
+# ZLS
 
 ZLS is a non-official implementation of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) for [Zig](https://ziglang.org/) in [Zig](https://ziglang.org/). It provides developers with IDE features in their editor.
 
@@ -16,14 +13,14 @@ ZLS is a non-official implementation of the [Language Server Protocol](https://m
 - [GitHub](https://github.com/zigtools/zls)
 - [Discord Server](https://discord.gg/5m5U3qpUhk)
 
-## Zig Playground
+# Zig Playground
 
 A demonstration of Zig and ZLS running inside of a browser using Webassembly.
 
 - [Website](https://playground.zigtools.org/)
 - [GitHub](https://github.com/zigtools/playground)
 
-## Zig LSP Kit
+# Zig LSP Kit
 
 This library provides all necessary building blocks to develop [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations (like ZLS) in [Zig](https://ziglang.org/).
 

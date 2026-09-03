@@ -1,13 +1,10 @@
 ---
-{
-    .title = "Zed",
-    .date = @date("2020-04-05T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-docs.shtml",
-}  
+.title = "Zed",
+.date = .date("2020-04-05T00:00:00"),
+.layout = "zls-docs.shtml",
 ---
 
->## [Warning]($block.attrs('warning'))
+># [Warning]($block.attrs('warning'))
 >Zed will automatically install the latest tagged release of ZLS. The tagged release will **not** be compatible with Zig nightly.
 
 Add the following to your `settings.json`:
@@ -54,7 +51,7 @@ Add the following to your `settings.json`:
 }
 ```
 
-## Per-project config
+# Per-project config
 
 Zed supports per-project configuration by creating a `.zed/settings.json` inside a project. For more information, check the Zed about [configuration docs](https://zed.dev/docs/configuring-zed#configuring-zed). 
 

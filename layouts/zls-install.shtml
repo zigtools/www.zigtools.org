@@ -1,5 +1,4 @@
 <extend template="with-zls-docs.shtml">
-<title id="title" :text="$page.title"></title>
 <head id="head">
 	<link rel="dns-prefetch" href="https://releases.zigtools.org/">
 	<style>

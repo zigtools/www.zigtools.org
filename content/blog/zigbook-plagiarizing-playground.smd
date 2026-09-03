@@ -1,21 +1,21 @@
 ---
 .title = "Zigbook is Plagiarizing the Zigtools Playground",
-.date = @date("2025-11-30T01:31:06"),
-.author = "Auguste Rame, Techatrix",
+.date = .date("2025-11-30T01:31:06"),
+.authors = ["Auguste Rame, Techatrix"],
 .layout = "post.shtml",
 .draft = false,
 ---
 
 [Auguste Rame](https://github.com/SuperAuguste), [Techatrix](https://github.com/Techatrix) --- 30 November 2025
 
-## Introduction
+# Introduction
 
 For those unfamiliar, Zigtools was founded to support the [Zig](https://ziglang.org/) community, especially newcomers,
 by creating editor tooling such as [ZLS](https://github.com/zigtools/zls), providing building blocks for language servers
 written in Zig with [lsp-kit](https://github.com/zigtools/lsp-kit), working on tools like the [Zigtools Playground](https://github.com/zigtools/playground), and
 contributing to Zig editor extensions like [vscode-zig](https://codeberg.org/ziglang/vscode-zig).
 
-## The Plagiarism
+# The Plagiarism
 
 A couple weeks ago, a Zig resource called Zigbook was released with a bold
 claim of "zero AI" and an original "project-based" structure.
@@ -113,7 +113,7 @@ The original description (also available in the "edits" dropdown of the original
 Zigbook's aforementioned bad behavior and their continued violation of our
 license and unwillingness to fix the violation motivated us to write this blog post.
 
-## Our Vision for the Zigtools Playground
+# Our Vision for the Zigtools Playground
 
 It's sad that our first blog post is about the plagiarism of our coolest subproject.
 We challenged ourselves by creating a WASM-based client-side playground to enable offline usage, code privacy, and no server costs.
@@ -126,7 +126,7 @@ This incident has motivated us to invest more time into our playground and has g
   - The Zig website itself would be a great target as well!
 - We'd like to support stack traces using DWARF debug info which is not yet emitted by the self-hosted Zig compiler
 
-## Conclusion
+# Conclusion
 
 As Zig community members, **we advise all other members of the Zig community to steer clear of Zigbook**.
 

@@ -1,13 +1,7 @@
 ---
-{
-    .title = "ZLS Installation Guide",
-    .date = @date("2020-02-00T00:00:00"),
-    .author = "Sample Author",
-    .layout = "zls-install.shtml",
-    .aliases = [
-        "/zls/index.html",
-    ]
-} 
+.title = "ZLS Installation Guide",
+.date = .date("2020-02-00T00:00:00"),
+.layout = "zls-install.shtml",
 ---
 
 []($section.id('vscode-banner'))
@@ -18,7 +12,7 @@
 
 []($section.id('build-from-source'))
 
-## Build From Source
+# Build From Source
 
 To built ZLS from source, run the following commands:
 
@@ -30,7 +24,7 @@ If you wish to add Zig or ZLS to your `$PATH` please refer to the [Zig Getting S
 
 []($section.id('install-prebuilt-binary'))
 
-## Install Prebuilt Binary
+# Install Prebuilt Binary
 All files are signed with [minisign](https://jedisct1.github.io/minisign/) using this public key:
 
 ```
@@ -44,7 +38,7 @@ RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex
 Provided by [zigtools/release-worker](https://github.com/zigtools/release-worker).
 
 []($section.id('zig-zls-version-compatibility'))
-## Zig + ZLS version compatibility
+# Zig + ZLS version compatibility
 
 If you decide to install Zig or ZLS through a different method (e.g. package managers), make sure that you install compatible versions:
 - A tagged release of Zig should be used with the same tagged release of ZLS (and vice versa). 
@@ -55,6 +49,6 @@ The patch version (the `Y` in `0.X.Y`) of Zig and ZLS does not need to match exa
 The install tool above will automatically resolve compatible Zig and ZLS versions.
 
 []($section.id('next-steps'))
-## Next steps
+# Next steps
 
 After installing ZLS, please head over to the "Editor Configuration" section to set up the editor(s) of your choice.

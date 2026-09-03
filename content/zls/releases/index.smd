@@ -1,13 +1,12 @@
 ---
 {
-    .title = "ZLS Releases",
-    .date = @date("2020-10-00T00:00:00"),
-    .author = "Sample Author",
-    .layout = "page.shtml",
-} 
+    "title": "ZLS Releases",
+    "date": .date("2020-04-00T00:00:00"),
+    "layout": "zls-docs.shtml",
+}
 ---
 
->### [Warning]($block.attrs('warning'))
+># [Warning]($block.attrs('warning'))
 > It is recommended to use [Install Tool](/zls/install/) instead of installing ZLS versions manually to avoid picking incompatible or outdated versions.
 
 | Version                                                         | Date       | Zig Release Notes                                          |
