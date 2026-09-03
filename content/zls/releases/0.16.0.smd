@@ -19,7 +19,7 @@ The `workspace/symbol` request has been implemented. It provides an editor with 
     <figure>
         <picture>
             <source srcset="/0.16.0-zed-workspace-symbols-dark.png" media="(prefers-color-scheme: dark)">
-            <img src="/0.16.0-zed-workspace-symbols.png" style="aspect-ratio: 41 / 25;">
+            <img src="/0.16.0-zed-workspace-symbols.png" style="aspect-ratio: 13 / 10;">
         </picture>
         <figcaption>
             <p>Workspace symbol search for "iter" in the ZLS codebase.</p>
@@ -88,7 +88,7 @@ The output of `@compileLog` statements that were collected during build on save 
     <figure>
         <picture>
             <source srcset="/0.16.0-zed-compile-log-dark.png" media="(prefers-color-scheme: dark)">
-            <img src="/0.16.0-zed-compile-log.png" style="aspect-ratio: 41 / 25;">
+            <img src="/0.16.0-zed-compile-log.png" style="aspect-ratio: 5 / 2;">
         </picture>
     </figure>
 </details>
@@ -104,7 +104,7 @@ Types that resolve differently based on comptime control flow will show all poss
     <figure>
         <picture>
             <source srcset="/0.16.0-zed-branching-types-dark.png" media="(prefers-color-scheme: dark)">
-            <img src="/0.16.0-zed-branching-types.png" style="aspect-ratio: 41 / 25;">
+            <img src="/0.16.0-zed-branching-types.png" style="aspect-ratio: 2 / 1;">
         </picture>
         <figcaption>
             <p>Hover popup on a variable of type <code>std.Io.Evented</code>.</p>
