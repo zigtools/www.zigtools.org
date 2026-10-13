@@ -12,7 +12,7 @@
 The `workspace/symbol` request has been implemented. It provides an editor with a project-wide list of all symbols that match a query string.
 
 ```=html
-<details style="width: 600px;margin: 0 auto;">
+<details style="max-width: 600px;margin: 0 auto;">
     <summary style="text-align: center"><strong>Show Example</strong></summary>
     <figure>
         <picture>
@@ -81,7 +81,7 @@ This is related to an [open proposal](https://codeberg.org/ziglang/zig/issues/30
 The output of `@compileLog` statements that were collected during build on save will now be provided through diagnostics.
 
 ```=html
-<details style="width: 600px;margin: 0 auto;">
+<details style="max-width: 600px;margin: 0 auto;">
     <summary style="text-align: center"><strong>Show Example</strong></summary>
     <figure>
         <picture>
@@ -97,7 +97,7 @@ The output of `@compileLog` statements that were collected during build on save 
 Types that resolve differently based on comptime control flow will show all possibilities in the hover popup.
 
 ```=html
-<details style="width: 600px;margin: 0 auto;">
+<details style="max-width: 600px;margin: 0 auto;">
     <summary style="text-align: center"><strong>Show Example</strong></summary>
     <figure>
         <picture>

@@ -14,7 +14,7 @@
 Errors from failing to compile a `build.zig` file are now reported as diagnostics in the editor. They will also continue to be written to the [logs](/zls/guides/view-logs). This works even if [build on save](/zls/guides/build-on-save/) is not enabled.
 
 ```=html
-<details style="width: 600px;margin: 0 auto;">
+<details style="max-width: 600px;margin: 0 auto;">
     <summary style="text-align: center"><strong>Show Example</strong></summary>
     <figure>
         <picture>
@@ -33,7 +33,7 @@ Errors from failing to compile a `build.zig` file are now reported as diagnostic
 Any diagnostics that come from [unused variables](https://github.com/ziglang/zig/issues/335) will now be marked as "unnecessary" over the LSP protocol. This informs the editor that the diagnostic is caused by unused or unnecessary code which may be used to show the diagnostic in a different style.
 
 ```=html
-<details style="width: 600px;margin: 0 auto;">
+<details style="max-width: 600px;margin: 0 auto;">
     <summary style="text-align: center"><strong>Show Example</strong></summary>
     <figure>
         <picture>
@@ -55,7 +55,7 @@ Any diagnostics that come from [unused variables](https://github.com/ziglang/zig
 Declarations that are `var` as opposed to `const` will now get a non-standard LSP token modifier called "mutable". Depending on the theme being used, this may affect how they are displayed.
 
 ```=html
-<details style="width: 600px;margin: 0 auto;">
+<details style="max-width: 600px;margin: 0 auto;">
     <summary style="text-align: center"><strong>Show Example</strong></summary>
     <figure>
         <picture>
@@ -79,7 +79,7 @@ Improvements to code analysis are not typically included in the release notes, s
 Variables with static lifetime will now get the standard LSP token modifier called "static". Depending on the theme being, this may affect how they are displayed.
 
 ```=html
-<details style="width: 500px;margin: 0 auto;">
+<details style="max-width: 500px;margin: 0 auto;">
     <summary style="text-align: center"><strong>Show Example</strong></summary>
     <figure>
         <picture>
@@ -133,7 +133,7 @@ The language server now registers for the `workspace/didChangeWatchedFiles` LSP 
 Document highlight and references request on `while`, `for` or `switch` keywords will show all `break` or `continue` keywords that reference them. A request on `break` or `continue` will have the opposite response.
 
 ```=html
-<details style="width: 600px;margin: 0 auto;">
+<details style="max-width: 600px;margin: 0 auto;">
     <summary style="text-align: center"><strong>Show Example</strong></summary>
     <figure>
         <picture>
