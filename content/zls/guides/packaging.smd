@@ -29,10 +29,6 @@ If building ZLS without access to Git metadata (e.g., from a shallow clone or ta
 
 # Dependency fetching
 
->## [Info]($block.attrs('note'))
->
-> This section describes behavior specific to Zig master (nightly). Previous versions, such as Zig 0.15.x, behave differently.
-
 ZLS uses Zig's builtin package manager to fetch dependencies and compile them from source. By default, Zig automatically downloads dependencies and stores them in a local 
 `zig-pkg` directory.
 
