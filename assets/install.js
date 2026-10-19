@@ -79,7 +79,6 @@ function createBinaryTable(entries) {
     link.innerHTML = tarballLink.outerHTML;
 
     const signatureLink = document.createElement("a");
-    signatureLink.setAttribute("target", "_blank");
     signatureLink.setAttribute("href", value.tarball + ".minisig");
     signatureLink.innerHTML = "minisig";
 
