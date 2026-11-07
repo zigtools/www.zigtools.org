@@ -1,0 +1,20 @@
+---
+.title = "November 7, 2026",
+.date = .date("2026-11-07T00:00:00"),
+.layout = "page.shtml",
+.draft = true
+---
+
+- Attendees:
+- Anyone want to take notes? (0:00-0:05 - 5m)
+- Introduction (0:05-0:15 - 10m)
+  - Name/pronouns/where are you calling in from?
+  - Icebreaker: What editor do you use?
+- ZLS organizing changes (Techatrix; 0:15-0:25 - 10m)
+  - AI policy
+  - Longer-term vision
+- Workspace symbols (Auguste; 0:25-0:35 - 10m)
+  - Presenting from slides I have never seen before, courtesy of Techatrix
+- Zig build system report back (Techatrix; 0:35-0:45 - 10m)
+- Unplanned items/general questions (0:45-0:55 - 10m)
+- Is anyone interested in contributing to ZLS/learning more about ZLS? (Techatrix; 0:55-1:00 - 5m)
