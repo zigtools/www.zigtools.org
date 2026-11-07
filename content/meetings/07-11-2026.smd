@@ -2,7 +2,6 @@
 .title = "November 7, 2026",
 .date = .date("2026-11-07T00:00:00"),
 .layout = "page.shtml",
-.draft = true
 ---
 
 - Attendees:
@@ -79,4 +78,4 @@ Meeting notes:
 - Idea of creating an architecture documentation to help initial contributors.
 - Friction with Zig, ZLS can't keep up when Zig keeps making breaking changes, and not addressing them before a release is tagged. Closer collaboration with core team would be really valuable.
 - Resilient parsing is a current point of development, would address the issue of incomplete buffers breaking completions.
-- Please donate!! Esp. via OpenCollective.
+- Please donate!! Esp. via [OpenCollective](https://opencollective.com/zigtools).
