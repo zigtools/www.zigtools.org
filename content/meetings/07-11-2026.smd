@@ -18,3 +18,65 @@
 - Zig build system report back (Techatrix; 0:35-0:45 - 10m)
 - Unplanned items/general questions (0:45-0:55 - 10m)
 - Is anyone interested in contributing to ZLS/learning more about ZLS? (Techatrix; 0:55-1:00 - 5m)
+
+---
+
+Meeting notes:
+- Organisational changes (Techatrix):
+  - Problems:
+    - ZLS lacks recurring contributors
+      - Lots of drive-by (i.e. one-time) contributions
+      - Could be better community engagement to improve contributor retention?
+    - Pipeline currently not very supportive:
+      - Little/no discussion or feedback on issues
+      - Same for PRs, often going stale
+      - Contributors could/should be involved in the community, beyond just sending contributions on GitHub
+    - Recent issues with AI PRs spamming the repo and wasting maintainers' time
+  - Changes:
+    - Monthly meetings, to help involve users and potential contributors
+      - Will help with understanding people's experience and problems both with use and contributing
+      - Better co-ordinate work between maintainers & contributors
+    - Banned LLM contributions
+      - Closed 2/3 of PRs, most of low quality
+      - Aiming to encourage committed & consistent contributors who are part of the community
+    - Created a contribution guide, including how to build & test ZLS.
+    - (Ongoing) Cleaning up issue tracker:
+      - Closing stale issues
+      - Tagging contributor-friendly issues
+      - Clarifying where and how new work should be done
+  - Future ideas:
+    - Invite-only pull requests?
+      - Perhaps require people involve themselves with the community before allowing?
+      - Could be that we encourage engagement in the Discord and/or with the monthly meetings before making a contribution.
+      - Reaching out directly to people to discuss getting people involved.
+      - One-on-one assistance / meetings between maintainers and contributors.
+    - Issue tracker:
+      - Many issues are unclear as to how they could be addressed
+      - Lack of prioritisation of issues
+      - No knowledge of which issues are being currently worked on - risks duplicating effort or discouraging contribution
+    - Gather feedback on how these changes progress during future meetings
+    - mattnite: could have a role for someone to help mediate issues? Not to directly contribute, but to help reproduce and clarify issues, making them better targets for contributors.
+    - jeffective: could mark 'contributor-friendly' issues as "will be shepherded by a maintainer"
+      - Techatrix: may be resource-limited... we can get an equivalent through monthly meetings or helping one-on-one as requested.
+    - rcalixte: suggests that clearly delineating first-time contributor-friendly, vs requiring existing knowledge of the codebase.
+      - Techatrix: currently, 'beginner-friendly' marks an issue which should be able to be solved without existing knowledge using just what is present in the repo. a separate 'contributor-friendly' tag could indicate something still solvable, but could require more codebase knowledege or collaboration.
+- Workspace symbols (Auguste):
+  - You can search an entire project for a symbol name.
+  - Since 0.16, you can search for any symbol, basically grep but specific to symbol names.
+  - Entire project gets parsed and indexed on startup
+  - Sliding window trigrams parsed. For example Shr_Imp -> "shr", "hri", "rim", "imp"
+  - Each trigram put into cuckoo filter for querying.
+  - High performance: for Zig compiler first load is 400ms, trigrams load in 180ms, and symbol search takes 20ms.
+- Zig build system changes (Techatrix):
+  - Build system has been split into a configure and make stage.
+  - Build script generates a build graph, which is then executed by the maker.
+  - No longer have a singular build runner, making ZLS unusable.
+  - Discussion with Andrew on how to fix ZLS's usecase.
+  - Some issues unregressed:
+    - Build-on-save fixed.
+  - But regressions remain after 0.17 was tagged, long list of unfixable (for ZLS) issues. 
+  - Will have to wait for next release cycle to resolve these.
+- Idea of creating an architecture documentation to help initial contributors.
+- Friction with Zig, ZLS can't keep up when Zig keeps making breaking changes, and not addressing them before a release is tagged. Closer collaboration with core team would be really valuable.
+- Resilient parsing is a current point of development, would address the issue of incomplete buffers breaking completions.
+- Please donate!! Esp. via OpenCollective.
