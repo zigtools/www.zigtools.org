@@ -13,11 +13,11 @@ In-Editor Config (a.k.a workspace configuration) will integrate with the config 
 | [VS Code](/zls/editors/vscode)                                | Yes        |
 | [Sublime Text](/zls/editors/sublime-text)                     | Yes        |
 | [ZigBrains for JetBrains](/zls/editors/jetbrains)             | Limited\*  |
-| [Helix](/zls/editors/helix)                                   | Yes        |
-| [Zed](/zls/editors/zed)                                       | Yes        |
 | [Neovim](/zls/editors/vim/nvim)                               | Yes        |
 | [Vim/Neovim with CoC](/zls/editors/vim/coc)                   | Yes        |
 | [Vim/Neovim with YCM](/zls/editors/vim/ycm)                   | Yes        |
+| [Zed](/zls/editors/zed)                                       | Yes        |
+| [Helix](/zls/editors/helix)                                   | Yes        |
 | [Emacs with eglot](/zls/editors/emacs)                        | Yes        |
 | [Emacs with lsp-mode](/zls/editors/emacs)                     | Yes        |
 | [Kate](/zls/editors/kate)                                     | Yes        |

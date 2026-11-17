@@ -1,6 +1,6 @@
 ---
 .title = "Neovim",
-.date = .date("2020-04-06T01:00:00"),
+.date = .date("2020-04-04T01:00:00"),
 .layout = "zls-docs.shtml",
 .aliases = ["nvim-lspconfig.html"],
 ---
